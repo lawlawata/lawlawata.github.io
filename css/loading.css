@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+/* ローディング画面と、ロード直後のファーストキービジュアルの画面 */
+
+/*ローディング画面*/
+#loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9998;
+	transition: all 0s;
+	transition-delay: 1s;
+	background-color: #ff7c88;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+#loading.loaded {
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+}
+img.loadingImg {
+	height: 8em
+}
+.loader {
+	color: #ffffff;
+	font-size: 20px;
+	margin: 100px auto;
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	position: relative;
+	text-indent: -9999em;
+	-webkit-animation: load4 1.3s infinite linear;
+	animation: load4 1.3s infinite linear;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+}
+@-webkit-keyframes load4 {
+	0%,
+	100% {
+		box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+	}
+	12.5% {
+		box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+	}
+	25% {
+		box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+	}
+	37.5% {
+		box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+	}
+	50% {
+		box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+	}
+	62.5% {
+		box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+	}
+	75% {
+		box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+	}
+	87.5% {
+		box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+	}
+}
+@keyframes load4 {
+	0%,
+	100% {
+		box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+	}
+	12.5% {
+		box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+	}
+	25% {
+		box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+	}
+	37.5% {
+		box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+	}
+	50% {
+		box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+	}
+	62.5% {
+		box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+	}
+	75% {
+		box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+	}
+	87.5% {
+		box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+	}
+}
+
+/* ロードが終了したときに表示するトランジション */
+@keyframes animation-loadingTransition{
+	0%{
+		opacity: 1;
+		visibility: visible;
+	}
+	80%{
+		opacity: 1;
+		visibility: visible;
+	}
+	100%{
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+#loadingTransition.loadingAppear {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9999;
+	animation-name: animation-loadingTransition;
+	animation-duration: 2.5s;
+	animation-timing-function: linear;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+}
+@keyframes animation-circleA{
+	0%{
+		left: calc(100vw + 100vmax);
+	}
+	40%{
+		left: 50vw;
+	}
+	100%{
+		left: 50vw;
+	}
+}
+#loadingTransition #circleA.circleAppear{
+	position: fixed;
+	margin: -100vmax;
+	top: 60vh;
+	width: 200vmax;
+	height: 200vmax;
+	border-radius: 100vmax;
+	background-color: #ffffff;
+	animation-name: animation-circleA;
+	animation-duration: 2.5s;
+	animation-timing-function: ease-in-out;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+	overflow: hidden;
+}
+
+@keyframes animation-circleB{
+	0%{
+		left: calc(100vw + 100vmax);
+	}
+	40%{
+		left: calc(100vw + 100vmax);
+	}
+	60%{
+		left: 50vw;
+	}
+	100%{
+		left: 50vw;
+	}
+}
+#loadingTransition #circleB.circleAppear{
+	position: fixed;
+	margin: -100vmax;
+	top: 40vh;
+	width: 200vmax;
+	height: 200vmax;
+	border-radius: 100vmax;
+	background-color: #ff7c88;
+	animation-name: animation-circleB;
+	animation-duration: 2.5s;
+	animation-timing-function: ease-in-out;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+	overflow: hidden;
+}

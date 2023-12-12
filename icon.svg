@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: http://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="61.44pt"
+    height="61.44pt"
+    viewBox="0 0 61.44 61.44">
+<defs/>
+<ellipse id="shape0" transform="matrix(1.0000000447034 0 0 1.0000000447034 -1.37329098848227e-06 -6.86645460490354e-07)" rx="30.72" ry="30.7199993133545" cx="30.72" cy="30.7199993133545" fill="#ff7c88" fill-rule="evenodd" stroke="#000000" stroke-opacity="0" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel"/><path id="shape1" transform="matrix(1.00000006705514 0 0 1.00000006705514 11.7014030131773 4.92000056768479)" fill="#cda9ff" fill-rule="evenodd" stroke="#ffffff" stroke-width="0.959999999999923" stroke-linecap="square" stroke-linejoin="bevel" d="M18.8294 0C-12.6841 18.7805 -4.64107 39.2004 42.9586 61.26C9.74315 39.2004 1.70007 18.7805 18.8294 0Z"/>
+</svg>

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/*
+帰ってくださいって忠告しましたよね？
+どうして言うことを聞いてくれないんですか？
+CSSまで見に来るなんて、最低ですよ？
+そんなあなたには魔法で消えていただきましょう！
+
+あなた {
+	display: none;
+}
+
+ばいばーい！
+*/
+
+/*共通で使うstyle*/
+
+h1 {
+	margin: 0em;
+	padding: 0em;
+	color: #ffffff00;
+}
+
+a{
+	color: inherit;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+
+/* テキストが出現するアニメーション */
+span.smoothText {
+	overflow: hidden;
+	display: block;
+}
+span.smoothTextTrigger{
+	/* アニメーションで傾斜がついている文字列を水平に戻す*/
+	transition: 0.8s ease-in-out;
+	transform: translate3d(0,100%,0) skewY(12deg);
+	transform-origin: left;
+	display: block;
+}
+span.smoothTextTrigger.smoothTextAppear{
+	transform: translate3d(0,0,0) skewY(0);
+}

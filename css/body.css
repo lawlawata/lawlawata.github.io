@@ -1,0 +1,358 @@
+@charset "UTF-8";
+
+/*
+
+
+                                                                          . .......
+                           `   `    `    `   `  `  `   `  `  `   ` ..!!    .`       ` !!~..
+                       `                                       .,!.____.(?(:....___-..__..._~.
+                                          `                  ,! -_._~..(!.(_.....__~-~--.-.__ _.
+                     `          `    `         `    `   `  - .-_......-}..I...-...._-_._~--<-._`~
+                         `  `      `    `   `    `     ` .!..__.....,.-l..I...._..-.-_...-..(-._ (.
+                                                        .~.. .-.-..(_.->..I_...--..1-.__-...._1._`(
+                    `          `          `    `    `  .!....-_(!.-r...r_.(_.`..~...I_..(<.._`_1 -`:
+                       `    `        `                 { ...__ (_.(}..`(_.-}...._..-(c_..(_-_..(l. .
+                                  `          `        .`.._._~.(._-}._.->_.(-....._._(<..-I__..-?,_.}
+                    `           .?_1     `       `  ` / .(<--..J_-_d-...(/..1.......-(b_..z_--..(3._(
+                         `  .,?!?!-(.          `      } .(:.-..<}~.(1..-.(<.-l.`.....<V<..n<.~-._j__..
+                         .?_.???<-. ` ?~    `         : .(:__..<?---l1._-.-1.(/..-..((<3_(+;.(<.-(<-_(
+                    ` ,<! ````.( .1{???!             .` .(:<<._j<v,-(-<--_..?,-<....(C~j.J~1.-;_.:I_(_<`
+                     ,<-```  (.`?,`(      `    `     ,` .(:::__(<c(i_<-(1i_..(i-<.-(>jX0wGJ_>_(<.:1:_<<<
+                     C` `.(3.`ji .,`}             `  {` _(:;::<c<l((-wWB+(1+_.~?-1/_ddMMMNvww{(;_(?c<:<<(.
+                     {```-::r`2({ X-<               .:`.~c;:;;+UUzZWMMMMV2..<-~~J!(-`VOOz.. kZo<<(:j<;:<<(,
+                     ( ``` .(?__3.j?^     `  `      .. ._I:<:;Jz(X BvO+.. ``` ~[ ``` .~_~<{ CO=z;:::O;::<_(-
+                      >```````.._~?            `    ; .-(::<;+D2<,,~<~__? ``````````` _..` .(>0=<;::<6<::<;z,
+                       i```````..(\                .~(_((:+<;Jv.(`. ~...``````.````````.....(;(=l<;:;?o;:<<+j
+                        >``````.->    `  `        `/-:_~I:+:;0\(d.....`````````````````.....Jv(f=z;<j<u>::<;1)
+                    `  .'`````` /           `  `   >(:<_t;=:+0{(z{...`.``````````````````..(z=GSl=z;<rjz:j<<jt
+                      .'`````` (                  .(>::_r:j;(Irj=zl``````````` , {``````` (===dj=lz;;$(>:Z:;jI
+                     ,~```` ` J      `    `       .zz;::I:j<;0Z(===I,````` ````}.\````` .J==llr(==z<;$J<+$:;Zr
+             ....   - `````` /                 `   4z<;:j:;I;zz(yl===I. ```` `.:.1``` .J3===ld~zl=z<jI3<J>;+Z\
+           .``.r?>1C```````./                ` ..???yz<;:6<?c;0t(z=====v&-. ``.`.(`.(?i6===lz\.Z=lv;J<;<0<<v2
+           `}._$~(s,``````./        `   `    ,` :~:~?wO+<;O<?1<U/(VAzllub:(7TOJ. (vC~:(==l==v.-==uCj3;;Jv+jv
+            ..~`._` 7?,..(J-?,   `        ` ,` `_:~:JSWyz+<?z<1<G.j====vK~~:~:(; .C:~~(l==l=t.y=zC+6j<J=1Ov
+             c/`_.` -_ `.~:~j^              l/`` _(XuuuXWmsz+<<<<}(Z==?=vn_~:~:)`.(+~.-bl==lr-S3jZzv1z=zw^
+             )`-?<.._`.-:<(!            .,?! ._~:~?TkuuuXWHWHm&J4].Kzz====vS+??``` -?-.JsllzI(1zw6<jf=uY
+           ..) ``````.(+<1!         `./``  ` _!<<:(JXXuuuXuXWVWVW((NI=O1++\`.. ``````.7xdY^`.r(.>+1Iz7
+          (-~_<?<-.....~~(.     ` .,!` ```.``.`.:(SuuXUWZXuuuuHWt(kXWe<<<j.^```````.`..(z?,  ,i11O?!
+        .C<__ __``... _~::j ...>!~<<<<<<-..  `._~(RuuzuuuKuuuutJ(BuXXuh,:+, (``````````` 4uh/!.!>       .-,
+       .1<~..__``.-``-~:~(>(`  ``````. _~~:::_.-jXWkkXuuXSuzuX(Y~(SuuuuuUd,;`.-?1_~~~.- ``(WWS.. !    .XuuX,
+      ,.<~``.. `. `` _:(/.! ```.`.``.````. _~::~dUWXXUWZXuuuuX``._7WkuuzuX(G.,1-:?l~~~~~ ```?kuXX0+..SuXXuuX
+     . (<_`````.```._:~j/_~.``.``.``.``.````` _:duuuUUUXHuzuut`.`` 4uf4kuuuuhvJ&-:~O:~~~_````.WVHuuuuWuuuuXh,
+     ) <_`.``.```...:~(<`-_~~ ``.``.``.```.`. _(uuuuuzuXuuuuX~`.`` SXI:l?TTTXuQV>dA+J,~~..````.1JkuzuuHuXUUXV
+    .! !``.``.``.`.~:(+!`._<_~-``.-.```.` -_~~:JXuuzuuXRuzuuP```.``XX__r:~(3~:J((-ZTYT4,~.`````-ZWuuuuXKUXuUU&.
+    /```.``.``.` _~:(=>_``._(--~``` _..._~~:~:~JXWkkXuXuuuzX``.``.`JX``}_J<<-:P,!(<~~:J~1-````` ?dkuuzuHuuuuuX:j.
+   . ````.``.` _~:(+=> :_```_~< .`. -~_~::~::(JZuuXUXZKuuuu]```.``.,X `}_)``-<>_ ..-..1:~1_``````/RuuuuWXuuXX2~(`
+   } `.```.``.<~:(1=>_-~:.`.._~<.._~:::~:~:~J6>wuuuuuXSuzuu}`.``.``(X<`} ?(,.,~,<i< ``.>:?/ ````` ?kXukXuuuuuX~;
+  .````.```..<~(+?v<_.:~~_-____::__:~:~:~:(Jz<~?kuzuzXuuuzX ``.``.`Ju[`} (!._(```,._~~O~ ~1_`````.(J?:JXuuuuQ\:
+  ;````.  ` ~:(=z<~~.<:::<_:~~:~~~_~:~:~(/!  3:~zuuuuKuuuuP``.``.``(u].} (` <,`.`,....C_` ?l-` ,^`-`_~:HkuuX3.-
+  \```..~.`_(+z<:~~-<:~~:<~::~::~:~_:~(?`    }__JkXUUHuuzu]`.`_``.`(X]`<`(/..,```, __~_t_`.OJ7!``.( -~(#uXY~  .;
+  }````(~` :+<~~:~_:~:~~:~~:~~:~:~-?!       ,-.`_?kuuKuuuu]``._.``.,u$`(`_1._(/?<?<_.`.r_`.C``._``.i,<~?K<:~:~_,.
+  .-.`.:~__(>~:~~:~~:~::~:~:~:(J7          .:(_`` ?4kHuuzu]``(_`.``.u]`(--/^`..` ...``.l_.%`._- _.?``` _/?""C&-_)
+      ~??<-(1(-(((--(?!~~???!              .~(<``` _~Juuuu$` <_.```4u].J__)`_(/- ..<<-.IJf` _ _(!```` ,!````_.(Z
+                                           ,:(?-`.```(uzuuX`.<~_.`.Wu].$::r~:~v<((C~~:(Th-___(!```..J!` _ ``.~Jv.
+                                           c::+1``.``.kuzuX-.<:__. Ju%->~~$:~_r:~(l:~:y<:J6JJ<J_-(?..```.`. ~~jx- ?i
+                                           I~~(1<`.`..Kuuuu].<~:_-`JX}(~:+T1_~r:~:r<+J&z_r(jWIv=>_.`._<~ ``.~_.(z::J
+                                          `1:~:(<<.``.Kuzuu].<:~:_-kX!(:(r~::<I~:~I::~($(I1H8f:~~_.<__```. ~_.`.R:~l
+                                           ..__~:<<-..Kuuzu$ <~:~~~WX_(~($:~~(v(_(I<-:(v(=dWd:~~-<_.``.`. __````0<:_1
+                              `  `  `   `  ,<--______~RuUXXX,<:~::(HW_(_<$:<</.!~_C:~:J>ZuHkd+~_~_.``.._`_```.``(<~~.>
+                           `               <_~~<<<<~``wuuuuuX<<:~~?HW~2<(h:::):  {>~::j1$dH1=m:~__.` (~`````.``.,2:~:/
+                                           ..` .++-..`(kuuuuXJ<:~:?kR:I(d~<<<1.<<.>_~~zd1HU=uHh(.~_(<_`.``.````` 6~:(`
+                      `                     ?.+j+dUWWWWUUWWWWWHXa+JkRJo(z:~~:J~::c:~<Z1$dK3=dVVW3_:~~__ `.``.`. _J_('
+                         `     `   `  `        .uuuuzuuuuuuuuuuuuuuuuuuuuuuUWWUXAaJ-:zvuHD=dHVfp:~::~:~~_..`..__~~h>
+                            `             `    ,uuzuuuuuuzuuzuuzuzuuzuzuuzuuuuuuuuuuuWWWHeuHVVVWC(_~:~:~~:~~~:~:(?
+                     `                         JuuuuuXXkkkkkkXuuuuuuuuzuuuuuzuuuzuzuzuuuuuuV%     .u-_~:~:::(J/^
+                                              ,uXWUuuuuuuuuuuuuuXUUWWWWWWQQQkXuuuzuuuzuzuuul\        (1&++?7`
+                         `     `   `  `  `   JdXVSuzuzuzuuuuuuuzuuzuzuuzuzuuuuuUWWWQkuuuzuu>{
+                    `       `              .!JXfWuuuuuzuzuzzuuuuuzuuuzuuuuzuzuzuuuuuuXWHWQX~)
+                       `                  (-JXfWuuuzuuuuuuuuukzuuuzuuuzuuzuuuuuzuuuzuuuVVVW$[
+                                        .>(wXWWuuuzuzuzuzuuuXXuuzuuzuuuzuuuuuuzuuuuuzuuXVVVr(
+                               `   `   .'(zuWfUuuzuuuuuzuzuuKuuzuuuuzuuuzuuZuzuuzuXuuzuXVVVk(
+                    `     `           .>(uuXfSuuuuuzuuuuuuzXKuuuzuzuuzuuuzuXuuuzuuZuuuuXVVVV(_
+                       `             .}(wuXfXuuzuuzuuuzuzuuXSzuuuzuuuzuzuuuXuuzuuuXzuzuuVVVV[)
+                              `  `   /-wuXHWuuuuzuuuuuzuuzuXuuzuuuzuuuzuuzuXzuuuzuXuuuzuWVVV$\
+                    `      `        ,.JuuWVSuuzuuzuuuuuzuuuHuuuzuuuzuuuuzuuXuuuzuuXuuzuuXVVVWi
+                                    \(uudVSuuzuuuuuXzuuuzuXSuzuuzuuzuzuuuuuXuuzuuuXuzuuuXVVVVj
+                       `           .(uuIWVuuuuzuzuXSuzuuuzXXuuuuzuuuzuzuzuzXuuuzuzXuuuzuXWVVVZ.
+                    `          `   JyuXJVSuzuuuzuXKuuuzuuuWuuzuuuzuuuuuzuuuXuuzuuuXkuzuuuHVVV$}
+                           `       kuuIWfuuuzuuuuXSuuuzuzuHuuuzuuzuzuzuuuzuXuzuuzuXRuuuuuHVVVk\
+                                  .XuudfSuuuuzuzXWuuzuuuuXHuzuuzuuuuzuuzuuzXuuuzuuXKuuuuuHVVVVj
+                    `    `     `  .uuIXVXuzuuuuuXHuuuzuuuXSuuzuuzuuuuuzuuuuXuuzuuzuKuzuuuWVVVVd
+                                  ,uuwVSuzuzuzuuWSuuzuuzuXXuuuuuuzuzuuuzuzuXuuuuuuuKuuuuuXVVVfr;
+                      `     `     duudVXuuuuzuuVWuuzuuuuuXuzuzuzuuuuzuuuzuuXzuzuzuuWuzuuuXVVVV$)
+                                  kuIkSuzuuuuuunWuuuzuzuuKuuzuuuzuuzuzuuuuuXuuuzuuuWuuuuuXkVVVkl
+                    `          `  KuXVSuuzuzuuudSuzuuuuzuHuuuuzuuzuuuuzuzuzXuuuuzuuXuzuZuXHVVVW(
+                         `       .SudVuuzuuuzuZXXuuzuuzuuHzuzuuzuuuzuuuzuuuXuzuuzuuXuuuXuXHVVVV(
+                            `    .uuXWuuuzuuuuwWuuuuzuuuXKuuuzuuuuzuzuuuuzuXuuzuuzuXXuuXuXHVVVVJ
+                    `            .uXWSzuuuzuzudSuzuuuzuuXWuzuuzuzuuuuzuzuuzXuuuzuuuXkuuXuyWVVVVI_
+                       `         (uXHXuuzuuuuuXSuuzuuuzuXkuuzuuuuzuuzuuuzuuXuuuuzuuXkzuXuVWVVVVr)
+                          `      JuXfuuuuzuzuXWXuuuzuuuuXkuuuzuuzuuzuuzuuuuXuuzuuzuXkuuXkVWkVVV$\
+                    `         `  uuWWuuuuuuuzXfuuzuuzuzudkuzuuzuuuuuuzuuzuzXXuuuuuuXWuuuHVVHVVVS1
+                                 KupWuzuzuuuuXWuuuzuuuuudkuuzuuuzuzuuuuzuuuXXuuzuzuXWuzuHVVHVVVk(
+                           `    ,uufkuuuuzzuudWuzuuzuzuudSuuuzuuuzuzuzuuzuuXXuuzuuzXWuuuWVVHVVVV(
+                    `  `       .SuXfSuzuuuuuudWuuzuuuuzudkuuzuuzuuuuzuuuzuuXuuuuzuuXyuuuXVVWVVVVd
+                              .WuuXVSuuuzuzuuXkuuuzuuzuudXuzuuuuzuuuuzuuuzuXuzuuuuuXyuzuXVVWVVVVZ.
+                             `SkuXVVkzuuuzuuufkuuzuuzuuuXXuuuzuuuzuzuuzuuuuXuuzuzuuXVuuuXWVWVVVV${
+                    `     `      fffXuuuzuuzuVkuzuuuuzuuXuuuzuzuuuzuuuzuzuuWuuuzuzuXyuzXfHVWfVVVS)
+                                .kkkkXuuuuzuuWkkuuuzuuzuXuuuuuuzuuuzuuuzuuuWuzuuuuuXWuuWVHVffVVVk>
+                       `        4fVfVVVWHHHHfHVVVWHWWfWkHHHQkuuuzuuuzuuuzuuWuuzuzuuyWuXVVHVfKY"`
+                    `            ?"4VVVVVVVVVVVVVVVVVVffVVVVVVHHQkXuuuzuuzuWQkkuuuQkkXVVVHVY^
+                           `         .=?kVfVVffVVVVVVVfVfVfVVVVVVVVWHHHWQQQHVVVVHHHffWHHM!
+                                         _ ?":?WW3?9Y>?TTT<TY5?8WUWWVVVVVVVVVVVVVVVVVVWkY
+                    `    `    `             c~~~~~~~~~~~~~~~~:~:~::r7kVVVVVVVVVVVVVVW3(
+                                            (~~~~~~~~~~~~~~~~~~~:~~O:?T>?UY>7WUKYY<7=~)
+                      `                      3~~~~~~~~~~~~~~~~~~~~:J~:~:~:~~~~~~~~~~~(:
+                           `                 ./~~~:~~:~~~~~~~~~~~~~(c~:~~~~~:~~~~~~~~(
+                    `         `  `        `   (_....`.``_`______~~~~$~~~~~__` ```.._~;
+                         `          `          1..``````````....~~~~I~~__ ```````..._\
+                                        `      .,````````````.....~~j~_.`````````...(
+                    `                           (````````````.....~~J~_``````````..~(
+                       `   `   `     `    `      ;`````````````..~~~(_ ``````````..~\
+                                             `   (````````````....~~(JJ++JJ++J(..--(}
+                    `            `                ;``` `````` ..--_~(XuuuuzuzuuuuuuX`
+                          `   `      `   `     `  (`..-yUUzuuuuuuuuudSuuuzuuuuuuuuuX
+                       `                    `      SuuuuzuuzuuuuuuuudSuuuuzuuuuuuuuX
+                    `                              ,uzuuuuuuzuuuuuuudZuuzuuzuuuuuuZX
+                                `   `   `      `    SuzuzuzuuuuuuuuZduuuuuuzuuuuuuuX
+                           `              `         juuzuuuzuuuuuuuuUuuuuzuuzuuuuuuX{
+                    `                               ,uuuuzuuuuuuuuuuHuuuuuzuuuuuuuuu]
+                       `      `  `   `      `  `    duuzuuzuuuuuuuZXMZuuuzuuzuuuuuuuL
+                          `               `        JuuuuzuuuuuuuuuuX,uuuuuuzuuuuuuZuX
+                    `                             JuuuzuuzuuuuuuuZX'.XuuzuuuuuuuuuuuX
+                                    `   `      ` JuuuzuuuuuuuuuuZX'  KuuzuzuzuuuuZuuX.
+                            `   `           `   (uuzuuuzuuuuuuuuV!   UuuuzuuuuuuuuuZX{
+                    `  `                       JuuuuzuuuuuuuuuuV     juzuuuzuuuuuuuuu[
+                                    `    `    JuuzuuuzuuuuuuuuV      ,uuzuuuzuuuuZuuZ]
+                          `    `             JuuzuzuuuuuuuuuuX`      .kuuzuuuuuuuuuuu$
+                    `                       (uzuuuuzuuuuuuuuX'        KuuuzuuuuuuuZuuZ
+                                   `  `   `,uuuzuuzuuuuuuuuX\      `  SuzuuzuuuuuuuuuX
+                       `   `   `          .SuuuuzuuzuuuuuuX%          XuuzuuzuuuuuZuuX
+                    `                    .kuuzuuuuuuuuuuuur           zuuuzuuuuuuuuuuX_
+                                   `     Juuuuzuzuuuuuuuuv      `  `  (uzuuuzuuuuuZuuX:
+                          `   `         .uuuzuuzuuuuuuuuV     `       ,uuuzuuuuuuuuuuX)
+                    `                   RuuuuzuuuuuuuuuX'             ,uuuuzuuuuuuZuuZ}
+                       `         `   ` ,uuuzuuuzuuuuuuX%           `  ,uuzuuzuuuuuuZuX{
+                                       Ruuuuzuuuuuuuuur       `       .kuuzuuzuuuuuuuX~
+                    `     `   `       .uuuzuuzuuuuuuuV                 KuuuuuuuuuuZuuX
+                                      wuuuuzuuuuuuuuX'     `     `    `KzuzuzuuuuuuuZf
+                       `         `   .SuuzuuuuuuuuuX%         `    `   Suuuzuuuuuuuuu%
+                    `       `        ,uuuuzuuuuuuuZf                   XuuuuzuuuuuuuX!
+                                     kuuuuuuuuuuuuX`     `             wuzuuuzuuuuZuV
+                          `    `    .XuuzuzuuuuuuZ%         `  `  `    Juuzuuuuuuuuu]
+                    `               (uuuuzuuuuuuuV                     (uuuzuuuuuuuX:
+                       `           `KuzuuuuuuuuuX\      `          `   ,uuzuuuuuuuuX
+                            `   `  .Suuuzuuuuuuuf   `      `  `        ,uuuzuuuuuuZ]
+                    `              ,uuuuzuuuuuuX`                      ,uuuuzuuuuuX\
+                          `        wuzuuuzuuuuZ%       `        `  `   .kuuzuuuuuuX
+                       `          .SuuzuuuuuuuV     `    `   `          Ruuuuuuuuur
+                    `         `   .uuuuuzuuuuuL                      `  SuzuuuuuuZ]
+                                 .SuuzuuuuuuuuX  `            `   `    .SuuzuuuuuX\
+                           `    .\XuuuzuuuuuuuX     `   `  `           ,uuuuuuuuuX:
+                    `           ;`XuuzuuzuuuuuX.                   `   duzuuuuuuuuL
+                       `       ,` (uuuuuuzuuuuZ|              `        uuuzuuuuuuuW,
+                           `  .```.KuzuuuXkY"77U,  `  `  `             kXkXuXQkuuZR?.
+                    `        ,XL ``OuuXZ"`...~~~(l              `  `  -Y.````..(TWX:1
+                            .SuXr``,kXt````..~~~~/,         `        .\ ``.`...~~~4r?;
+                       `    kuuuX[`.Sd_`.```...~~~j.     `           ,```.```..~::~U~q.
+                    `       (kuuuX[`,"``.`.``..~~_(z.         `    ` / ......._~~~:~:J]
+                             ?kuuud,`````.`...?7^_`_G.              .(!____`____?71-~(%
+                         `    (kukub`.`.J7!_````.````8.  `      `   /(- .`````.`` .v~(\
+                    `           `HuXL`.,1,..`.`.` `.(<j.    `       [` ?77<<((((<?:~:X;
+                                 juuXL`  `?77<<<?7<~~:~]      `    .]` ```.`...~~~~~(SX
+                      `   `      .Kuuuh,`` ````.`...~~~Jn          JW, ``  ....~~~:JHuX)
+                                  (uuzuXh,  ` ` ``..((Xuuh        .RuuUUX&J-(J+JdWSuuuX'
+                    `         `    4uuuuuuXWUXUUUWWUuuuuud.   `    HuuuuuuuuuuuuuuuuuX^
+                          `         ?XuuuuuuuuuuuuuuuuuuZV         ,kuzuuzuuuuuuuuuXY
+                       `              .TkuzuuzuuuuuuuZXV=            ?4XkXuuXXXkV7^
+                    `          `          ?""TTT7""7!        `  `
+                            `
+*/
+
+/*ボディー*/
+body {
+	margin: 0em;
+	padding: 0em;
+}
+
+body.noScroll {
+	overflow: hidden;
+}
+
+/*背景画像を見せるための空間*/
+#emptySpace{
+	margin: 0em;
+	padding: 0em;
+}
+
+/*イントロダクションカード*/
+#introduction {
+	margin: 0em;
+	padding: 0em;
+	font-size: 1em;
+	background: #ffe6ea;
+	border: 0.2em dashed #8a8077;
+	border-radius: 1em;
+	box-shadow: 0 0 0 0.5em #ffe6ea;
+}
+#introduction p{
+	margin: 0em;
+	padding: 4em;
+	font-size: 1em;
+	line-height: 2.5em;
+	color: #8a8077;
+	font-family: 'Noto Sans JP', sans-serif;
+	text-align: center;
+}
+
+/* 紙芝居後の空間 */
+#backgroundChangeEmptySpace{
+	margin: 0em;
+	padding: 0em;
+	height: 40vh;
+	z-index: 0;
+}
+
+/*カード*/
+#cardColumn{
+	margin: 0em;
+	padding: 0em;
+	column-count: 3;
+	column-gap: 2.5em;
+	column-width: 32em;
+}
+div.cardTrigger{
+	margin: 0em;
+	padding: 0em;
+	background-color: #ffe6ea;
+	border-radius: 1em;
+	transition: .8s ease-in-out;
+	transform: translate3d(0,100%,0);
+	transform-origin: left;
+	opacity: 0;
+	display: block;
+}
+div.cardTrigger.cardAppear{
+	transform: translate3d(0,0,0);
+	opacity: 1;
+}
+div.card{
+	background-color: transparent;
+	margin: 1.5em 0em;
+	padding: 0em;
+	display: inline-block;
+	width: 100%;
+	filter: drop-shadow(0.5em 0.5em 0px #00000020);
+}
+div.card h2 {
+	background: #8a8077;
+	margin: 0em;
+	padding: 1em;
+	color: #ffffff;
+	border-radius: 0.5em 0.5em 0em 0em;
+	font-family: 'Hachi Maru Pop', cursive;
+}
+/*テーブル*/
+.cardTable{
+	display: flex;
+	justify-content: center;
+}
+div.card table{
+	margin: 0em;
+	padding: 0em;
+}
+div.card td{
+	margin: 0em;
+	padding: 0.5em;
+	font-size: 1em;
+	line-height: 2.5em;
+	color: #8a8077;
+	font-family: 'Noto Sans JP', sans-serif;
+	text-align: center;
+}
+/*段落*/
+div.card p{
+	margin: 0em;
+	padding: 3em;
+	font-size: 1em;
+	line-height: 2.5em;
+	color: #8a8077;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+/*リスト*/
+div.card td ul{
+	margin: 0em;
+	padding: 1em 1em 1em 3em;
+}
+div.card ul{
+	margin: 0em;
+	padding: 3em 3em 3em 5em;
+}
+div.card li{
+	font-size: 1em;
+	line-height: 2.5em;
+	color: #ff7c88;
+	text-align: left;
+}
+div.card span.li{
+	margin: 0em;
+	padding: 0em;
+	color: #8a8077;
+	font-family: 'Noto Sans JP', sans-serif;
+	display: block;
+}
+/*リンク*/
+div.card a{
+	color: #ff7c88;
+}
+/*ダッシュ*/
+div.card span.wDash{
+	letter-spacing:-0.2em;
+	white-space:nowrap;
+}
+
+/*twitter*/
+div.twitterEmptySpace{
+	margin: 0em;
+	padding: 0em;
+	height: 30vh;
+}
+
+#twitter-timelineP{
+	margin: 0em max(-4em,-8vw);
+}
+
+/*トップページ以外*/
+#caution{
+	font-size: 1em;
+	line-height: 2.5em;
+	color: #ffffff;
+	font-family: 'Noto Sans JP', sans-serif;
+	text-align: right;
+}
+#notFoundError{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	margin: 0em;
+	padding: 0em;
+}
+#notFoundErrorMain{
+	margin: 0em;
+	padding: 0em;
+	font-size: 5vmin;
+	line-height: 8vmin;
+	color: #ffffff;
+	font-family: 'Hachi Maru Pop', cursive;
+	text-align: center;
+}
+#notFoundErrorSub{
+	margin: 0em;
+	padding: 4vmin 0em;
+	font-size: 1.5vmin;
+	color: #ffffff;
+	font-family: 'Noto Sans JP', sans-serif;
+	text-align: center;
+}
