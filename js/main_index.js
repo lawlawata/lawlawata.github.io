@@ -4,11 +4,21 @@
 // しぶといですよ！
 // 圧縮魔法でつぶれてください！
 //
-// window.document.getElementById('あなた').style.height="0px";
 // window.document.getElementById('あなた').style.width="0px";
+// window.document.getElementById('あなた').style.height="0px";
 //
 // こんどこそ、ばいばい！
 
+
+
+// キービジュアル以外は後で読み込む
+function setImagesWithoutFirstImage(){
+	for (let i=1; i<=7; i++){
+		var istr = String(i)
+		var kamishibaiImgContent = document.getElementById('kamishibaiImgContent' + istr);
+		kamishibaiImgContent.style.backgroundImage = "url('./img/kamishibaiImg" + istr + ".jpg')";
+	}
+}
 
 // js上の方が調整しやすいオブジェクトの位置を指定する
 function setPotitionIndex(){
@@ -216,27 +226,27 @@ function onPreLoad(){
 
 // ---- 呼び出し ----
 
-// クリックしたら実行する処理
-document.getElementById('headerImg').addEventListener('click', resetLoadingTransitionAnime);
-document.getElementById('returnTopButton').addEventListener('click', resetLoadingTransitionAnime);
-
-
+// DOM treeの読み込みが終わった時に実行する処理
 document.addEventListener('DOMContentLoaded', function(){
-	console.log('xxx');
+	if (sessionStorage.getItem('scrollPosition') && sessionStorage.getItem('scrollPosition')!=0){
+		setImagesWithoutFirstImage();
+	}
+
 	var img_first_background = new Image();
 	img_first_background.src = './img/first_background.jpg';
-	img_first_background.onload = function() {
-		// 画像の読み込みが完了した時に実行する処理
-		console.log('yyy');
-		if (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0) {
-			onPreLoad();
-		}
-	};
+	img_first_background.onload = img_first_background_onload_function;
 });
+
+// キービジュアルの読み込みが終わった時に実行する処理
+function img_first_background_onload_function(){
+	if (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0) {
+		setImagesWithoutFirstImage();
+		onPreLoad();
+	}
+}
 
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){
-	console.log('zzz');
 	windowOnLoadFlag = true;
 	if (sessionStorage.getItem('scrollPosition') && sessionStorage.getItem('scrollPosition')!=0){
 		onPreLoad();
@@ -244,6 +254,10 @@ window.onload = function(){
 	restoreScrollPositionCommonLoadComplete();
 	setLoadedScrollLoadComplete();
 }
+
+// クリックしたら実行する処理
+document.getElementById('headerImg').addEventListener('click', resetLoadingTransitionAnime);
+document.getElementById('returnTopButton').addEventListener('click', resetLoadingTransitionAnime);
 
 // 画面の大きさを変えたら実行する処理
 $(window).resize(function () {
