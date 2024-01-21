@@ -45,14 +45,16 @@ function setPotitionIndex(){
 }
 
 // ---- ロード関連 ----
+var windowOnLoadFlag = false;
 
 // スクロール位置を保持する関数
 function saveScrollPosition() {
   sessionStorage.setItem('scrollPosition', window.scrollY);
 }
 
-// ロード直後にスクロール位置を戻す関数
+// ロード直後にスクロール位置を戻す関数var windowOnLoadFlag = false;
 function restoreScrollPositionIndex() {
+
 	var scrollYTo = sessionStorage.getItem('scrollPosition');
 	if (sessionStorage.getItem('scrollPosition')) {
 		sessionStorage.removeItem('scrollPosition');
@@ -65,8 +67,19 @@ function restoreScrollPositionIndex() {
 	});
 }
 
+var restoreScrollPositionWaitFlag = false;
+function restoreScrollPositionCommonWaitComplete(){
+	restoreScrollPositionWaitFlag = true;
+	if(windowOnLoadFlag) restoreScrollPositionCommon();
+}
+function restoreScrollPositionCommonLoadComplete(){
+	if(restoreScrollPositionWaitFlag) restoreScrollPositionCommon();
+	restoreScrollPositionWaitFlag = false;
+}
+
 // ロードが終わった直後に、下の要素が見える位置までスクロールする
 function setLoadedScroll() {
+
 	var backgroundImage = document.getElementById('backgroundText');
 	var backgroundImageHeight = backgroundImage.clientHeight;
 
@@ -79,6 +92,16 @@ function setLoadedScroll() {
 			behavior: 'smooth'
 		});
 	}
+}
+
+var setLoadedScrollWaitFlag = false;
+function setLoadedScrollWaitComplete() {
+	setLoadedScrollWaitFlag = true;
+	if(windowOnLoadFlag) setLoadedScroll();
+}
+function setLoadedScrollLoadComplete() {
+	if(setLoadedScrollWaitFlag) setLoadedScroll();
+	setLoadedScrollWaitFlag = false
 }
 
 function loadingTransitionAnimeIndex() {
@@ -177,15 +200,7 @@ function kamishibaiAnime() {
 	}
 }
 
-// ---- 呼び出し ----
-
-// クリックしたら実行する処理
-document.getElementById('headerImg').addEventListener('click', resetLoadingTransitionAnime);
-document.getElementById('returnTopButton').addEventListener('click', resetLoadingTransitionAnime);
-
-
-// ページ読み込みが全て終わった時に実行する処理
-window.onload = function(){
+function onPreLoad(){
 	setPotitionCommon();
 	setPotitionIndex();
 	backgroundImage();
@@ -195,8 +210,36 @@ window.onload = function(){
 	loadingTransitionAnime();
 	loadingTransitionAnimeIndex();
 	setTimeout(restoreScrollPositionIndex, 2000);
-	setTimeout(restoreScrollPositionCommon, 2000);
-	setTimeout(setLoadedScroll, 7500);
+	setTimeout(restoreScrollPositionCommonWaitComplete, 2000);
+	setTimeout(setLoadedScrollWaitComplete, 7500);
+}
+
+// ---- 呼び出し ----
+
+// クリックしたら実行する処理
+document.getElementById('headerImg').addEventListener('click', resetLoadingTransitionAnime);
+document.getElementById('returnTopButton').addEventListener('click', resetLoadingTransitionAnime);
+
+
+document.addEventListener('DOMContentLoaded', function(){
+	var img_first_background = new Image();
+	img_first_background.src = './img/first_background.jpg';
+	img_first_background.onload = function() {
+		// 画像の読み込みが完了した時に実行する処理
+		if (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0) {
+			onPreLoad();
+		}
+	};
+});
+
+// ページ読み込みが全て終わった時に実行する処理
+window.onload = function(){
+	windowOnLoadFlag = true;
+	if (sessionStorage.getItem('scrollPosition') && sessionStorage.getItem('scrollPosition')!=0){
+		onPreLoad();
+	}
+	restoreScrollPositionCommonLoadComplete();
+	setLoadedScrollLoadComplete();
 }
 
 // 画面の大きさを変えたら実行する処理
