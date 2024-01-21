@@ -24,7 +24,6 @@ function setPotitionCommon(){
 	var windowHeight = $(window).height();
 	var headerHeight = $('#header').innerHeight();
 	$('#headerColorGray').css("height", headerHeight);
-	$('#body').css("padding", headerHeight + "px min(4em,8vw) min(4em,8vw) min(4em,8vw)");
 	$('footer').css("top", "0px");
 	if( $('footer').offset().top + $('footer').innerHeight() < windowHeight){
 		$('footer').css("top", (windowHeight - $('footer').offset().top - $('footer').innerHeight()) + "px");
@@ -71,16 +70,16 @@ function smoothTextAnime() {
 // cardTriggerにcardAppearというクラス名を付ける
 function cardAnime() {
 	$('.cardTrigger').each(function() {
-	  var elemPos = $(this).offset().top + 200;
-	  var elemHeight = $(this).outerHeight();
-	  var scroll = $(window).scrollTop();
-	  var windowHeight = $(window).height();
+		var elemPos = $(this).offset().top + 200;
+		var elemHeight = $(this).outerHeight();
+		var scroll = $(window).scrollTop();
+		var windowHeight = $(window).height();
 
-	  if (scroll >= elemPos - elemHeight - windowHeight) {
-	    $(this).addClass('cardAppear');
-	  } else {
-	    $(this).removeClass('cardAppear');
-	  }
+		if (scroll >= elemPos - elemHeight - windowHeight) {
+			$(this).addClass('cardAppear');
+		} else {
+			$(this).removeClass('cardAppear');
+		}
 	});
 
 	setTimeout(smoothTextAnime, 800);
@@ -97,23 +96,20 @@ function setScrollTop() {
 }
 
 // アニメーションしながらTOPに戻る
-function resetLoadingTransitionAnime() {
+function resetLoadingTransitionAnimeCommon() {
 	var circleA = document.getElementById('circleA');
 	var circleB = document.getElementById('circleB');
 	var loadingTransition = document.getElementById('loadingTransition');
-	var backgroundText = document.getElementById('backgroundText');
 
 	circleA.classList.remove('circleAppear');
 	circleB.classList.remove('circleAppear');
 	loadingTransition.classList.remove('loadingAppear');
-	backgroundText.classList.remove('appear');
 
 	circleA.offsetWidth = circleA.offsetWidth;
 
 	circleA.classList.add('circleAppear');
 	circleB.classList.add('circleAppear');
 	loadingTransition.classList.add('loadingAppear');
-	backgroundText.classList.add('appear');
 
 	setTimeout(setScrollTop, 1000);
 }

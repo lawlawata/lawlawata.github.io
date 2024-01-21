@@ -59,7 +59,7 @@ var windowOnLoadFlag = false;
 
 // スクロール位置を保持する関数
 function saveScrollPosition() {
-  sessionStorage.setItem('scrollPosition', window.scrollY);
+	sessionStorage.setItem('scrollPosition', window.scrollY);
 }
 
 // ロード直後にスクロール位置を戻す関数var windowOnLoadFlag = false;
@@ -84,10 +84,9 @@ function restoreScrollPositionCommonWaitComplete(){
 }
 function restoreScrollPositionCommonLoadComplete(){
 	if(restoreScrollPositionWaitFlag) restoreScrollPositionCommon();
-	restoreScrollPositionWaitFlag = false;
 }
 
-// ロードが終わった直後に、下の要素が見える位置までスクロールする
+// ロードアニメーションが終わった直後に、下の要素が見える位置までスクロールする
 function setLoadedScroll() {
 
 	var backgroundImage = document.getElementById('backgroundText');
@@ -111,11 +110,20 @@ function setLoadedScrollWaitComplete() {
 }
 function setLoadedScrollLoadComplete() {
 	if(setLoadedScrollWaitFlag) setLoadedScroll();
-	setLoadedScrollWaitFlag = false
 }
 
 function loadingTransitionAnimeIndex() {
 	backgroundText.classList.add('appear');
+}
+
+// ロードアニメーションが終わってもページ全体が読み込まれていなければLOADINGを表示
+function showloadingString(){
+	var loadingString = document.getElementById('loadingString');
+	if(windowOnLoadFlag){
+		loadingString.style.display = "none";
+	}else{
+		loadingString.style.display = "block";
+	}
 }
 
 // ---- アニメーション関連 ----
@@ -210,6 +218,16 @@ function kamishibaiAnime() {
 	}
 }
 
+// アニメーションしながらTOPに戻る
+function resetLoadingTransitionAnimeIndex() {
+	var backgroundText = document.getElementById('backgroundText');
+	backgroundText.classList.remove('appear');
+	circleA.offsetWidth = circleA.offsetWidth;
+	backgroundText.classList.add('appear');
+
+	resetLoadingTransitionAnimeCommon();
+}
+
 function onPreLoad(){
 	setPotitionCommon();
 	setPotitionIndex();
@@ -226,9 +244,11 @@ function onPreLoad(){
 
 // ---- 呼び出し ----
 
+var scrollPositionIsZero = (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0)
+
 // DOM treeの読み込みが終わった時に実行する処理
 document.addEventListener('DOMContentLoaded', function(){
-	if (sessionStorage.getItem('scrollPosition') && sessionStorage.getItem('scrollPosition')!=0){
+	if (!scrollPositionIsZero){
 		setImagesWithoutFirstImage();
 	}
 
@@ -239,25 +259,27 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // キービジュアルの読み込みが終わった時に実行する処理
 function img_first_background_onload_function(){
-	if (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0) {
+	if (scrollPositionIsZero) {
 		setImagesWithoutFirstImage();
 		onPreLoad();
+		setTimeout(showloadingString, 7500);
 	}
 }
 
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){
 	windowOnLoadFlag = true;
-	if (sessionStorage.getItem('scrollPosition') && sessionStorage.getItem('scrollPosition')!=0){
+	if (!scrollPositionIsZero){
 		onPreLoad();
 	}
+	showloadingString();
 	restoreScrollPositionCommonLoadComplete();
 	setLoadedScrollLoadComplete();
 }
 
 // クリックしたら実行する処理
-document.getElementById('headerImg').addEventListener('click', resetLoadingTransitionAnime);
-document.getElementById('returnTopButton').addEventListener('click', resetLoadingTransitionAnime);
+document.getElementById('headerImg').addEventListener('click', resetLoadingTransitionAnimeIndex);
+document.getElementById('returnTopButton').addEventListener('click', resetLoadingTransitionAnimeIndex);
 
 // 画面の大きさを変えたら実行する処理
 $(window).resize(function () {

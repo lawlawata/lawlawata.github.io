@@ -178,6 +178,10 @@ body.noScroll {
 	overflow: hidden;
 }
 
+#body {
+	padding: 0px min(4em,8vw) min(4em,8vw) min(4em,8vw);
+}
+
 /*背景画像を見せるための空間*/
 #emptySpace{
 	margin: 0em;

@@ -1,7 +1,7 @@
 // ---- 呼び出し ----
 
 // クリックしたら実行する処理
-document.getElementById('returnTopButton').addEventListener('click', resetLoadingTransitionAnime);
+document.getElementById('returnTopButton').addEventListener('click', resetLoadingTransitionAnimeCommon);
 
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){

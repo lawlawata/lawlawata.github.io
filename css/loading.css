@@ -180,3 +180,48 @@ img.loadingImg {
 	animation-fill-mode: forwards;
 	overflow: hidden;
 }
+
+#loadingString {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	position: fixed;
+	left: 1em;
+  bottom: 1em;
+	margin: 0em;
+	padding: 0em;
+	font-size : 2em;
+	color: #8a8077;
+	z-index: 1;
+ 	display: none;
+}
+
+#loadingString span {
+	animation: letterFade 3s ease-in-out infinite;
+	opacity: 0;
+}
+#loadingString #loadingStringChar1 {
+	animation-delay: .1s;
+}
+#loadingString #loadingStringChar2 {
+	animation-delay: .3s;
+}
+#loadingString #loadingStringChar3 {
+	animation-delay: .5s;
+}
+#loadingString #loadingStringChar4 {
+	animation-delay: .7s;
+}
+#loadingString #loadingStringChar5 {
+	animation-delay: .7s;
+}
+#loadingString #loadingStringChar6 {
+	animation-delay: .7s;
+}
+#loadingString #loadingStringChar7 {
+	animation-delay: .9s;
+}
+@keyFrames letterFade {
+	0% {opacity: 1}
+	50% {opacity: 0}
+	100% {opacity: 1}
+}
