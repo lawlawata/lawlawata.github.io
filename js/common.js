@@ -24,6 +24,7 @@ function setPotitionCommon(){
 	var windowHeight = $(window).height();
 	var headerHeight = $('#header').innerHeight();
 	$('#headerColorGray').css("height", headerHeight);
+	$('#body').css("padding-top", headerHeight + "px");
 	$('footer').css("top", "0px");
 	if( $('footer').offset().top + $('footer').innerHeight() < windowHeight){
 		$('footer').css("top", (windowHeight - $('footer').offset().top - $('footer').innerHeight()) + "px");
@@ -32,12 +33,12 @@ function setPotitionCommon(){
 
 // ---- ロード関連 ----
 
-// ロード直後にスクロール位置を戻す関数
+// ロード後にスクロールできるようにする
 function restoreScrollPositionCommon() {
 	$('body').removeClass('noScroll');
 }
 
-// ロード直後のトランジションを動かす
+// ロード後のトランジションを動かす
 function loadingTransitionAnime() {
 	var circleA = document.getElementById('circleA');
 	var circleB = document.getElementById('circleB');

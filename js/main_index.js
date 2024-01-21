@@ -11,15 +11,6 @@
 
 
 
-// キービジュアル以外は後で読み込む
-function setImagesWithoutFirstImage(){
-	for (let i=1; i<=7; i++){
-		var istr = String(i)
-		var kamishibaiImgContent = document.getElementById('kamishibaiImgContent' + istr);
-		kamishibaiImgContent.style.backgroundImage = "url('./img/kamishibaiImg" + istr + ".jpg')";
-	}
-}
-
 // js上の方が調整しやすいオブジェクトの位置を指定する
 function setPotitionIndex(){
 	var windowWidth = $(window).width();
@@ -57,12 +48,31 @@ function setPotitionIndex(){
 // ---- ロード関連 ----
 var windowOnLoadFlag = false;
 
+// キービジュアル以外は後で読み込む
+function setImagesWithoutFirstImage(){
+	for (let i=1; i<=7; i++){
+		var istr = String(i)
+		var kamishibaiImgContent = document.getElementById('kamishibaiImgContent' + istr);
+		kamishibaiImgContent.style.backgroundImage = "url('./img/kamishibaiImg" + istr + ".jpg')";
+	}
+}
+
+// ロード後にTwitterウィジェット読み込み開始
+function setTwitterScript(){
+	// <script id="twitterScript" async src="" charset="utf-8"></script>
+	var twitterScript = document.createElement('script');
+	twitterScript.src = 'https://platform.twitter.com/widgets.js';
+	twitterScript.async = true;
+	twitterScript.charset = 'utf-8';
+	document.head.appendChild(twitterScript);
+}
+
 // スクロール位置を保持する関数
 function saveScrollPosition() {
 	sessionStorage.setItem('scrollPosition', window.scrollY);
 }
 
-// ロード直後にスクロール位置を戻す関数var windowOnLoadFlag = false;
+// ロード後に、スクロール位置を前回閲覧していた位置に戻す
 function restoreScrollPositionIndex() {
 
 	var scrollYTo = sessionStorage.getItem('scrollPosition');
@@ -77,13 +87,9 @@ function restoreScrollPositionIndex() {
 	});
 }
 
-var restoreScrollPositionWaitFlag = false;
-function restoreScrollPositionCommonWaitComplete(){
-	restoreScrollPositionWaitFlag = true;
-	if(windowOnLoadFlag) restoreScrollPositionCommon();
-}
-function restoreScrollPositionCommonLoadComplete(){
-	if(restoreScrollPositionWaitFlag) restoreScrollPositionCommon();
+// ローディングアニメーション
+function loadingTransitionAnimeIndex() {
+	backgroundText.classList.add('appear');
 }
 
 // ロードアニメーションが終わった直後に、下の要素が見える位置までスクロールする
@@ -112,11 +118,17 @@ function setLoadedScrollLoadComplete() {
 	if(setLoadedScrollWaitFlag) setLoadedScroll();
 }
 
-function loadingTransitionAnimeIndex() {
-	backgroundText.classList.add('appear');
+// ロード後にスクロールできるようにする
+var restoreScrollPositionWaitFlag = false;
+function restoreScrollPositionCommonWaitComplete(){
+	restoreScrollPositionWaitFlag = true;
+	if(windowOnLoadFlag) restoreScrollPositionCommon();
+}
+function restoreScrollPositionCommonLoadComplete(){
+	if(restoreScrollPositionWaitFlag) restoreScrollPositionCommon();
 }
 
-// ロードアニメーションが終わってもページ全体が読み込まれていなければLOADINGを表示
+// ページ全体が読み込まれていなければLOADINGを表示
 function showloadingString(){
 	var loadingString = document.getElementById('loadingString');
 	if(windowOnLoadFlag){
@@ -127,6 +139,16 @@ function showloadingString(){
 }
 
 // ---- アニメーション関連 ----
+
+// アニメーションしながらTOPに戻る
+function resetLoadingTransitionAnimeIndex() {
+	var backgroundText = document.getElementById('backgroundText');
+	backgroundText.classList.remove('appear');
+	circleA.offsetWidth = circleA.offsetWidth;
+	backgroundText.classList.add('appear');
+
+	resetLoadingTransitionAnimeCommon();
+}
 
 // スクロール位置に応じて背景を見せたり隠したりする
 function backgroundImage(){
@@ -218,16 +240,36 @@ function kamishibaiAnime() {
 	}
 }
 
-// アニメーションしながらTOPに戻る
-function resetLoadingTransitionAnimeIndex() {
-	var backgroundText = document.getElementById('backgroundText');
-	backgroundText.classList.remove('appear');
-	circleA.offsetWidth = circleA.offsetWidth;
-	backgroundText.classList.add('appear');
+var favorabilityCount = 0
+function clickEmptySpace(event){
+	var headerHeight=$('#header').innerHeight();
+	var emptySpace = document.getElementById('emptySpace');
+	var emptySpaceRect = emptySpace.getBoundingClientRect();
+	var favorabilityDiv = document.getElementById('favorabilityDiv');
+	var favorabilityDivRect = favorabilityDiv.getBoundingClientRect();
+	var favorabilityImg = document.getElementById('favorabilityImg');
+	var favorabilityB = document.getElementById('favorabilityB');
 
-	resetLoadingTransitionAnimeCommon();
+	console.log(emptySpaceRect.top)
+	favorabilityDiv.classList.remove('appear');
+	favorabilityImg.classList.remove('appear');
+	favorabilityDiv.offsetWidth = favorabilityDiv.offsetWidth;
+	favorabilityDiv.style.left = (event.pageX - favorabilityDivRect.width / 2) + "px";
+	favorabilityDiv.style.top = (event.pageY - headerHeight + emptySpaceRect.top - favorabilityDivRect.height / 2) + "px";
+	favorabilityDiv.classList.add('appear');
+	favorabilityImg.classList.add('appear');
+
+	favorabilityCount ++;
+	if(favorabilityCount < 100 || 105 <= favorabilityCount){
+		favorabilityB.innerText = "好感度 " + favorabilityCount;
+	}else{
+		favorabilityB.innerText = "好感度 MAX";
+	}
 }
 
+// ---- 呼び出し ----
+
+// ローディングアニメーションを実行するなど
 function onPreLoad(){
 	setPotitionCommon();
 	setPotitionIndex();
@@ -241,8 +283,6 @@ function onPreLoad(){
 	setTimeout(restoreScrollPositionCommonWaitComplete, 2000);
 	setTimeout(setLoadedScrollWaitComplete, 7500);
 }
-
-// ---- 呼び出し ----
 
 var scrollPositionIsZero = (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0)
 
@@ -275,11 +315,15 @@ window.onload = function(){
 	showloadingString();
 	restoreScrollPositionCommonLoadComplete();
 	setLoadedScrollLoadComplete();
+	setTwitterScript();
+
 }
 
 // クリックしたら実行する処理
 document.getElementById('headerImg').addEventListener('click', resetLoadingTransitionAnimeIndex);
 document.getElementById('returnTopButton').addEventListener('click', resetLoadingTransitionAnimeIndex);
+document.getElementById('emptySpace').addEventListener('click', clickEmptySpace);
+
 
 // 画面の大きさを変えたら実行する処理
 $(window).resize(function () {

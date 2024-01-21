@@ -186,13 +186,13 @@ img.loadingImg {
 	box-sizing: border-box;
 	position: fixed;
 	left: 1em;
-  bottom: 1em;
+	bottom: 1em;
 	margin: 0em;
 	padding: 0em;
 	font-size : 2em;
 	color: #8a8077;
 	z-index: 1;
- 	display: none;
+	display: none;
 }
 
 #loadingString span {
