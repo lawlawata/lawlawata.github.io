@@ -222,10 +222,12 @@ document.getElementById('returnTopButton').addEventListener('click', resetLoadin
 
 
 document.addEventListener('DOMContentLoaded', function(){
+	console.log('xxx')
 	var img_first_background = new Image();
 	img_first_background.src = './img/first_background.jpg';
 	img_first_background.onload = function() {
 		// 画像の読み込みが完了した時に実行する処理
+		console.log('yyy')
 		if (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0) {
 			onPreLoad();
 		}
@@ -234,6 +236,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){
+	console.log('zzz')
 	windowOnLoadFlag = true;
 	if (sessionStorage.getItem('scrollPosition') && sessionStorage.getItem('scrollPosition')!=0){
 		onPreLoad();
