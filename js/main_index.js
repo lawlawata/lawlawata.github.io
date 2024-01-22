@@ -285,6 +285,8 @@ function onPreLoad(){
 }
 
 var scrollPositionIsZero = (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0)
+var firstBackgroundLoadComplete = false;
+var fontsLoadComplete = false;
 
 // DOM treeの読み込みが終わった時に実行する処理
 document.addEventListener('DOMContentLoaded', function(){
@@ -292,24 +294,41 @@ document.addEventListener('DOMContentLoaded', function(){
 		setImagesWithoutFirstImage();
 	}
 
+	if (!'fonts' in document) {
+		fontsLoadComplete = true;
+	}
+
+	// キービジュアルの読み込みが終わった時に処理を実行するトリガ
 	var img_first_background = new Image();
-  const sourceElement = document.getElementById('backgroundImage').querySelector('source');
-	console.log(sourceElement && sourceElement.srcset && sourceElement.type === 'image/avif');
-  if (sourceElement && sourceElement.srcset && sourceElement.type === 'image/avif') {
-    img_first_background.src = './img/first_background.avif';
-  } else {
-    img_first_background.src = './img/first_background.jpg';
-  }
+	const sourceElement = document.getElementById('backgroundImage').querySelector('source');
+	if (sourceElement && sourceElement.srcset && sourceElement.type === 'image/avif') {
+		img_first_background.src = './img/first_background.avif';
+	} else {
+		img_first_background.src = './img/first_background.jpg';
+	}
 	img_first_background.onload = img_first_background_onload_function;
 });
 
 // キービジュアルの読み込みが終わった時に実行する処理
 function img_first_background_onload_function(){
-	if (scrollPositionIsZero) {
+	firstBackgroundLoadComplete = true;
+	if (scrollPositionIsZero && fontsLoadComplete) {
 		setImagesWithoutFirstImage();
 		onPreLoad();
 		setTimeout(showloadingString, 7500);
 	}
+}
+
+// フォントの読み込みが終わった時に実行する処理
+if ('fonts' in document) {
+	document.fonts.ready.then(function(fontFaceSet) {
+		fontsLoadComplete = true;
+		if (scrollPositionIsZero && firstBackgroundLoadComplete) {
+			setImagesWithoutFirstImage();
+			onPreLoad();
+			setTimeout(showloadingString, 7500);
+		}
+	});
 }
 
 // ページ読み込みが全て終わった時に実行する処理
