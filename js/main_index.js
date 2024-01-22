@@ -293,12 +293,13 @@ document.addEventListener('DOMContentLoaded', function(){
 	}
 
 	var img_first_background = new Image();
-	const elem = document.createElement('canvas');
-	if (elem.getContext && elem.getContext('2d') && elem.toDataURL('image/avif').indexOf('data:image/avif') === 0){
-		img_first_background.src = './img/first_background.avif';
-	}else{
-		img_first_background.src = './img/first_background.jpg';
-	}
+  const sourceElement = document.getElementById('backgroundImage').querySelector('source');
+	console.log(sourceElement && sourceElement.srcset && sourceElement.type === 'image/avif');
+  if (sourceElement && sourceElement.srcset && sourceElement.type === 'image/avif') {
+    img_first_background.src = './img/first_background.avif';
+  } else {
+    img_first_background.src = './img/first_background.jpg';
+  }
 	img_first_background.onload = img_first_background_onload_function;
 });
 
