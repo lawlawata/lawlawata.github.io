@@ -137,6 +137,7 @@ header {
 #headerImgA {
 	padding: 0em;
 	margin-right: auto;
+	width: 8.21875em;
 	height: 3em;
 }
 #headerImg {
@@ -160,5 +161,6 @@ header {
 	align-items: center;
 }
 #headerImgYoutube {
+	width: 2em;
 	height: 2em;
 }
