@@ -41,7 +41,7 @@ https://www.youtube.com/@lawlawata
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@lawlawata" />
 
-	<link rel="preload" href="./img/first_background.jpg" as="image" />
+	<!-- <link rel="preload" href="./img/first_background.jpg" as="image" /> -->
 
 	<!-- css -->
 	<link rel="stylesheet" href="css/style.css">
@@ -92,14 +92,17 @@ https://www.youtube.com/@lawlawata
 		<div id="headerColorBlack"></div>
 		<div id="headerColorGray"></div>
 		<div id="headerContent">
-			<img id="headerImg" src="./img/logo.png"/>
+			<img id="headerImg" src="./img/logo.png" alt="ロゴ"/>
 			<a id="headerXA" href="https://twitter.com/lawlawata">𝕏</a>
-			<a id="headerImgYoutubeA" href="https://www.youtube.com/@lawlawata"><img id="headerImgYoutube" src="./img/youtube_icon.svg"/></a>
+			<a id="headerImgYoutubeA" href="https://www.youtube.com/@lawlawata"><img id="headerImgYoutube" src="./img/youtube_icon.svg" alt="Youtube"/></a>
 		</div>
 	</header>
 
 	<!-- 背景画像 -->
-	<img id="backgroundImage" src="./img/first_background.jpg"/>
+	<picture id="backgroundImage">
+		<source class="backgroundImageContent" srcset="./img/first_background.avif" type="image/avif" alt="キービジュアル"/>
+		<img class="backgroundImageContent" src="./img/first_background.jpg" alt="キービジュアル"/>
+	</picture>
 	<div id="backgroundText">
 		<p><b>
 			<span id="wataPrefix">中身は</span>
@@ -359,7 +362,7 @@ https://www.youtube.com/@lawlawata
 				</table>
 			</div>
 			<div id="footerColumnC">
-				<button id="returnTopButton" style="background-image: url('./img/return_top.png')"></button>
+				<button id="returnTopButton" style="background-image: url('./img/return_top.png')" aria-label="トップへ戻る"></button>
 			</div>
 		</div>
 		<div id="copyright">
