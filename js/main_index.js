@@ -240,7 +240,7 @@ function kamishibaiAnime() {
 	}
 }
 
-var favorabilityCount = 0
+var favorabilityCount = 0;
 function clickEmptySpace(event){
 	var headerHeight=$('#header').innerHeight();
 	var emptySpace = document.getElementById('emptySpace');
@@ -248,9 +248,10 @@ function clickEmptySpace(event){
 	var favorabilityDiv = document.getElementById('favorabilityDiv');
 	var favorabilityDivRect = favorabilityDiv.getBoundingClientRect();
 	var favorabilityImg = document.getElementById('favorabilityImg');
+	var favorabilityP = document.getElementById('favorabilityP');
 	var favorabilityB = document.getElementById('favorabilityB');
+	var favorabilitySpan = document.getElementById('favorabilitySpan');
 
-	console.log(emptySpaceRect.top)
 	favorabilityDiv.classList.remove('appear');
 	favorabilityImg.classList.remove('appear');
 	favorabilityDiv.offsetWidth = favorabilityDiv.offsetWidth;
@@ -260,10 +261,15 @@ function clickEmptySpace(event){
 	favorabilityImg.classList.add('appear');
 
 	favorabilityCount ++;
-	if(favorabilityCount < 100 || 105 <= favorabilityCount){
-		favorabilityB.innerText = "好感度 " + favorabilityCount;
+	if(favorabilityCount <= 0){
+		favorabilityP.style.display = "none";
+	}else if(100 <= favorabilityCount && favorabilityCount < 105){
+		favorabilityB.innerText = "MAX";
+		favorabilitySpan.innerText = "";
 	}else{
-		favorabilityB.innerText = "好感度 MAX";
+		favorabilityP.style.display = "block";
+		favorabilityB.innerText = "" + favorabilityCount;
+		favorabilitySpan.innerText = "%";
 	}
 }
 

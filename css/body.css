@@ -199,6 +199,16 @@ body.noScroll {
 	color: #8a8077;
 	font-family: 'Noto Sans JP', sans-serif;
 	text-align: left;
+	display: none;
+}
+#favorabilityB{
+	margin: 0em;
+	padding: 1em;
+	font-size: 1.5em;
+	line-height: 2em;
+	color: #8a8077;
+	font-family: 'Noto Sans JP', sans-serif;
+	text-align: left;
 }
 #favorabilityDiv{
 	position: fixed;
