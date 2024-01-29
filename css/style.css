@@ -17,8 +17,10 @@ CSSまで見に来るなんて、最低ですよ？
 
 h1 {
 	margin: 0em;
-	padding: 0em;
+	padding: 0.5em;
 	color: #ffffff00;
+	font-family: 'Hachi Maru Pop', cursive;
+	line-height: 2em;
 }
 
 a{
