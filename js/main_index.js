@@ -50,10 +50,18 @@ var windowOnLoadFlag = false;
 
 // キービジュアル以外は後で読み込む
 function setImagesWithoutFirstImage(){
+	var img_extension = "";
+	const sourceElement = document.getElementById('backgroundImage').querySelector('source');
+	if (sourceElement && sourceElement.srcset && sourceElement.type === 'image/avif') {
+		img_extension = "avif";
+	} else {
+		img_extension = "jpg";
+	}
+
 	for (let i=1; i<=7; i++){
 		var istr = String(i)
 		var kamishibaiImgContent = document.getElementById('kamishibaiImgContent' + istr);
-		kamishibaiImgContent.style.backgroundImage = "url('./img/kamishibaiImg" + istr + ".jpg')";
+		kamishibaiImgContent.style.backgroundImage = "url('./img/kamishibaiImg" + istr + "." + img_extension + "')";
 	}
 }
 
@@ -290,6 +298,8 @@ function onPreLoad(){
 	setTimeout(setLoadedScrollWaitComplete, 7500);
 }
 
+// スクロールが一番上であればキービジュアルを先に読み込み、キービジュアルが読み込まれた時点で表示する。
+// スクロールが一番上でなければすべての画像を同時に読み込み、すべて読み込まれた時点で表示する。
 var scrollPositionIsZero = (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0)
 var firstBackgroundLoadComplete = false;
 var fontsLoadComplete = false;

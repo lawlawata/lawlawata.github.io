@@ -364,6 +364,12 @@ div.card p{
 	color: #8a8077;
 	font-family: 'Noto Sans JP', sans-serif;
 }
+div.card b{
+	font-size: 1.15em;
+	line-height: 2.5em;
+	color: #8a8077;
+	font-family: 'Noto Sans JP', sans-serif;
+}
 /*リスト*/
 div.card td ul{
 	margin: 0em;
