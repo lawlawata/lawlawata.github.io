@@ -262,7 +262,6 @@ function initYoutubeApi(){
 function onPreLoad(){
 	setPotitionCommon();
 	backgroundImage();
-	initYoutubeApi();
 	kamishibaiAnime();
 	cardAnime();
 
@@ -336,6 +335,7 @@ window.onload = function(){
 	restoreScrollPositionCommonLoadComplete();
 	setLoadedScrollLoadComplete();
 	setTwitterScript();
+	initYoutubeApi();
 
 }
 

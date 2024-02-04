@@ -90,6 +90,36 @@ footer{
 #footerColumnA table{
 	align-items: flex-end;
 }
+#footerColumnA td{
+	margin: 0em;
+	padding: 0em 0.5em 0em 0.5em;
+	font-size: 1em;
+	line-height: 1.5em;
+	font-family: 'Noto Sans JP', sans-serif;
+	color: var(--footer-text-color);
+}
+#footerXA{
+	margin: 0em;
+	padding: 0em 1em 0em 1em;
+	font-size: 1.5em;
+	text-decoration: none;
+	color: var(--footer-color);
+	line-height: 0em;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+#footerImgYoutubeA {
+	margin: 0em;
+	padding: 0em 1em 0em 1em;
+	display: flex;
+	align-items: center;
+}
+#footerImgYoutube {
+	width: 2em;
+	height: 2em;
+}
+#footerImgYoutube .st0{
+	fill: var(--footer-color);
+}
 #footerColumnB{
 	width: 55%;
 	padding: 1em;
@@ -99,7 +129,7 @@ footer table{
 	margin: auto auto 0em auto;
 	align-items: flex-end;
 }
-footer p, footer td{
+footer p, #footerColumnB td{
 	margin: 0em;
 	padding: 0em 0.5em 0em 0.5em;
 	font-size: 0.7em;
