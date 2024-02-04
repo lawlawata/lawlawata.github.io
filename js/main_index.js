@@ -29,6 +29,7 @@ function setImagesWithoutFirstImage(){
 		var kamishibaiImgContent = document.getElementById('kamishibaiImgContent' + istr);
 		kamishibaiImgContent.style.backgroundImage = "url('./img/kamishibaiImg" + istr + "." + img_extension + "')";
 	}
+
 }
 
 // ロード後にTwitterウィジェット読み込み開始
@@ -249,7 +250,7 @@ function clickEmptySpace(event){
 
 // ---- 呼び出し ----
 
-// ローディングアニメーションを実行するなど
+// ローディングアニメーションを実行するなど、最初に表示する処理
 function onPreLoad(){
 	setPotitionCommon();
 	backgroundImage();
@@ -262,6 +263,7 @@ function onPreLoad(){
 	setTimeout(restoreScrollPositionCommonWaitComplete, 2000);
 	setTimeout(setLoadedScrollWaitComplete, 7500);
 }
+
 
 // スクロールが一番上であればキービジュアルを先に読み込み、キービジュアルが読み込まれた時点で表示する。
 // スクロールが一番上でなければすべての画像を同時に読み込み、すべて読み込まれた時点で表示する。
@@ -287,16 +289,14 @@ document.addEventListener('DOMContentLoaded', function(){
 	} else {
 		img_first_background.src = './img/first_background.jpg';
 	}
-	img_first_background.onload = img_first_background_onload_function;
+	img_first_background.onload = imgFirstBackgroundOnloadFunction;
 });
 
 // キービジュアルの読み込みが終わった時に実行する処理
-function img_first_background_onload_function(){
+function imgFirstBackgroundOnloadFunction(){
 	firstBackgroundLoadComplete = true;
 	if (scrollPositionIsZero && fontsLoadComplete) {
-		setImagesWithoutFirstImage();
-		onPreLoad();
-		setTimeout(showloadingString, 7500);
+		imgFirstBackgroundAndFontsOnloadFunction();
 	}
 }
 
@@ -305,11 +305,16 @@ if ('fonts' in document) {
 	document.fonts.ready.then(function(fontFaceSet) {
 		fontsLoadComplete = true;
 		if (scrollPositionIsZero && firstBackgroundLoadComplete) {
-			setImagesWithoutFirstImage();
-			onPreLoad();
-			setTimeout(showloadingString, 7500);
+			imgFirstBackgroundAndFontsOnloadFunction();
 		}
 	});
+}
+
+// 最初に表示させる時に実行する処理
+function imgFirstBackgroundAndFontsOnloadFunction() {
+	setImagesWithoutFirstImage();
+	onPreLoad();
+	setTimeout(showloadingString, 7500);
 }
 
 // ページ読み込みが全て終わった時に実行する処理
@@ -325,11 +330,40 @@ window.onload = function(){
 
 }
 
+function onYouTubeIframeAPIReady() {
+	// Youtubeプレイヤーを埋め込む
+	var player = new YT.Player('youtubeContainer', {
+		height: '100%',
+		width: '100%',
+		videoId: 'Jm_JJ3p4HqM',
+		playerVars: {'rel': 0},
+		events: {
+			'onStateChange': onPlayerStateChange
+		}
+	});
+}
+
 // クリックしたら実行する処理
 document.getElementById('headerImg').addEventListener('click', resetLoadingTransitionAnimeIndex);
 document.getElementById('returnTopButton').addEventListener('click', resetLoadingTransitionAnimeIndex);
 document.getElementById('emptySpace').addEventListener('click', clickEmptySpace);
 
+
+// 再生ボタンが押されたら実行する処理
+function onPlayerStateChange(event) {
+	if (event.data == YT.PlayerState.PLAYING) {
+		var youtubeSquare = document.getElementById('youtubeSquare');
+		youtubeSquare.classList.add('playing');
+
+		youtubeContainer = document.getElementById('youtubeContainer');
+		var rect = youtubeContainer.getBoundingClientRect();
+		var headerHeight=$('#header').innerHeight();
+		if(rect.top < headerHeight || rect.bottom - 10 >= (window.innerHeight || document.documentElement.clientHeight) ){
+			var offsetTop = youtubeContainer.getBoundingClientRect().top + window.scrollY;
+  		window.scrollTo({ top: offsetTop - headerHeight, behavior: 'smooth' });
+		}
+	}
+}
 
 // 画面の大きさを変えたら実行する処理
 $(window).resize(function () {

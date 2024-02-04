@@ -365,12 +365,24 @@ div.twitterEmptySpace{
 	text-align: center;
 }
 
-#Youtube-embed{
-	padding: 0em;
-	margin: 0em;
+/* YouTube */
+div.cardTrigger.youtubeCardTrigger{
+	background-color: #ffffff00;
+}
+#youtubeSquare{
+	position: relative;
 	width: 100%;
-	height: calc((100vw - 2 * var(--body-side-padding-size)));
-	/* height: calc((100vw - 2 * var(--body-side-padding-size)) * 9 / 16); */
+	padding-bottom: 56.25%; /* 9 / 16 */
+	box-sizing: border-box;
+	transition: 0.5s ease-in-out;
+}
+#youtubeSquare.playing{
+	padding-bottom: calc(min(100%, 100vh - var(--header-height-size) - 1em));
+}
+#youtubeInnerSquare{
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 
 /*トップページ以外*/
