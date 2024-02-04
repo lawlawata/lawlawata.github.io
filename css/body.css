@@ -365,6 +365,14 @@ div.twitterEmptySpace{
 	text-align: center;
 }
 
+#Youtube-embed{
+	padding: 0em;
+	margin: 0em;
+	width: 100%;
+	height: calc((100vw - 2 * var(--body-side-padding-size)));
+	/* height: calc((100vw - 2 * var(--body-side-padding-size)) * 9 / 16); */
+}
+
 /*トップページ以外*/
 #caution{
 	font-size: 1em;
