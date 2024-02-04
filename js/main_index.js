@@ -248,12 +248,23 @@ function clickEmptySpace(event){
 	}
 }
 
+
+
+// YouTube埋め込み用にIFrame Player APIをロード
+function initYoutubeApi(){
+	var tag = document.createElement('script');
+	tag.src = "https://www.youtube.com/iframe_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+
 // ---- 呼び出し ----
 
 // ローディングアニメーションを実行するなど、最初に表示する処理
 function onPreLoad(){
 	setPotitionCommon();
 	backgroundImage();
+	initYoutubeApi();
 	kamishibaiAnime();
 	cardAnime();
 
@@ -330,6 +341,7 @@ window.onload = function(){
 
 }
 
+// IFrame Player API
 function onYouTubeIframeAPIReady() {
 	// Youtubeプレイヤーを埋め込む
 	var player = new YT.Player('youtubeContainer', {
