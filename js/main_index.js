@@ -248,8 +248,6 @@ function clickEmptySpace(event){
 	}
 }
 
-
-
 // YouTube埋め込み用にIFrame Player APIをロード
 function initYoutubeApi(){
 	var tag = document.createElement('script');
