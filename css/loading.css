@@ -12,7 +12,7 @@
 	z-index: 9998;
 	transition: all 0s;
 	transition-delay: 1s;
-	background-color: #ff7c88;
+	background-color: var(--main-color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -27,7 +27,7 @@ img.loadingImg {
 	height: 8em
 }
 .loader {
-	color: #ffffff;
+	color: var(--white-color);
 	font-size: 20px;
 	margin: 100px auto;
 	width: 1em;
@@ -142,7 +142,7 @@ img.loadingImg {
 	width: 200vmax;
 	height: 200vmax;
 	border-radius: 100vmax;
-	background-color: #ffffff;
+	background-color: var(--white-color);
 	animation-name: animation-circleA;
 	animation-duration: 2.5s;
 	animation-timing-function: ease-in-out;
@@ -172,7 +172,7 @@ img.loadingImg {
 	width: 200vmax;
 	height: 200vmax;
 	border-radius: 100vmax;
-	background-color: #ff7c88;
+	background-color: var(--main-color);
 	animation-name: animation-circleB;
 	animation-duration: 2.5s;
 	animation-timing-function: ease-in-out;
@@ -185,17 +185,17 @@ img.loadingImg {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	position: fixed;
-	left: 1em;
-	bottom: 1em;
+	left: var(--body-side-padding-size);
+	top: calc(var(--header-height-size) + var(--empty-space-height-size) - 4em);
 	margin: 0em;
 	padding: 0em;
-	font-size : 2em;
-	color: #8a8077;
+	color: var(--text-color);
 	z-index: 1;
 	display: none;
 }
 
 #loadingString span {
+	font-size: 2em;
 	animation: letterFade 3s ease-in-out infinite;
 	opacity: 0;
 }

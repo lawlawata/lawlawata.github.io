@@ -7,6 +7,7 @@
 	transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
+	top: var(--header-height-size);
 	width: 100vmin;
 	margin: 0em;
 	padding: 0em;
@@ -20,6 +21,7 @@
 #backgroundText.appear{
 	position: fixed;
 	left: 0em;
+	top: var(--header-height-size);
 	width: 100vw;
 	z-index: -9;
 	margin: 0em;
@@ -33,7 +35,8 @@
 	padding: 10vh 10vw;
 	letter-spacing: 0.15em;
 	line-height: 1.5;
-	color: #ff7c88;
+	color: var(--main-color);
+	font-size: calc(min(4em, var(--empty-space-height-size) / 21));
 	font-family: 'Hachi Maru Pop', cursive;
 	white-space: nowrap;
 }
@@ -91,7 +94,7 @@
 	padding: 0.3em;
 	left: 100vw;
 	opacity: 1;
-	background-color: #ff7c88;
+	background-color: var(--main-color);
 	border-radius: 0.25em;
 	display: inline-block;
 }
@@ -132,7 +135,7 @@
 	animation-fill-mode: forwards;
 	display: inline-block;
 	padding: 0em;
-	color: #ffffff;
+	color: var(--white-color);
 	font-family: 'Kiwi Maru', serif;
 }
 
@@ -146,7 +149,7 @@
 	margin: 0em;
 	padding: 0em;
 	opacity: 0;
-	background-color: #ffffff;
+	background-color: var(--white-color);
 }
 #backgroundPinkBlur{
 	position: fixed;
@@ -157,5 +160,5 @@
 	z-index: -7;
 	margin: 0em;
 	padding: 0em;
-	background-color: #ff7c88;
+	background-color: var(--main-color);
 }

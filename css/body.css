@@ -127,16 +127,17 @@ body.noScroll {
 }
 
 #body{
-	/*padding-top: headerHeight px*/
-	padding-left: min(4em,8vw);
-	padding-right: min(4em,8vw);
-	padding-bottom: min(4em,8vw);
+	padding-top: var(--header-height-size);
+	padding-left: var(--body-side-padding-size);
+	padding-right: var(--body-side-padding-size);
+	padding-bottom: 4em;
 }
 
 /*背景画像を見せるための空間*/
 #emptySpace{
 	margin: 0em;
 	padding: 0em;
+	height: var(--empty-space-height-size);
 }
 
 #favorabilityP{
@@ -144,17 +145,17 @@ body.noScroll {
 	padding: 1em;
 	font-size: 0.8em;
 	line-height: 2em;
-	color: #8a8077;
+	color: var(--text-color);
 	font-family: 'Noto Sans JP', sans-serif;
 	text-align: left;
 	display: none;
 }
 #favorabilityB{
 	margin: 0em;
-	padding: 1em;
+	padding: 0.5em;
 	font-size: 1.5em;
 	line-height: 2em;
-	color: #8a8077;
+	color: var(--text-color);
 	font-family: 'Noto Sans JP', sans-serif;
 	text-align: left;
 }
@@ -223,17 +224,17 @@ body.noScroll {
 	margin: 0em;
 	padding: 0em;
 	font-size: 1em;
-	background: #ffe6ea;
-	border: 0.2em dashed #8a8077;
+	background: var(--base-color);
+	border: 0.2em dashed var(--text-color);
 	border-radius: 1em;
-	box-shadow: 0 0 0 0.5em #ffe6ea;
+	box-shadow: 0 0 0 0.5em var(--base-color);
 }
 #introduction p{
 	margin: 0em;
 	padding: 4em;
 	font-size: 1em;
 	line-height: 2.5em;
-	color: #8a8077;
+	color: var(--text-color);
 	font-family: 'Noto Sans JP', sans-serif;
 	text-align: center;
 }
@@ -257,7 +258,7 @@ body.noScroll {
 div.cardTrigger{
 	margin: 0em;
 	padding: 0em;
-	background-color: #ffe6ea;
+	background-color: var(--base-color);
 	border-radius: 1em;
 	transition: .8s ease-in-out;
 	transform: translate3d(0,100%,0);
@@ -278,10 +279,10 @@ div.card{
 	filter: drop-shadow(0.5em 0.5em 0px #00000020);
 }
 div.card h2 {
-	background: #8a8077;
+	background: var(--text-color);
 	margin: 0em;
 	padding: 1em;
-	color: #ffffff;
+	color: var(--white-color);
 	border-radius: 0.5em 0.5em 0em 0em;
 	font-family: 'Hachi Maru Pop', cursive;
 }
@@ -299,7 +300,7 @@ div.card td{
 	padding: 0.5em;
 	font-size: 1em;
 	line-height: 2.5em;
-	color: #8a8077;
+	color: var(--text-color);
 	font-family: 'Noto Sans JP', sans-serif;
 	text-align: center;
 }
@@ -309,13 +310,13 @@ div.card p{
 	padding: 3em;
 	font-size: 1em;
 	line-height: 2.5em;
-	color: #8a8077;
+	color: var(--text-color);
 	font-family: 'Noto Sans JP', sans-serif;
 }
 div.card b{
 	font-size: 1.15em;
 	line-height: 2.5em;
-	color: #8a8077;
+	color: var(--text-color);
 	font-family: 'Noto Sans JP', sans-serif;
 }
 /*リスト*/
@@ -330,19 +331,19 @@ div.card ul{
 div.card li{
 	font-size: 1em;
 	line-height: 2.5em;
-	color: #ff7c88;
+	color: var(--main-color);
 	text-align: left;
 }
 div.card span.li{
 	margin: 0em;
 	padding: 0em;
-	color: #8a8077;
+	color: var(--text-color);
 	font-family: 'Noto Sans JP', sans-serif;
 	display: block;
 }
 /*リンク*/
 div.card a{
-	color: #ff7c88;
+	color: var(--main-color);
 }
 /*ダッシュ*/
 div.card span.wDash{
@@ -358,8 +359,8 @@ div.twitterEmptySpace{
 }
 
 #twitter-timelineP{
-	margin: 0em max(-4em,-8vw);
-	color: #ffffff;
+	margin: 0em calc(-1 * var(--body-side-padding-size));
+	color: var(--white-color);
 	font-family: 'Noto Sans JP', sans-serif;
 	text-align: center;
 }
@@ -368,7 +369,7 @@ div.twitterEmptySpace{
 #caution{
 	font-size: 1em;
 	line-height: 2.5em;
-	color: #ffffff;
+	color: var(--white-color);
 	font-family: 'Noto Sans JP', sans-serif;
 	text-align: right;
 }
@@ -387,7 +388,7 @@ div.twitterEmptySpace{
 	padding: 0em;
 	font-size: 5vmin;
 	line-height: 8vmin;
-	color: #ffffff;
+	color: var(--white-color);
 	font-family: 'Hachi Maru Pop', cursive;
 	text-align: center;
 }
@@ -395,7 +396,7 @@ div.twitterEmptySpace{
 	margin: 0em;
 	padding: 4vmin 0em;
 	font-size: 1.5vmin;
-	color: #ffffff;
+	color: var(--white-color);
 	font-family: 'Noto Sans JP', sans-serif;
 	text-align: center;
 }

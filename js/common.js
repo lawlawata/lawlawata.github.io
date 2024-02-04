@@ -20,11 +20,10 @@
 
 // js上の方が調整しやすいオブジェクトの位置を指定する
 function setPotitionCommon(){
-	var windowWidth = $(window).width();
 	var windowHeight = $(window).height();
 	var headerHeight = $('#header').innerHeight();
-	$('#headerColorGray').css("height", headerHeight);
-	$('#body').css("padding-top", headerHeight + "px");
+
+	// 短いページでもフッターが最下部に来るように調整する
 	$('footer').css("top", "0px");
 	if( $('footer').offset().top + $('footer').innerHeight() < windowHeight){
 		$('footer').css("top", (windowHeight - $('footer').offset().top - $('footer').innerHeight()) + "px");

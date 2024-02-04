@@ -11,40 +11,6 @@
 
 
 
-// js上の方が調整しやすいオブジェクトの位置を指定する
-function setPotitionIndex(){
-	var windowWidth = $(window).width();
-	var windowHeight = $(window).height();
-	var headerHeight=$('#header').innerHeight();
-	$('#headerColorPink').css("height", headerHeight);
-	$('#headerColorBlack').css("height", headerHeight);
-	$('#backgroundImage').css("top", headerHeight + "px");
-	if(windowWidth < windowHeight * 1.5){
-		$('#kamishibaiImgSpace').css("top", headerHeight);
-		$('#kamishibaiImgSpace').css("left", "0vw");
-		$('#kamishibaiImgSpace').css("width", "100vw");
-		$('#kamishibaiImgSpace').css("height", "calc(        min(max(125vw, 50vh), 100vh - " + headerHeight + "px) - " + headerHeight + "px)");
-		$('#kamishibaiMojiSpace').css("top",   "calc(        min(max(125vw, 50vh), 100vh - " + headerHeight + "px))");
-		$('#kamishibaiMojiSpace').css("left", "0vw");
-		$('#kamishibaiMojiSpace').css("width", "100vw");
-		$('#kamishibaiMojiSpace').css("height","calc(100vh - min(max(125vw, 50vh), 100vh - " + headerHeight + "px))");
-	}else{
-		$('#kamishibaiImgSpace').css("top", headerHeight + "px");
-		$('#kamishibaiImgSpace').css("left", "0vw");
-		$('#kamishibaiImgSpace').css("width", "50vw");
-		$('#kamishibaiImgSpace').css("height", "calc(100vh - " + headerHeight + "px");
-		$('#kamishibaiMojiSpace').css("top", headerHeight + "px");
-		$('#kamishibaiMojiSpace').css("left", "50vw");
-		$('#kamishibaiMojiSpace').css("width", "50vw");
-		$('#kamishibaiMojiSpace').css("height", "calc(100vh - " + headerHeight + "px");
-	}
-	var backgroundImageHeight = $('#backgroundImage').height();
-	var emptySpaceHeight = Math.min(backgroundImageHeight, windowHeight);
-	$('#emptySpace').css("height", emptySpaceHeight+"px");
-	$('#backgroundText').css("top",headerHeight + "px");
-	$('#backgroundText p').css("font-size", Math.min(64, emptySpaceHeight/21) + "px");
-}
-
 // ---- ロード関連 ----
 var windowOnLoadFlag = false;
 
@@ -286,7 +252,6 @@ function clickEmptySpace(event){
 // ローディングアニメーションを実行するなど
 function onPreLoad(){
 	setPotitionCommon();
-	setPotitionIndex();
 	backgroundImage();
 	kamishibaiAnime();
 	cardAnime();
@@ -369,7 +334,6 @@ document.getElementById('emptySpace').addEventListener('click', clickEmptySpace)
 // 画面の大きさを変えたら実行する処理
 $(window).resize(function () {
 	setPotitionCommon();
-	setPotitionIndex();
 	kamishibaiAnime();
 });
 

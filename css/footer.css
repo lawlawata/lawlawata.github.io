@@ -60,10 +60,10 @@ footer{
 	margin: 0em;
 	padding: 0em;
 	text-align: center;
-	background-color: #ffe6ea;
+	background-color: var(--base-color);
 }
 #footerContent{
-	padding: 4em min(4em,8vw) 4em min(4em,8vw);
+	padding: 4em var(--body-side-padding-size) 4em var(--body-side-padding-size);
 	display: flex;
 }
 #footerContent.common{
@@ -105,7 +105,7 @@ footer p, footer td{
 	font-size: 0.7em;
 	line-height: 1.7em;
 	font-family: 'Noto Sans JP', sans-serif;
-	color: #665E58;
+	color: var(--footer-text-color);
 }
 #footerColumnC{
 	width: 10%;
@@ -152,9 +152,9 @@ footer p, footer td{
 
 #copyright p{
 	margin: 0em;
-	padding: 0em min(4em,8vw) 4em min(4em,8vw);
+	padding: 0em var(--body-side-padding-size) 4em var(--body-side-padding-size);
 	font-size: 0.5em;
 	font-family: 'Noto Sans JP', sans-serif;
-	color: #665E58;
+	color: var(--footer-text-color);
 	text-align: center;
 }
