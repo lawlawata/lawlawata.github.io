@@ -64,7 +64,16 @@ function restoreScrollPositionIndex() {
 
 // ローディングアニメーション
 function loadingTransitionAnimeIndex() {
+	var backgroundText = document.getElementById('backgroundText');
 	backgroundText.classList.add('appear');
+	var firstMovieDiv = document.getElementById('firstMovieDiv');
+	firstMovieDiv.classList.add('appear');
+	setTimeout(playFirstVideo, 2000) // = var(--transition-anime-length)
+}
+function playFirstVideo(){
+	var firstMovieVideo = document.getElementById('firstMovieVideo');
+	firstMovieVideo.currentTime = 0;
+	firstMovieVideo.play();
 }
 
 // ロードアニメーションが終わった直後に、下の要素が見える位置までスクロールする
@@ -118,9 +127,13 @@ function showloadingString(){
 // アニメーションしながらTOPに戻る
 function resetLoadingTransitionAnimeIndex() {
 	var backgroundText = document.getElementById('backgroundText');
+	var firstMovieDiv = document.getElementById('firstMovieDiv');
 	backgroundText.classList.remove('appear');
+	firstMovieDiv.classList.remove('appear');
 	circleA.offsetWidth = circleA.offsetWidth;
 	backgroundText.classList.add('appear');
+	firstMovieDiv.classList.add('appear');
+	setTimeout(playFirstVideo, 2000) // = var(--transition-anime-length)
 
 	resetLoadingTransitionAnimeCommon();
 }
@@ -215,6 +228,7 @@ function kamishibaiAnime() {
 	}
 }
 
+// 好感度
 var favorabilityCount = 0;
 function clickEmptySpace(event){
 	var headerHeight=$('#header').innerHeight();
@@ -267,9 +281,9 @@ function onPreLoad(){
 
 	loadingTransitionAnime();
 	loadingTransitionAnimeIndex();
-	setTimeout(restoreScrollPositionIndex, 2000);
-	setTimeout(restoreScrollPositionCommonWaitComplete, 2000);
-	setTimeout(setLoadedScrollWaitComplete, 7500);
+	setTimeout(restoreScrollPositionIndex, 2000); // = var(--transition-anime-length)
+	setTimeout(restoreScrollPositionCommonWaitComplete, 2000); // = var(--transition-anime-length)
+	setTimeout(setLoadedScrollWaitComplete, 19000); // = var(--transition-anime-length) + var(--first-movie-length) + 6s
 }
 
 
@@ -322,7 +336,7 @@ if ('fonts' in document) {
 function imgFirstBackgroundAndFontsOnloadFunction() {
 	setImagesWithoutFirstImage();
 	onPreLoad();
-	setTimeout(showloadingString, 7500);
+	setTimeout(showloadingString, 7000);
 }
 
 // ページ読み込みが全て終わった時に実行する処理
@@ -346,7 +360,10 @@ function onYouTubeIframeAPIReady() {
 		height: '100%',
 		width: '100%',
 		videoId: 'Jm_JJ3p4HqM',
-		playerVars: {'rel': 0},
+		playerVars: {
+			'rel': 0,
+			'start': 13
+		},
 		events: {
 			'onStateChange': onPlayerStateChange
 		}
@@ -370,7 +387,7 @@ function onPlayerStateChange(event) {
 		var headerHeight=$('#header').innerHeight();
 		if(rect.top < headerHeight || rect.bottom - 10 >= (window.innerHeight || document.documentElement.clientHeight) ){
 			var offsetTop = youtubeContainer.getBoundingClientRect().top + window.scrollY;
-  		window.scrollTo({ top: offsetTop - headerHeight, behavior: 'smooth' });
+			window.scrollTo({ top: offsetTop - headerHeight, behavior: 'smooth' });
 		}
 	}
 }
