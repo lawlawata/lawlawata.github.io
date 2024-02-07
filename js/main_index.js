@@ -62,19 +62,53 @@ function restoreScrollPositionIndex() {
 	});
 }
 
-// ローディングアニメーション
+
+// ---- ローディングアニメーション関連 ----
+
+// 1回目：ローディングアニメーション
 function loadingTransitionAnimeIndex() {
+	loadingTransitionAnimeCommon();
+	setTimeout(loadingTransitionAnimeCommonPlayFirstVideo, 2000) // = var(--transition-anime-length)
+	setTimeout(loadingTransitionAnimeCommonBackgroundText, 13100) // = var(--transition-anime-length) + var(--first-movie-length)
+}
+
+// 2回目以降：アニメーションしながらTOPに戻る
+function resetLoadingTransitionAnimeIndex() {
+	resetLoadingTransitionAnimeCommon();
+	var firstMovieVideo = document.getElementById('firstMovieVideo');
+	firstMovieVideo.classList.remove('appearVideo');
+	var backgroundText = document.getElementById('backgroundText');
+	backgroundText.classList.remove('appear');
+	var firstMovieDiv = document.getElementById('firstMovieDiv');
+	firstMovieDiv.classList.remove('appear');
+	firstMovieVideo.offsetWidth = firstMovieVideo.offsetWidth;
+
+	setTimeout(loadingTransitionAnimeCommonPlayFirstVideo, 2000) // = var(--transition-anime-length)
+	setTimeout(loadingTransitionAnimeCommonBackgroundTextWaitComplete, 13100) // = var(--transition-anime-length) + var(--first-movie-length)
+}
+
+function loadingTransitionAnimeCommonPlayFirstVideo(){
+	var firstMovieVideo = document.getElementById('firstMovieVideo');
+	firstMovieVideo.classList.add('appearVideo');
+	firstMovieVideo.currentTime = 0;
+	firstMovieVideo.play();
+}
+
+function loadingTransitionAnimeCommonBackgroundText() {
 	var backgroundText = document.getElementById('backgroundText');
 	backgroundText.classList.add('appear');
 	var firstMovieDiv = document.getElementById('firstMovieDiv');
 	firstMovieDiv.classList.add('appear');
-	setTimeout(playFirstVideo, 2000) // = var(--transition-anime-length)
 }
-function playFirstVideo(){
-	var firstMovieVideo = document.getElementById('firstMovieVideo');
-	firstMovieVideo.currentTime = 0;
-	firstMovieVideo.play();
+var loadingTransitionAnimeCommonBackgroundTextWaitFlag = false;
+function loadingTransitionAnimeCommonBackgroundTextWaitComplete() {
+	loadingTransitionAnimeCommonBackgroundTextWaitFlag = true;
+	if(windowOnLoadFlag) loadingTransitionAnimeCommonBackgroundText();
 }
+function loadingTransitionAnimeCommonBackgroundTextLoadComplete() {
+	if(loadingTransitionAnimeCommonBackgroundTextWaitFlag) loadingTransitionAnimeCommonBackgroundText();
+}
+
 
 // ロードアニメーションが終わった直後に、下の要素が見える位置までスクロールする
 function setLoadedScroll() {
@@ -122,21 +156,7 @@ function showloadingString(){
 	}
 }
 
-// ---- アニメーション関連 ----
-
-// アニメーションしながらTOPに戻る
-function resetLoadingTransitionAnimeIndex() {
-	var backgroundText = document.getElementById('backgroundText');
-	var firstMovieDiv = document.getElementById('firstMovieDiv');
-	backgroundText.classList.remove('appear');
-	firstMovieDiv.classList.remove('appear');
-	circleA.offsetWidth = circleA.offsetWidth;
-	backgroundText.classList.add('appear');
-	firstMovieDiv.classList.add('appear');
-	setTimeout(playFirstVideo, 2000) // = var(--transition-anime-length)
-
-	resetLoadingTransitionAnimeCommon();
-}
+// ---- スクロールアニメーション関連 ----
 
 // スクロール位置に応じて背景を見せたり隠したりする
 function backgroundImage(){
@@ -279,11 +299,10 @@ function onPreLoad(){
 	kamishibaiAnime();
 	cardAnime();
 
-	loadingTransitionAnime();
 	loadingTransitionAnimeIndex();
 	setTimeout(restoreScrollPositionIndex, 2000); // = var(--transition-anime-length)
 	setTimeout(restoreScrollPositionCommonWaitComplete, 2000); // = var(--transition-anime-length)
-	setTimeout(setLoadedScrollWaitComplete, 19000); // = var(--transition-anime-length) + var(--first-movie-length) + 6s
+	setTimeout(setLoadedScrollWaitComplete, 18500); // = var(--transition-anime-length) + var(--first-movie-length) + 5s
 }
 
 
@@ -303,6 +322,11 @@ document.addEventListener('DOMContentLoaded', function(){
 		fontsLoadComplete = true;
 	}
 
+	// 動画を読み込み終わった時に処理を実行するトリガ
+	var firstMovieVideo = document.getElementById('firstMovieVideo')
+	firstMovieVideo.load();
+	firstMovieVideo.addEventListener("loadeddata", videoFirstBackgroundOnloadFunction, false);
+
 	// キービジュアルの読み込みが終わった時に処理を実行するトリガ
 	var img_first_background = new Image();
 	const sourceElement = document.getElementById('backgroundImage').querySelector('source');
@@ -313,6 +337,14 @@ document.addEventListener('DOMContentLoaded', function(){
 	}
 	img_first_background.onload = imgFirstBackgroundOnloadFunction;
 });
+
+// キー動画が読み込み終わった時に実行する処理
+function videoFirstBackgroundOnloadFunction(){
+	if (scrollPositionIsZero) {
+		onPreLoad();
+		setTimeout(showloadingString, 13000); // = var(--transition-anime-length) + var(--first-movie-length)
+	}
+}
 
 // キービジュアルの読み込みが終わった時に実行する処理
 function imgFirstBackgroundOnloadFunction(){
@@ -334,9 +366,10 @@ if ('fonts' in document) {
 
 // 最初に表示させる時に実行する処理
 function imgFirstBackgroundAndFontsOnloadFunction() {
+	document.getElementById('loadingString').style.display = "none";
+	loadingTransitionAnimeCommonBackgroundTextLoadComplete();
 	setImagesWithoutFirstImage();
-	onPreLoad();
-	setTimeout(showloadingString, 7000);
+	setTimeout(showloadingString, 5000);
 }
 
 // ページ読み込みが全て終わった時に実行する処理

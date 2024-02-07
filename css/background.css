@@ -40,6 +40,22 @@
 	font-family: 'Hachi Maru Pop', cursive;
 	white-space: nowrap;
 }
+#backgroundText #wataPrefix{
+	margin: 0em;
+	padding: 0em;
+	opacity: 0;
+	transform: translate3d(0,-100%,0);
+	transform-origin: left;
+	display: inline-block;
+}
+#backgroundText.appear #wataPrefix{
+	animation-name: animation-wataPrefix;
+	animation-delay: 1s;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+}
 @keyframes animation-wataPrefix{
 	0%{
 		opacity: 0;
@@ -50,19 +66,21 @@
 		transform: translate3d(0,0,0);
 	}
 }
-#backgroundText.appear #wataPrefix{
+#backgroundText #wataSuffix{
 	margin: 0em;
 	padding: 0em;
-	animation-name: animation-wataPrefix;
-	animation-delay: calc(1s + var(--transition-anime-length) + var(--first-movie-length));
-	animation-duration: 1s;
-	animation-timing-function: ease-out;
-	animation-direction: normal;
-	animation-fill-mode: forwards;
 	opacity: 0;
 	transform: translate3d(0,-100%,0);
 	transform-origin: left;
 	display: inline-block;
+}
+#backgroundText.appear #wataSuffix{
+	animation-name: animation-wataSuffix;
+	animation-delay: 1s;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
 }
 @keyframes animation-wataSuffix{
 	0%{
@@ -74,27 +92,26 @@
 		transform: translate3d(0,0,0);
 	}
 }
-#backgroundText.appear #wataSuffix{
-	margin: 0em;
-	padding: 0em;
-	animation-name: animation-wataSuffix;
-	animation-delay: calc(1s + var(--transition-anime-length) + var(--first-movie-length));
-	animation-duration: 1s;
-	animation-timing-function: ease-out;
-	animation-direction: normal;
-	animation-fill-mode: forwards;
-	opacity: 0;
-	transform: translate3d(0,-100%,0);
-	transform-origin: left;
-	display: inline-block;
-}
-#backgroundText.appear #wataSquare{
+#backgroundText #wataSquare{
 	padding: 0.3em;
 	left: 100vw;
 	opacity: 1;
 	background-color: var(--main-color);
 	border-radius: 0.25em;
 	display: inline-block;
+}
+#backgroundText #wataTrigger{
+	opacity: 0;
+	display: inline-block;
+	padding: 0em;
+}
+#backgroundText.appear #wataTrigger{
+	animation-name: animation-wataText;
+	animation-delay: 3s;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
 }
 @keyframes animation-wataText{
 	0%{
@@ -104,16 +121,20 @@
 		opacity: 1;
 	}
 }
-#backgroundText.appear #wataTrigger{
-	animation-name: animation-wataText;
-	animation-delay: calc(3s + var(--transition-anime-length) + var(--first-movie-length));
-	animation-duration: 1s;
-	animation-timing-function: ease-out;
-	animation-direction: normal;
-	animation-fill-mode: forwards;
-	opacity: 0;
+#backgroundText #wataPurupuru{
 	display: inline-block;
 	padding: 0em;
+	color: var(--white-color);
+	font-family: 'Kiwi Maru', serif;
+}
+#backgroundText.appear #wataPurupuru{
+	animation-name: animation-wataPurupuru;
+	animation-delay: 3.5s;
+	animation-duration: 2.5s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
 }
 @keyframes animation-wataPurupuru{
 	0%{
@@ -138,21 +159,26 @@
 		transform: translate3d(0,0,0);
 	}
 }
-#backgroundText.appear #wataPurupuru{
-	animation-name: animation-wataPurupuru;
-	animation-delay: calc(4s + var(--transition-anime-length) + var(--first-movie-length));
-	animation-duration: 2.5s;
+
+
+#firstMovieDiv{
+	position: fixed;
+	left: 0em;
+	top: var(--header-height-size);
+	width: 100vw;
+	height: calc(100vh - var(--header-height-size));
+	z-index: -8;
+	background-color: var(--white-color);
+	opacity: 1;
+}
+#firstMovieDiv.appear{
+	animation-name: animation-firstMovieDiv;
+	animation-delay: 0s;
+	animation-duration: 1s;
 	animation-timing-function: ease-in-out;
-	animation-iteration-count: infinite;
 	animation-direction: normal;
 	animation-fill-mode: forwards;
-	display: inline-block;
-	padding: 0em;
-	color: var(--white-color);
-	font-family: 'Kiwi Maru', serif;
 }
-
-
 @keyframes animation-firstMovieDiv{
 	0%{
 		opacity: 1;
@@ -161,23 +187,20 @@
 		opacity: 0;
 	}
 }
-#firstMovieDiv.appear{
-	position: fixed;
-	left: 0em;
-	top: var(--header-height-size);
-	width: 100vw;
-	height: calc(100vh - var(--header-height-size));
-	z-index: -8;
-	background-color: var(--white-color);
-	animation-name: animation-firstMovieDiv;
-	animation-delay: calc(var(--transition-anime-length) + var(--first-movie-length));
+
+#firstMovieVideo{
+	width: 100%;
+	height: calc(min(100%, 150vw));
+	opacity: 1;
+}
+#firstMovieVideo.appearVideo{
+	animation-name: animation-firstMovie;
+	animation-delay: calc(var(--first-movie-length) - 1s);
 	animation-duration: 1s;
 	animation-timing-function: ease-in-out;
 	animation-direction: normal;
 	animation-fill-mode: forwards;
-	opacity: 1;
 }
-
 @keyframes animation-firstMovie{
 	0%{
 		opacity: 1;
@@ -185,17 +208,6 @@
 	100%{
 		opacity: 0;
 	}
-}
-#firstMovieDiv.appear #firstMovieVideo{
-	width: 100%;
-	height: calc(min(100%, 150vw));
-	animation-name: animation-firstMovie;
-	animation-delay: calc(var(--transition-anime-length) + var(--first-movie-length) - 1s);
-	animation-duration: 1s;
-	animation-timing-function: ease-in-out;
-	animation-direction: normal;
-	animation-fill-mode: forwards;
-	opacity: 1;
 }
 
 #backgroundWhiteBlur{

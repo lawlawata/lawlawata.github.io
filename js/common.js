@@ -38,7 +38,7 @@ function restoreScrollPositionCommon() {
 }
 
 // ロード後のトランジションを動かす
-function loadingTransitionAnime() {
+function loadingTransitionAnimeCommon() {
 	var circleA = document.getElementById('circleA');
 	var circleB = document.getElementById('circleB');
 	var loadingTransition = document.getElementById('loadingTransition');
