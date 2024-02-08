@@ -6,7 +6,7 @@ document.getElementById('returnTopButton').addEventListener('click', resetLoadin
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){
 	setPotitionCommon();
-	loadingTransitionAnime();
+	loadingTransitionAnimeCommon();
 	setTimeout(restoreScrollPositionCommon, 2000);
 	cardAnime();
 }
