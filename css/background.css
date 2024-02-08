@@ -190,8 +190,11 @@
 
 #firstMovieVideo{
 	width: 100%;
-	height: calc(min(100%, 150vw));
+	height: 100%;
 	opacity: 1;
+	-o-object-fit: cover;
+	object-fit: cover;
+
 }
 #firstMovieVideo.appearVideo{
 	animation-name: animation-firstMovie;

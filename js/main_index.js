@@ -14,6 +14,25 @@
 // ---- ロード関連 ----
 var windowOnLoadFlag = false;
 
+function setVideoSource() {
+	var firstMovieSource1 = document.getElementById('firstMovieSource1');
+	var firstMovieSource2 = document.getElementById('firstMovieSource2');
+	var aspectRatio = window.innerWidth / window.innerHeight;
+
+	if (aspectRatio >= 0.76) {
+		firstMovieSource1.src = 'video/first_movie_horizonal.mp4';
+		firstMovieSource1.type = 'video/mp4';
+		firstMovieSource2.src = 'video/first_movie_horizonal.webm';
+		firstMovieSource2.type = 'video/webm';
+	} else {
+		firstMovieSource1.src = 'video/first_movie.webm';
+		firstMovieSource1.type = 'video/webm';
+		firstMovieSource2.src = 'video/first_movie.mp4';
+		firstMovieSource2.type = 'video/mp4';
+	}
+}
+
+
 // キービジュアル以外は後で読み込む
 function setImagesWithoutFirstImage(){
 	var img_extension = "";
@@ -81,8 +100,6 @@ function resetLoadingTransitionAnimeIndex() {
 }
 
 function resetLoadingTransitionAnimeIndexRemoveClass(){
-	var firstMovieVideo = document.getElementById('firstMovieVideo');
-	firstMovieVideo.classList.remove('appearVideo');
 	var backgroundText = document.getElementById('backgroundText');
 	backgroundText.classList.remove('appear');
 	var firstMovieDiv = document.getElementById('firstMovieDiv');
@@ -92,8 +109,10 @@ function resetLoadingTransitionAnimeIndexRemoveClass(){
 
 function loadingTransitionAnimeIndexPlayFirstVideo(){
 	var firstMovieVideo = document.getElementById('firstMovieVideo');
-	firstMovieVideo.classList.add('appearVideo');
+	firstMovieVideo.classList.remove('appearVideo');
 	firstMovieVideo.currentTime = 0;
+	firstMovieVideo.offsetWidth = firstMovieVideo.offsetWidth;
+	firstMovieVideo.classList.add('appearVideo');
 	firstMovieVideo.play();
 }
 
@@ -308,6 +327,7 @@ function onPreLoad(){
 	setTimeout(setLoadedScrollWaitComplete, 18500); // = var(--transition-anime-length) + var(--first-movie-length) + 5s
 }
 
+setVideoSource();
 
 // スクロールが一番上であればキービジュアルを先に読み込み、キービジュアルが読み込まれた時点で表示する。
 // スクロールが一番上でなければすべての画像を同時に読み込み、すべて読み込まれた時点で表示する。
@@ -432,6 +452,7 @@ function onPlayerStateChange(event) {
 $(window).resize(function () {
 	setPotitionCommon();
 	kamishibaiAnime();
+	setVideoSource();
 });
 
 // 画面をスクロールをしたら実行する処理

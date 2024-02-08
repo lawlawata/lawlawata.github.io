@@ -42,7 +42,8 @@ https://www.youtube.com/@lawlawata
 	<meta name="twitter:site" content="@lawlawata" />
 
 	<!-- preload -->
-	<link rel="preload" href="img/first_movie.webm" as="video" type="video/webm" />
+	<link rel="preload" href="video/first_movie.webm" as="video" type="video/webm" media="(max-aspect-ratio: 0.76)"/>
+	<link rel="preload" href="video/first_movie_horizonal.mp4" as="video" type="video/webm" media="(min-aspect-ratio: 0.76)"/>
 	<link rel="preload" href="img/logo.png" as="image" />
 	<link rel="preload" href="img/youtube_icon.svg" as="image" />
 
@@ -105,9 +106,9 @@ https://www.youtube.com/@lawlawata
 	<!-- 背景画像 -->
 	<div id="firstMovieDiv">
 		<video id="firstMovieVideo" preload="auto" muted>
-			<source src="img/first_movie.webm" type="video/webm" alt="キー動画">
-			<source src="img/first_movie.mp4" type="video/mp4" alt="キー動画">
-			<p>動画を再生できません。</p>
+			<source id="firstMovieSource1" src="" type="" alt="キー動画">
+			<source id="firstMovieSource2" src="" type="" alt="キー動画">
+			<p>動画を再生できません</p>
 		</video>
 	</div>
 	<picture id="backgroundImage">
