@@ -9,27 +9,30 @@
 //
 // こんどこそ、ばいばい！
 
+const transition_anime_length = 2000; // var(--transition-anime-length)
+const first_movie_length = 0; // var(--first-movie-length)
+const background_text_anime_length = 5000;
 
 
 // ---- ロード関連 ----
 var windowOnLoadFlag = false;
 
 function setVideoSource() {
-	var firstMovieSource1 = document.getElementById('firstMovieSource1');
-	var firstMovieSource2 = document.getElementById('firstMovieSource2');
-	var aspectRatio = window.innerWidth / window.innerHeight;
-
-	if (aspectRatio >= 0.76) {
-		firstMovieSource1.src = 'video/first_movie_horizonal.mp4';
-		firstMovieSource1.type = 'video/mp4';
-		firstMovieSource2.src = 'video/first_movie_horizonal.webm';
-		firstMovieSource2.type = 'video/webm';
-	} else {
-		firstMovieSource1.src = 'video/first_movie.webm';
-		firstMovieSource1.type = 'video/webm';
-		firstMovieSource2.src = 'video/first_movie.mp4';
-		firstMovieSource2.type = 'video/mp4';
-	}
+	// var firstMovieSource1 = document.getElementById('firstMovieSource1');
+	// var firstMovieSource2 = document.getElementById('firstMovieSource2');
+	// var aspectRatio = window.innerWidth / window.innerHeight;
+	//
+	// if (aspectRatio >= 0.76) {
+	// 	firstMovieSource1.src = 'video/first_movie_horizonal.mp4';
+	// 	firstMovieSource1.type = 'video/mp4';
+	// 	firstMovieSource2.src = 'video/first_movie_horizonal.webm';
+	// 	firstMovieSource2.type = 'video/webm';
+	// } else {
+	// 	firstMovieSource1.src = 'video/first_movie.webm';
+	// 	firstMovieSource1.type = 'video/webm';
+	// 	firstMovieSource2.src = 'video/first_movie.mp4';
+	// 	firstMovieSource2.type = 'video/mp4';
+	// }
 }
 
 
@@ -87,40 +90,40 @@ function restoreScrollPositionIndex() {
 // 1回目：ローディングアニメーション
 function loadingTransitionAnimeIndex() {
 	loadingTransitionAnimeCommon();
-	setTimeout(loadingTransitionAnimeIndexPlayFirstVideo, 2000); // = var(--transition-anime-length)
-	setTimeout(loadingTransitionAnimeIndexBackgroundTextWaitComplete, 2000); // = var(--transition-anime-length) + var(--first-movie-length)
+	setTimeout(loadingTransitionAnimeIndexPlayFirstVideo, transition_anime_length);
+	setTimeout(loadingTransitionAnimeIndexBackgroundTextWaitComplete, transition_anime_length + first_movie_length);
 }
 
 // 2回目以降：アニメーションしながらTOPに戻る
 function resetLoadingTransitionAnimeIndex() {
 	resetLoadingTransitionAnimeCommon();
 	setTimeout(resetLoadingTransitionAnimeIndexRemoveClass, 1000);
-	setTimeout(loadingTransitionAnimeIndexPlayFirstVideo, 2000); // = var(--transition-anime-length)
-	setTimeout(loadingTransitionAnimeIndexBackgroundText, 2000); // = var(--transition-anime-length) + var(--first-movie-length)
+	setTimeout(loadingTransitionAnimeIndexPlayFirstVideo, transition_anime_length);
+	setTimeout(loadingTransitionAnimeIndexBackgroundText, transition_anime_length + first_movie_length);
 }
 
 function resetLoadingTransitionAnimeIndexRemoveClass(){
 	var backgroundText = document.getElementById('backgroundText');
 	backgroundText.classList.remove('appear');
-	var firstMovieDiv = document.getElementById('firstMovieDiv');
-	firstMovieDiv.classList.remove('appear');
-	firstMovieVideo.offsetWidth = firstMovieVideo.offsetWidth;
+	// var firstMovieDiv = document.getElementById('firstMovieDiv');
+	// firstMovieDiv.classList.remove('appear');
+	backgroundText.offsetWidth = backgroundText.offsetWidth;
 }
 
 function loadingTransitionAnimeIndexPlayFirstVideo(){
-	var firstMovieVideo = document.getElementById('firstMovieVideo');
-	firstMovieVideo.classList.remove('appearVideo');
-	firstMovieVideo.currentTime = 0;
-	firstMovieVideo.offsetWidth = firstMovieVideo.offsetWidth;
-	firstMovieVideo.classList.add('appearVideo');
-	firstMovieVideo.play();
+	// var firstMovieVideo = document.getElementById('firstMovieVideo');
+	// firstMovieVideo.classList.remove('appearVideo');
+	// firstMovieVideo.currentTime = 0;
+	// firstMovieVideo.offsetWidth = firstMovieVideo.offsetWidth;
+	// firstMovieVideo.classList.add('appearVideo');
+	// firstMovieVideo.play();
 }
 
 function loadingTransitionAnimeIndexBackgroundText() {
 	var backgroundText = document.getElementById('backgroundText');
 	backgroundText.classList.add('appear');
-	var firstMovieDiv = document.getElementById('firstMovieDiv');
-	firstMovieDiv.classList.add('appear');
+	// var firstMovieDiv = document.getElementById('firstMovieDiv');
+	// firstMovieDiv.classList.add('appear');
 }
 var loadingTransitionAnimeIndexBackgroundTextWaitFlag = false;
 function loadingTransitionAnimeIndexBackgroundTextWaitComplete() {
@@ -322,9 +325,9 @@ function onPreLoad(){
 	cardAnime();
 
 	loadingTransitionAnimeIndex();
-	setTimeout(restoreScrollPositionIndex, 2000); // = var(--transition-anime-length)
-	setTimeout(restoreScrollPositionCommonWaitComplete, 2000); // = var(--transition-anime-length)
-	setTimeout(setLoadedScrollWaitComplete, 7000); // = var(--transition-anime-length) + var(--first-movie-length) + 5s
+	setTimeout(restoreScrollPositionIndex, transition_anime_length);
+	setTimeout(restoreScrollPositionCommonWaitComplete, transition_anime_length);
+	setTimeout(setLoadedScrollWaitComplete, transition_anime_length + first_movie_length + background_text_anime_length);
 }
 
 setVideoSource();
@@ -346,9 +349,9 @@ document.addEventListener('DOMContentLoaded', function(){
 	}
 
 	// 動画を読み込み終わった時に処理を実行するトリガ
-	var firstMovieVideo = document.getElementById('firstMovieVideo')
-	firstMovieVideo.load();
-	firstMovieVideo.addEventListener("loadeddata", videoFirstBackgroundOnloadFunction, false);
+	// var firstMovieVideo = document.getElementById('firstMovieVideo')
+	// firstMovieVideo.load();
+	// firstMovieVideo.addEventListener("loadeddata", videoFirstBackgroundOnloadFunction, false);
 
 	// キービジュアルの読み込みが終わった時に処理を実行するトリガ
 	var img_first_background = new Image();
@@ -365,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function(){
 function videoFirstBackgroundOnloadFunction(){
 	if (scrollPositionIsZero) {
 		onPreLoad();
-		setTimeout(showloadingString, 2000); // = var(--transition-anime-length) + var(--first-movie-length)
+		setTimeout(showloadingString, transition_anime_length + first_movie_length);
 	}
 }
 
@@ -374,6 +377,7 @@ function imgFirstBackgroundOnloadFunction(){
 	firstBackgroundLoadComplete = true;
 	if (scrollPositionIsZero && fontsLoadComplete) {
 		imgFirstBackgroundAndFontsOnloadFunction();
+		videoFirstBackgroundOnloadFunction();
 	}
 }
 
@@ -383,6 +387,7 @@ if ('fonts' in document) {
 		fontsLoadComplete = true;
 		if (scrollPositionIsZero && firstBackgroundLoadComplete) {
 			imgFirstBackgroundAndFontsOnloadFunction();
+			videoFirstBackgroundOnloadFunction();
 		}
 	});
 }
@@ -392,7 +397,7 @@ function imgFirstBackgroundAndFontsOnloadFunction() {
 	document.getElementById('loadingString').style.display = "none";
 	loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 	setImagesWithoutFirstImage();
-	setTimeout(showloadingString, 5000);
+	setTimeout(showloadingString, background_text_anime_length);
 }
 
 // ページ読み込みが全て終わった時に実行する処理
