@@ -332,6 +332,11 @@ function onPreLoad(){
 
 setVideoSource();
 
+var agent = window.navigator.userAgent.toLowerCase();
+if(agent.indexOf('chrome') <= -1 && agent.indexOf('firefox') <= -1) {
+	setImagesWithoutFirstImage();
+}
+
 // スクロールが一番上であればキービジュアルを先に読み込み、キービジュアルが読み込まれた時点で表示する。
 // スクロールが一番上でなければすべての画像を同時に読み込み、すべて読み込まれた時点で表示する。
 var scrollPositionIsZero = (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0)
@@ -377,7 +382,6 @@ function imgFirstBackgroundOnloadFunction(){
 	firstBackgroundLoadComplete = true;
 	if (scrollPositionIsZero && fontsLoadComplete) {
 		imgFirstBackgroundAndFontsOnloadFunction();
-		videoFirstBackgroundOnloadFunction();
 	}
 }
 
@@ -387,13 +391,13 @@ if ('fonts' in document) {
 		fontsLoadComplete = true;
 		if (scrollPositionIsZero && firstBackgroundLoadComplete) {
 			imgFirstBackgroundAndFontsOnloadFunction();
-			videoFirstBackgroundOnloadFunction();
 		}
 	});
 }
 
 // キービジュアルとフォントの読み込みが終わった時に実行する処理
 function imgFirstBackgroundAndFontsOnloadFunction() {
+	videoFirstBackgroundOnloadFunction();
 	document.getElementById('loadingString').style.display = "none";
 	loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 	setImagesWithoutFirstImage();
