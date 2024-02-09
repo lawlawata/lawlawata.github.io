@@ -88,7 +88,7 @@ function restoreScrollPositionIndex() {
 function loadingTransitionAnimeIndex() {
 	loadingTransitionAnimeCommon();
 	setTimeout(loadingTransitionAnimeIndexPlayFirstVideo, 2000); // = var(--transition-anime-length)
-	setTimeout(loadingTransitionAnimeIndexBackgroundTextWaitComplete, 13100); // = var(--transition-anime-length) + var(--first-movie-length)
+	setTimeout(loadingTransitionAnimeIndexBackgroundTextWaitComplete, 2000); // = var(--transition-anime-length) + var(--first-movie-length)
 }
 
 // 2回目以降：アニメーションしながらTOPに戻る
@@ -96,7 +96,7 @@ function resetLoadingTransitionAnimeIndex() {
 	resetLoadingTransitionAnimeCommon();
 	setTimeout(resetLoadingTransitionAnimeIndexRemoveClass, 1000);
 	setTimeout(loadingTransitionAnimeIndexPlayFirstVideo, 2000); // = var(--transition-anime-length)
-	setTimeout(loadingTransitionAnimeIndexBackgroundText, 13100); // = var(--transition-anime-length) + var(--first-movie-length)
+	setTimeout(loadingTransitionAnimeIndexBackgroundText, 2000); // = var(--transition-anime-length) + var(--first-movie-length)
 }
 
 function resetLoadingTransitionAnimeIndexRemoveClass(){
@@ -324,7 +324,7 @@ function onPreLoad(){
 	loadingTransitionAnimeIndex();
 	setTimeout(restoreScrollPositionIndex, 2000); // = var(--transition-anime-length)
 	setTimeout(restoreScrollPositionCommonWaitComplete, 2000); // = var(--transition-anime-length)
-	setTimeout(setLoadedScrollWaitComplete, 18500); // = var(--transition-anime-length) + var(--first-movie-length) + 5s
+	setTimeout(setLoadedScrollWaitComplete, 7000); // = var(--transition-anime-length) + var(--first-movie-length) + 5s
 }
 
 setVideoSource();
@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function(){
 function videoFirstBackgroundOnloadFunction(){
 	if (scrollPositionIsZero) {
 		onPreLoad();
-		setTimeout(showloadingString, 13000); // = var(--transition-anime-length) + var(--first-movie-length)
+		setTimeout(showloadingString, 2000); // = var(--transition-anime-length) + var(--first-movie-length)
 	}
 }
 

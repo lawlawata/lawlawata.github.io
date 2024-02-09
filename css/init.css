@@ -20,7 +20,8 @@
 	--transition-anime-length: 2s;
 
 	/* 動画の長さ */
-	--first-movie-length: 11.1s;
+	--first-movie-length: 0s;
+	/* 11.1s; */
 
 
 	/* ---- 色 ---- */
