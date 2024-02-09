@@ -128,9 +128,10 @@ function loadingTransitionAnimeIndexBackgroundText() {
 var loadingTransitionAnimeIndexBackgroundTextWaitFlag = false;
 function loadingTransitionAnimeIndexBackgroundTextWaitComplete() {
 	loadingTransitionAnimeIndexBackgroundTextWaitFlag = true;
-	if(windowOnLoadFlag) loadingTransitionAnimeIndexBackgroundText();
+	if(loadingTransitionAnimeIndexBackgroundTextLoadFlag) loadingTransitionAnimeIndexBackgroundText();
 }
 function loadingTransitionAnimeIndexBackgroundTextLoadComplete() {
+	loadingTransitionAnimeIndexBackgroundTextLoadFlag = true;
 	if(loadingTransitionAnimeIndexBackgroundTextWaitFlag) loadingTransitionAnimeIndexBackgroundText();
 }
 
@@ -337,14 +338,17 @@ setVideoSource();
 var agent = window.navigator.userAgent.toLowerCase();
 var sequentiallyLoadFlag = (
 	(!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0)
-	&& (agent.indexOf('chrome') > -1 || agent.indexOf('firefox') > -1)
+	// && (agent.indexOf('chrome') > -1 || agent.indexOf('firefox') > -1)
 );
 var firstBackgroundLoadComplete = false;
 var fontsLoadComplete = false;
 
 // DOM treeの読み込みが終わった時に実行する処理
 document.addEventListener('DOMContentLoaded', function(){
-	if (!sequentiallyLoadFlag){
+	if (sequentiallyLoadFlag){
+		console.log('sequentially load');
+	}else{
+		console.log('parallel load');
 		setImagesWithoutFirstImage();
 	}
 
@@ -371,6 +375,7 @@ document.addEventListener('DOMContentLoaded', function(){
 // キー動画が読み込み終わった時に実行する処理
 function videoFirstBackgroundOnloadFunction(){
 	if (sequentiallyLoadFlag) {
+		console.log('videoFirstBackgroundOnload');
 		onPreLoad();
 		setTimeout(showloadingString, transition_anime_length + first_movie_length);
 	}
@@ -379,7 +384,7 @@ function videoFirstBackgroundOnloadFunction(){
 // キービジュアルの読み込みが終わった時に実行する処理
 function imgFirstBackgroundOnloadFunction(){
 	firstBackgroundLoadComplete = true;
-	if (sequentiallyLoadFlag && fontsLoadComplete) {
+	if (fontsLoadComplete) {
 		imgFirstBackgroundAndFontsOnloadFunction();
 	}
 }
@@ -388,7 +393,7 @@ function imgFirstBackgroundOnloadFunction(){
 if ('fonts' in document) {
 	document.fonts.ready.then(function(fontFaceSet) {
 		fontsLoadComplete = true;
-		if (sequentiallyLoadFlag && firstBackgroundLoadComplete) {
+		if (firstBackgroundLoadComplete) {
 			imgFirstBackgroundAndFontsOnloadFunction();
 		}
 	});
@@ -396,25 +401,28 @@ if ('fonts' in document) {
 
 // キービジュアルとフォントの読み込みが終わった時に実行する処理
 function imgFirstBackgroundAndFontsOnloadFunction() {
-	videoFirstBackgroundOnloadFunction();
-	document.getElementById('loadingString').style.display = "none";
-	loadingTransitionAnimeIndexBackgroundTextLoadComplete();
-	setImagesWithoutFirstImage();
-	setTimeout(showloadingString, background_text_anime_length);
+	if (sequentiallyLoadFlag) {
+		console.log('imgFirstBackgroundAndFontsOnload');
+		videoFirstBackgroundOnloadFunction();
+		document.getElementById('loadingString').style.display = "none";
+		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
+		setImagesWithoutFirstImage();
+		setTimeout(showloadingString, background_text_anime_length);
+	}
 }
 
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){
 	windowOnLoadFlag = true;
-	if (!sequentiallyLoadFlag){
-		onPreLoad();
-	}
-	showloadingString();
+	document.getElementById('loadingString').style.display = "none";
 	restoreScrollPositionCommonLoadComplete();
 	setLoadedScrollLoadComplete();
+	if (!sequentiallyLoadFlag){
+		onPreLoad();
+		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
+	}
 	setTwitterScript();
 	initYoutubeApi();
-
 }
 
 // IFrame Player API
