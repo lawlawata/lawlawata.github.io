@@ -346,13 +346,11 @@ setVideoSource();
 // スクロールが一番上であればキービジュアルを先に読み込み、キービジュアルが読み込まれた時点で表示する。
 // スクロールが一番上でなければすべての画像を同時に読み込み、すべて読み込まれた時点で表示する。
 var agent = window.navigator.userAgent.toLowerCase();
-var sequentiallyLoadFlag = (
-	(!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0)
-	// && (agent.indexOf('chrome') > -1 || agent.indexOf('firefox') > -1)
-);
+var sequentiallyLoadFlag = false;
 
 // DOM treeの読み込みが終わった時に実行する処理
 document.addEventListener('DOMContentLoaded', function(){
+	sequentiallyLoadFlag = ((!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0));
 	if (sequentiallyLoadFlag){
 		console.log('sequentially load');
 	}else{
@@ -433,8 +431,8 @@ window.onload = function(){
 	restoreScrollPositionCommonLoadComplete();
 	if (!sequentiallyLoadFlag){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
+		startTransitionAnimeAndSoOn();
 	}
-	startTransitionAnimeAndSoOn();
 	setTwitterScript();
 	initYoutubeApi();
 }
