@@ -429,7 +429,7 @@ window.onload = function(){
 	document.getElementById('loadingString').style.display = "none";
 	setLoadedScrollLoadComplete();
 	restoreScrollPositionCommonLoadComplete();
-	if (!startTransitionAnimeAndSoOnExecutedFlag || !sequentiallyLoadFlag){
+	if (!sequentiallyLoadFlag){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
 	}
