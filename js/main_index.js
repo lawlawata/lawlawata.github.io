@@ -122,7 +122,7 @@ var loadingTransitionAnimeIndexBackgroundTextWaitFlag = false;
 var loadingTransitionAnimeIndexBackgroundTextLoadFlag = false;
 function loadingTransitionAnimeIndexBackgroundTextExecute() {
 	if(loadingTransitionAnimeIndexBackgroundTextLoadFlag && loadingTransitionAnimeIndexBackgroundTextWaitFlag)
-		loadingTransitionAnimeIndexBackgroundText();
+	loadingTransitionAnimeIndexBackgroundText();
 }
 function loadingTransitionAnimeIndexBackgroundTextWaitComplete() {
 	loadingTransitionAnimeIndexBackgroundTextWaitFlag = true;
@@ -378,10 +378,10 @@ document.addEventListener('DOMContentLoaded', function(){
 	} else {
 		img_first_background.src = './img/first_background.jpg';
 	}
-	img_first_background.onload = imgFirstBackgroundOnloadFunction;
-	// 画像がすでに読み込み済みの場合でも、onloadイベントが発火するようにする
 	if (img_first_background.complete) {
 		imgFirstBackgroundOnloadFunction();
+	} else {
+		img_first_background.onload = imgFirstBackgroundOnloadFunction;
 	}
 });
 
