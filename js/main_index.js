@@ -409,8 +409,8 @@ if ('fonts' in document) {
 var imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = false;
 function imgFirstBackgroundAndFontsOnloadFunction() {
 	if(firstBackgroundLoadComplete && fontsLoadComplete) {
-		imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = true;
 		if(!first_video_flag){
+			imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = true;
 			videoFirstBackgroundOnloadFunction();
 		}
 		if (sequentiallyLoadFlag) {
@@ -433,7 +433,7 @@ window.onload = function(){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
 	}
-	if(!startTransitionAnimeAndSoOnExecutedFlag){
+	if(!imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag){
 		// ブラウザによってはimgFirstBackgroundAndFontsOnloadFunctionが実行されていないので、それ用の処理
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
