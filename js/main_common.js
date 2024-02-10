@@ -1,3 +1,5 @@
+const transition_anime_length = 2000;
+
 // ---- 呼び出し ----
 
 // クリックしたら実行する処理
@@ -7,7 +9,7 @@ document.getElementById('returnTopButton').addEventListener('click', resetLoadin
 window.onload = function(){
 	setPotitionCommon();
 	loadingTransitionAnimeCommon();
-	setTimeout(restoreScrollPositionCommon, 2000);
+	setTimeout(restoreScrollPositionCommon, transition_anime_length);
 	cardAnime();
 }
 
