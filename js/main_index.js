@@ -382,6 +382,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // キー動画が読み込み終わった時に実行する処理
 function videoFirstBackgroundOnloadFunction(){
+	alert('videoFirstBackgroundOnload');
 	if (sequentiallyLoadFlag) {
 		console.log('videoFirstBackgroundOnload');
 		startTransitionAnimeAndSoOn();
