@@ -332,9 +332,7 @@ function initYoutubeApi(){
 // ---- 呼び出し ----
 
 // ローディングアニメーションを実行するなど、最初に表示する処理
-var startTransitionAnimeAndSoOnExecutedFlag = false;
 function startTransitionAnimeAndSoOn(){
-	startTransitionAnimeAndSoOnExecutedFlag = true;
 	setPotitionCommon();
 	backgroundImage();
 	kamishibaiAnime();
@@ -408,7 +406,9 @@ if ('fonts' in document) {
 }
 
 // キービジュアルとフォントの読み込みが終わった時に実行する処理
+var imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = false;
 function imgFirstBackgroundAndFontsOnloadFunction() {
+	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = true;
 	if(firstBackgroundLoadComplete && fontsLoadComplete) {
 		if(!first_video_flag){
 			videoFirstBackgroundOnloadFunction();
@@ -432,6 +432,12 @@ window.onload = function(){
 	if (!sequentiallyLoadFlag){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
+	}
+	if(!startTransitionAnimeAndSoOnExecutedFlag){
+		// ブラウザによってはimgFirstBackgroundAndFontsOnloadFunctionが実行されていないので、それ用の処理
+		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
+		startTransitionAnimeAndSoOn();
+		setImagesWithoutFirstImage();
 	}
 	setTwitterScript();
 	initYoutubeApi();
