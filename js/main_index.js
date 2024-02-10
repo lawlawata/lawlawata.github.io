@@ -9,36 +9,10 @@
 //
 // こんどこそ、ばいばい！
 
-const first_video_flag = false;
-
-const transition_anime_length = 2000; // var(--transition-anime-length)
-const first_movie_length = first_video_flag ? 11 : 0; // var(--first-movie-length)
-const background_text_anime_length = 5000;
 
 
 // ---- ロード関連 ----
 var windowOnLoadFlag = false;
-
-function setVideoSource() {
-	if(first_video_flag){
-		var firstMovieSource1 = document.getElementById('firstMovieSource1');
-		var firstMovieSource2 = document.getElementById('firstMovieSource2');
-		var aspectRatio = window.innerWidth / window.innerHeight;
-
-		if (aspectRatio >= 0.76) {
-			firstMovieSource1.src = 'video/first_movie_horizonal.mp4';
-			firstMovieSource1.type = 'video/mp4';
-			firstMovieSource2.src = 'video/first_movie_horizonal.webm';
-			firstMovieSource2.type = 'video/webm';
-		} else {
-			firstMovieSource1.src = 'video/first_movie.webm';
-			firstMovieSource1.type = 'video/webm';
-			firstMovieSource2.src = 'video/first_movie.mp4';
-			firstMovieSource2.type = 'video/mp4';
-		}
-	}
-}
-
 
 // キービジュアル以外は後で読み込む
 function setImagesWithoutFirstImage(){
@@ -68,71 +42,30 @@ function setTwitterScript(){
 	document.head.appendChild(twitterScript);
 }
 
+// スクロール位置を保持する関数
+function saveScrollPosition() {
+	sessionStorage.setItem('scrollPosition', window.scrollY);
+}
 
-// ---- ローディングアニメーション関連 ----
+// ロード後に、スクロール位置を前回閲覧していた位置に戻す
+function restoreScrollPositionIndex() {
 
-// 1回目：ローディングアニメーション
+	var scrollYTo = sessionStorage.getItem('scrollPosition');
+	if (sessionStorage.getItem('scrollPosition')) {
+		sessionStorage.removeItem('scrollPosition');
+	}else{
+		scrollYTo = 0;
+	}
+	window.scrollTo({
+		top: scrollYTo,
+		behavior: 'instant'
+	});
+}
+
+// ローディングアニメーション
 function loadingTransitionAnimeIndex() {
-	loadingTransitionAnimeCommon();
-	setTimeout(loadingTransitionAnimeIndexPlayFirstVideo, transition_anime_length);
-	setTimeout(restoreScrollPositionIndex, transition_anime_length);
-	setTimeout(restoreScrollPositionCommonWaitComplete, transition_anime_length);
-	setTimeout(loadingTransitionAnimeIndexBackgroundTextWaitComplete, transition_anime_length + first_movie_length);
-	setTimeout(setLoadedScrollWaitComplete, transition_anime_length + first_movie_length + background_text_anime_length);
-}
-
-// 2回目以降：アニメーションしながらTOPに戻る
-function resetLoadingTransitionAnimeIndex() {
-	resetLoadingTransitionAnimeCommon();
-	setTimeout(resetLoadingTransitionAnimeIndexRemoveClass, 1000);
-	setTimeout(loadingTransitionAnimeIndexPlayFirstVideo, transition_anime_length);
-	setTimeout(loadingTransitionAnimeIndexBackgroundText, transition_anime_length + first_movie_length);
-}
-
-function resetLoadingTransitionAnimeIndexRemoveClass(){
-	var backgroundText = document.getElementById('backgroundText');
-	backgroundText.classList.remove('appear');
-	if(first_video_flag){
-		var firstMovieDiv = document.getElementById('firstMovieDiv');
-		firstMovieDiv.classList.remove('appear');
-	}
-	backgroundText.offsetWidth = backgroundText.offsetWidth;
-}
-
-function loadingTransitionAnimeIndexPlayFirstVideo(){
-	if(first_video_flag){
-		var firstMovieVideo = document.getElementById('firstMovieVideo');
-		firstMovieVideo.classList.remove('appearVideo');
-		firstMovieVideo.currentTime = 0;
-		firstMovieVideo.offsetWidth = firstMovieVideo.offsetWidth;
-		firstMovieVideo.classList.add('appearVideo');
-		firstMovieVideo.play();
-	}
-}
-
-function loadingTransitionAnimeIndexBackgroundText() {
-	var backgroundText = document.getElementById('backgroundText');
 	backgroundText.classList.add('appear');
-	if(first_video_flag){
-		var firstMovieDiv = document.getElementById('firstMovieDiv');
-		firstMovieDiv.classList.add('appear');
-	}
 }
-var loadingTransitionAnimeIndexBackgroundTextWaitFlag = false;
-var loadingTransitionAnimeIndexBackgroundTextLoadFlag = false;
-function loadingTransitionAnimeIndexBackgroundTextExecute() {
-	if(loadingTransitionAnimeIndexBackgroundTextLoadFlag && loadingTransitionAnimeIndexBackgroundTextWaitFlag)
-	loadingTransitionAnimeIndexBackgroundText();
-}
-function loadingTransitionAnimeIndexBackgroundTextWaitComplete() {
-	loadingTransitionAnimeIndexBackgroundTextWaitFlag = true;
-	loadingTransitionAnimeIndexBackgroundTextExecute();
-}
-function loadingTransitionAnimeIndexBackgroundTextLoadComplete() {
-	loadingTransitionAnimeIndexBackgroundTextLoadFlag = true;
-	loadingTransitionAnimeIndexBackgroundTextExecute();
-}
-
 
 // ロードアニメーションが終わった直後に、下の要素が見える位置までスクロールする
 function setLoadedScroll() {
@@ -160,29 +93,14 @@ function setLoadedScrollLoadComplete() {
 	if(setLoadedScrollWaitFlag) setLoadedScroll();
 }
 
-// ロード後に、スクロール位置を前回閲覧していた位置に戻す
-function restoreScrollPositionIndex() {
-
-	var scrollYTo = sessionStorage.getItem('scrollPosition');
-	if (sessionStorage.getItem('scrollPosition')) {
-		sessionStorage.removeItem('scrollPosition');
-	}else{
-		scrollYTo = 0;
-	}
-	window.scrollTo({
-		top: scrollYTo,
-		behavior: 'instant'
-	});
-}
-
 // ロード後にスクロールできるようにする
-var restoreScrollPositionCommonWaitFlag = false;
+var restoreScrollPositionWaitFlag = false;
 function restoreScrollPositionCommonWaitComplete(){
-	restoreScrollPositionCommonWaitFlag = true;
+	restoreScrollPositionWaitFlag = true;
 	if(windowOnLoadFlag) restoreScrollPositionCommon();
 }
 function restoreScrollPositionCommonLoadComplete(){
-	if(restoreScrollPositionCommonWaitFlag) restoreScrollPositionCommon();
+	if(restoreScrollPositionWaitFlag) restoreScrollPositionCommon();
 }
 
 // ページ全体が読み込まれていなければLOADINGを表示
@@ -195,7 +113,17 @@ function showloadingString(){
 	}
 }
 
-// ---- スクロールアニメーション関連 ----
+// ---- アニメーション関連 ----
+
+// アニメーションしながらTOPに戻る
+function resetLoadingTransitionAnimeIndex() {
+	var backgroundText = document.getElementById('backgroundText');
+	backgroundText.classList.remove('appear');
+	circleA.offsetWidth = circleA.offsetWidth;
+	backgroundText.classList.add('appear');
+
+	resetLoadingTransitionAnimeCommon();
+}
 
 // スクロール位置に応じて背景を見せたり隠したりする
 function backgroundImage(){
@@ -287,7 +215,6 @@ function kamishibaiAnime() {
 	}
 }
 
-// 好感度
 var favorabilityCount = 0;
 function clickEmptySpace(event){
 	var headerHeight=$('#header').innerHeight();
@@ -332,42 +259,34 @@ function initYoutubeApi(){
 // ---- 呼び出し ----
 
 // ローディングアニメーションを実行するなど、最初に表示する処理
-function startTransitionAnimeAndSoOn(){
-	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 8;
+function onPreLoad(){
 	setPotitionCommon();
 	backgroundImage();
 	kamishibaiAnime();
 	cardAnime();
 
+	loadingTransitionAnime();
 	loadingTransitionAnimeIndex();
+	setTimeout(restoreScrollPositionIndex, 2000);
+	setTimeout(restoreScrollPositionCommonWaitComplete, 2000);
+	setTimeout(setLoadedScrollWaitComplete, 7500);
 }
 
-setVideoSource();
 
 // スクロールが一番上であればキービジュアルを先に読み込み、キービジュアルが読み込まれた時点で表示する。
 // スクロールが一番上でなければすべての画像を同時に読み込み、すべて読み込まれた時点で表示する。
-var agent = window.navigator.userAgent.toLowerCase();
-var sequentiallyLoadFlag = false;
+var scrollPositionIsZero = (!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0)
+var firstBackgroundLoadComplete = false;
+var fontsLoadComplete = false;
 
 // DOM treeの読み込みが終わった時に実行する処理
 document.addEventListener('DOMContentLoaded', function(){
-	sequentiallyLoadFlag = ((!sessionStorage.getItem('scrollPosition') || sessionStorage.getItem('scrollPosition')==0));
-	if (sequentiallyLoadFlag){
-		console.log('sequentially load');
-	}else{
-		console.log('parallel load');
+	if (!scrollPositionIsZero){
 		setImagesWithoutFirstImage();
 	}
 
-	if (!('fonts' in document)) {
+	if (!'fonts' in document) {
 		fontsLoadComplete = true;
-	}
-
-	// 動画を読み込み終わった時に処理を実行するトリガ
-	if(first_video_flag){
-		var firstMovieVideo = document.getElementById('firstMovieVideo');
-		firstMovieVideo.load();
-		firstMovieVideo.addEventListener("loadeddata", videoFirstBackgroundOnloadFunction, false);
 	}
 
 	// キービジュアルの読み込みが終わった時に処理を実行するトリガ
@@ -378,80 +297,46 @@ document.addEventListener('DOMContentLoaded', function(){
 	} else {
 		img_first_background.src = './img/first_background.jpg';
 	}
-	if (img_first_background.complete) {
-		imgFirstBackgroundOnloadFunction();
-	} else {
-		img_first_background.onload = imgFirstBackgroundOnloadFunction;
-	}
-	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 64;
+	img_first_background.onload = imgFirstBackgroundOnloadFunction;
 });
 
-// キー動画が読み込み終わった時に実行する処理
-function videoFirstBackgroundOnloadFunction(){
-	if (sequentiallyLoadFlag) {
-		console.log('videoFirstBackgroundOnload');
-		startTransitionAnimeAndSoOn();
-		setTimeout(showloadingString, transition_anime_length + first_movie_length);
-	}
-}
-
-var firstBackgroundLoadComplete = false;
-var fontsLoadComplete = false;
 // キービジュアルの読み込みが終わった時に実行する処理
 function imgFirstBackgroundOnloadFunction(){
-	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 16;
 	firstBackgroundLoadComplete = true;
-	imgFirstBackgroundAndFontsOnloadFunction();
+	if (scrollPositionIsZero && fontsLoadComplete) {
+		imgFirstBackgroundAndFontsOnloadFunction();
+	}
 }
 
 // フォントの読み込みが終わった時に実行する処理
 if ('fonts' in document) {
 	document.fonts.ready.then(function(fontFaceSet) {
-		imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag +=32;
 		fontsLoadComplete = true;
-		imgFirstBackgroundAndFontsOnloadFunction();
+		if (scrollPositionIsZero && firstBackgroundLoadComplete) {
+			imgFirstBackgroundAndFontsOnloadFunction();
+		}
 	});
 }
 
-// キービジュアルとフォントの読み込みが終わった時に実行する処理
-var imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = 0;
+// 最初に表示させる時に実行する処理
 function imgFirstBackgroundAndFontsOnloadFunction() {
-	if(firstBackgroundLoadComplete && fontsLoadComplete) {
-		imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 1;
-		if(!first_video_flag){
-			imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 2;
-			videoFirstBackgroundOnloadFunction();
-		}
-		if (sequentiallyLoadFlag) {
-			imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 4;
-			console.log('imgFirstBackgroundAndFontsOnload');
-			document.getElementById('loadingString').style.display = "none";
-			loadingTransitionAnimeIndexBackgroundTextLoadComplete();
-			setImagesWithoutFirstImage();
-			setTimeout(showloadingString, background_text_anime_length);
-		}
-	}
+	setImagesWithoutFirstImage();
+	onPreLoad();
+	setTimeout(showloadingString, 7500);
 }
 
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){
 	windowOnLoadFlag = true;
-	document.getElementById('loadingString').style.display = "none";
-	setLoadedScrollLoadComplete();
+	if (!scrollPositionIsZero){
+		onPreLoad();
+	}
+	showloadingString();
 	restoreScrollPositionCommonLoadComplete();
-	if (!sequentiallyLoadFlag){
-		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
-		startTransitionAnimeAndSoOn();
-	}
-	if(!(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag in [127, 123])){
-		// ブラウザによってはimgFirstBackgroundAndFontsOnloadFunctionが実行されていないので、それ用の処理
-		alert(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag);
-		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
-		startTransitionAnimeAndSoOn();
-		setImagesWithoutFirstImage();
-	}
+	setLoadedScrollLoadComplete();
 	setTwitterScript();
 	initYoutubeApi();
+
 }
 
 // IFrame Player API
@@ -461,10 +346,7 @@ function onYouTubeIframeAPIReady() {
 		height: '100%',
 		width: '100%',
 		videoId: 'Jm_JJ3p4HqM',
-		playerVars: {
-			'rel': 0,
-			'start': 13
-		},
+		playerVars: {'rel': 0},
 		events: {
 			'onStateChange': onPlayerStateChange
 		}
@@ -488,7 +370,7 @@ function onPlayerStateChange(event) {
 		var headerHeight=$('#header').innerHeight();
 		if(rect.top < headerHeight || rect.bottom - 10 >= (window.innerHeight || document.documentElement.clientHeight) ){
 			var offsetTop = youtubeContainer.getBoundingClientRect().top + window.scrollY;
-			window.scrollTo({ top: offsetTop - headerHeight, behavior: 'smooth' });
+  		window.scrollTo({ top: offsetTop - headerHeight, behavior: 'smooth' });
 		}
 	}
 }
@@ -497,7 +379,6 @@ function onPlayerStateChange(event) {
 $(window).resize(function () {
 	setPotitionCommon();
 	kamishibaiAnime();
-	setVideoSource();
 });
 
 // 画面をスクロールをしたら実行する処理
@@ -509,6 +390,4 @@ $(window).scroll(function () {
 });
 
 // リロード前にスクロール位置を保存する処理
-window.addEventListener('beforeunload', function () {
-	sessionStorage.setItem('scrollPosition', window.scrollY);
-});
+window.addEventListener('beforeunload', saveScrollPosition);

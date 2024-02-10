@@ -355,7 +355,7 @@ div.card span.wDash{
 div.twitterEmptySpace{
 	margin: 0em;
 	padding: 0em;
-	height: 20em;
+	height: 30vh;
 }
 
 #twitter-timelineP{
@@ -363,8 +363,6 @@ div.twitterEmptySpace{
 	color: var(--white-color);
 	font-family: 'Noto Sans JP', sans-serif;
 	text-align: center;
-	background-color: var(--base-color);
-	overflow: hidden;
 }
 
 /* YouTube */

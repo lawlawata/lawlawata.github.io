@@ -41,12 +41,6 @@ https://www.youtube.com/@lawlawata
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@lawlawata" />
 
-	<!-- preload -->
-	<!-- <link rel="preload" href="video/first_movie.webm" as="video" type="video/webm" media="(max-aspect-ratio: 0.76)"/> -->
-	<!-- <link rel="preload" href="video/first_movie_horizonal.mp4" as="video" type="video/mp4" media="(min-aspect-ratio: 0.76)"/> -->
-	<link rel="preload" href="img/logo.png" as="image" />
-	<link rel="preload" href="img/youtube_icon.svg" as="image" />
-
 	<!-- css -->
 	<link rel="stylesheet" href="css/init.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -104,13 +98,6 @@ https://www.youtube.com/@lawlawata
 	</header>
 
 	<!-- 背景画像 -->
-	<!-- <div id="firstMovieDiv"> -->
-	<!-- <video id="firstMovieVideo" preload="auto" muted> -->
-	<!-- <source id="firstMovieSource1" src="" type="" alt="キー動画"> -->
-	<!-- <source id="firstMovieSource2" src="" type="" alt="キー動画"> -->
-	<!-- <p>動画を再生できません</p> -->
-	<!-- </video> -->
-	<!-- </div> -->
 	<picture id="backgroundImage">
 		<source class="backgroundImageContent" srcset="./img/first_background.avif" type="image/avif" alt="キービジュアル"/>
 		<img class="backgroundImageContent" src="./img/first_background.jpg" alt="キービジュアル"/>
@@ -118,7 +105,7 @@ https://www.youtube.com/@lawlawata
 	<div id="backgroundText">
 		<p><b>
 			<span id="wataPrefix">中身は</span>
-			<span id="wataSquare"><span id="wataTrigger"><span id="wataPurupuru">わた</span></span></span>
+			<span id="wataSquare"><span id="wataTrigger">わた</span></span>
 			<span id="wataSuffix">です！</span>
 		</b></p>
 	</div>
@@ -312,13 +299,10 @@ https://www.youtube.com/@lawlawata
 
 		<div class="twitterEmptySpace"></div>
 
-
 		<h1>X</h1>
 		<p id="twitter-timelineP">
-			<a class="twitter-timeline" href="https://twitter.com/lawlawata?ref_src=twsrc%5Etfw" data-chrome="noborders transparent noscrollbar" data-tweet-limit="5">𝕏 も見に来てください！</a>
-			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			<a class="twitter-timeline" href="https://twitter.com/lawlawata?ref_src=twsrc%5Etfw">𝕏 も見に来てください！</a>
 		</p>
-
 
 		<div class="twitterEmptySpace"></div>
 
@@ -367,6 +351,7 @@ https://www.youtube.com/@lawlawata
 			</p>
 		</div></div>
 	</div>
+</div>
 
 	<!-- フッター -->
 	<footer>
@@ -404,6 +389,7 @@ https://www.youtube.com/@lawlawata
 	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://www.youtube.com/iframe_api"></script>
 	<script src="js/common.js"></script>
 	<script src="js/main_index.js"></script>
 </body>

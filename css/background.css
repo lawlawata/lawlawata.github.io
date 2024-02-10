@@ -40,59 +40,57 @@
 	font-family: 'Hachi Maru Pop', cursive;
 	white-space: nowrap;
 }
-#backgroundText #wataPrefix{
-	margin: 0em;
-	padding: 0em;
-	opacity: 0;
-	transform: translate3d(0,-100%,0);
-	transform-origin: left;
-	display: inline-block;
-}
-#backgroundText.appear #wataPrefix{
-	animation-name: animation-wataPrefix;
-	animation-delay: 1s;
-	animation-duration: 1s;
-	animation-timing-function: ease-out;
-	animation-direction: normal;
-	animation-fill-mode: forwards;
-}
 @keyframes animation-wataPrefix{
 	0%{
 		opacity: 0;
 		transform: translate3d(0,100%,0);
 	}
-	100%{
+	20%{
+		opacity: 0;
+		transform: translate3d(0,100%,0);
+	}
+	30%{
 		opacity: 1;
 		transform: translate3d(0,0,0);
 	}
 }
-#backgroundText #wataSuffix{
+#backgroundText.appear #wataPrefix{
 	margin: 0em;
 	padding: 0em;
-	opacity: 0;
-	transform: translate3d(0,-100%,0);
-	transform-origin: left;
-	display: inline-block;
-}
-#backgroundText.appear #wataSuffix{
-	animation-name: animation-wataSuffix;
-	animation-delay: 1s;
-	animation-duration: 1s;
-	animation-timing-function: ease-out;
+	animation-name: animation-wataPrefix;
+	animation-duration: 10s;
+	animation-timing-function: ease-in-out;
 	animation-direction: normal;
 	animation-fill-mode: forwards;
+	transform-origin: left;
+	display: inline-block;
 }
 @keyframes animation-wataSuffix{
 	0%{
 		opacity: 0;
 		transform: translate3d(0,-100%,0);
 	}
-	100%{
+	20%{
+		opacity: 0;
+		transform: translate3d(0,-100%,0);
+	}
+	30%{
 		opacity: 1;
 		transform: translate3d(0,0,0);
 	}
 }
-#backgroundText #wataSquare{
+#backgroundText.appear #wataSuffix{
+	margin: 0em;
+	padding: 0em;
+	animation-name: animation-wataSuffix;
+	animation-duration: 10s;
+	animation-timing-function: ease-in-out;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+	transform-origin: left;
+	display: inline-block;
+}
+#backgroundText.appear #wataSquare{
 	padding: 0.3em;
 	left: 100vw;
 	opacity: 1;
@@ -100,117 +98,45 @@
 	border-radius: 0.25em;
 	display: inline-block;
 }
-#backgroundText #wataTrigger{
-	opacity: 0;
-	display: inline-block;
-	padding: 0em;
-}
-#backgroundText.appear #wataTrigger{
-	animation-name: animation-wataText;
-	animation-delay: 3s;
-	animation-duration: 1s;
-	animation-timing-function: ease-out;
-	animation-direction: normal;
-	animation-fill-mode: forwards;
-}
 @keyframes animation-wataText{
 	0%{
 		opacity: 0;
 	}
-	100%{
+	45%{
+		opacity: 0;
+	}
+	55%{
 		opacity: 1;
 	}
-}
-#backgroundText #wataPurupuru{
-	display: inline-block;
-	padding: 0em;
-	color: var(--white-color);
-	font-family: 'Kiwi Maru', serif;
-}
-#backgroundText.appear #wataPurupuru{
-	animation-name: animation-wataPurupuru;
-	animation-delay: 3.5s;
-	animation-duration: 2.5s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: infinite;
-	animation-direction: normal;
-	animation-fill-mode: forwards;
-}
-@keyframes animation-wataPurupuru{
-	0%{
+	60%{
 		transform: translate3d(0,0,0);
 	}
-	50%{
-		transform: translate3d(0,0,0);
-	}
-	52%{
+	61%{
 		transform: translate3d(5%,0,0);
 	}
-	56%{
+	62%{
 		transform: translate3d(-5%,0,0);
 	}
-	60%{
+	63%{
 		transform: translate3d(5%,0,0);
 	}
 	64%{
 		transform: translate3d(-5%,0,0);
 	}
-	66%{
+	65%{
 		transform: translate3d(0,0,0);
 	}
 }
-
-
-#firstMovieDiv{
-	position: fixed;
-	left: 0em;
-	top: var(--header-height-size);
-	width: 100vw;
-	height: calc(100vh - var(--header-height-size));
-	z-index: -8;
-	background-color: var(--white-color);
-	opacity: 1;
-}
-#firstMovieDiv.appear{
-	animation-name: animation-firstMovieDiv;
-	animation-delay: 0s;
-	animation-duration: 1s;
-	animation-timing-function: ease-in-out;
+#backgroundText.appear #wataTrigger{
+	animation-name: animation-wataText;
+	animation-duration: 10s;
+	animation-timing-function: ease-out;
 	animation-direction: normal;
 	animation-fill-mode: forwards;
-}
-@keyframes animation-firstMovieDiv{
-	0%{
-		opacity: 1;
-	}
-	100%{
-		opacity: 0;
-	}
-}
-
-#firstMovieVideo{
-	width: 100%;
-	height: 100%;
-	opacity: 1;
-	-o-object-fit: cover;
-	object-fit: cover;
-
-}
-#firstMovieVideo.appearVideo{
-	animation-name: animation-firstMovie;
-	animation-delay: calc(var(--first-movie-length) - 1s);
-	animation-duration: 1s;
-	animation-timing-function: ease-in-out;
-	animation-direction: normal;
-	animation-fill-mode: forwards;
-}
-@keyframes animation-firstMovie{
-	0%{
-		opacity: 1;
-	}
-	100%{
-		opacity: 0;
-	}
+	display: inline-block;
+	padding: 0em;
+	color: var(--white-color);
+	font-family: 'Kiwi Maru', serif;
 }
 
 #backgroundWhiteBlur{
@@ -219,7 +145,7 @@
 	left: 0em;
 	width: 100vw;
 	height: 100vh;
-	z-index: -7;
+	z-index: -8;
 	margin: 0em;
 	padding: 0em;
 	opacity: 0;
@@ -231,7 +157,7 @@
 	left: 0em;
 	width: 100vw;
 	height: 100vh;
-	z-index: -6;
+	z-index: -7;
 	margin: 0em;
 	padding: 0em;
 	background-color: var(--main-color);
