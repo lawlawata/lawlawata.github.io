@@ -394,6 +394,7 @@ var firstBackgroundLoadComplete = false;
 var fontsLoadComplete = false;
 // キービジュアルの読み込みが終わった時に実行する処理
 function imgFirstBackgroundOnloadFunction(){
+	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 16;
 	firstBackgroundLoadComplete = true;
 	imgFirstBackgroundAndFontsOnloadFunction();
 }
@@ -401,6 +402,7 @@ function imgFirstBackgroundOnloadFunction(){
 // フォントの読み込みが終わった時に実行する処理
 if ('fonts' in document) {
 	document.fonts.ready.then(function(fontFaceSet) {
+		imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag +=32;
 		fontsLoadComplete = true;
 		imgFirstBackgroundAndFontsOnloadFunction();
 	});
@@ -436,7 +438,7 @@ window.onload = function(){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
 	}
-	if(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag != 15){
+	if(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag != 63){
 		// ブラウザによってはimgFirstBackgroundAndFontsOnloadFunctionが実行されていないので、それ用の処理
 		alert(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag);
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
