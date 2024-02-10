@@ -438,7 +438,7 @@ window.onload = function(){
 	}
 	if(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag != 15){
 		// ブラウザによってはimgFirstBackgroundAndFontsOnloadFunctionが実行されていないので、それ用の処理
-		alert(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag)
+		alert(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag);
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
 		setImagesWithoutFirstImage();
