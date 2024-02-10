@@ -333,7 +333,6 @@ function initYoutubeApi(){
 
 // ローディングアニメーションを実行するなど、最初に表示する処理
 function startTransitionAnimeAndSoOn(){
-	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 8;
 	setPotitionCommon();
 	backgroundImage();
 	kamishibaiAnime();
@@ -383,7 +382,6 @@ document.addEventListener('DOMContentLoaded', function(){
 	} else {
 		img_first_background.onload = imgFirstBackgroundOnloadFunction;
 	}
-	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 64;
 });
 
 // キー動画が読み込み終わった時に実行する処理
@@ -399,7 +397,6 @@ var firstBackgroundLoadComplete = false;
 var fontsLoadComplete = false;
 // キービジュアルの読み込みが終わった時に実行する処理
 function imgFirstBackgroundOnloadFunction(){
-	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 16;
 	firstBackgroundLoadComplete = true;
 	imgFirstBackgroundAndFontsOnloadFunction();
 }
@@ -407,23 +404,18 @@ function imgFirstBackgroundOnloadFunction(){
 // フォントの読み込みが終わった時に実行する処理
 if ('fonts' in document) {
 	document.fonts.ready.then(function(fontFaceSet) {
-		imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag +=32;
 		fontsLoadComplete = true;
 		imgFirstBackgroundAndFontsOnloadFunction();
 	});
 }
 
 // キービジュアルとフォントの読み込みが終わった時に実行する処理
-var imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = 0;
 function imgFirstBackgroundAndFontsOnloadFunction() {
 	if(firstBackgroundLoadComplete && fontsLoadComplete) {
-		imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 1;
 		if(!first_video_flag){
-			imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 2;
 			videoFirstBackgroundOnloadFunction();
 		}
 		if (sequentiallyLoadFlag) {
-			imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 4;
 			console.log('imgFirstBackgroundAndFontsOnload');
 			document.getElementById('loadingString').style.display = "none";
 			loadingTransitionAnimeIndexBackgroundTextLoadComplete();
@@ -443,12 +435,11 @@ window.onload = function(){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
 	}
-	if(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag != 123 && imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag != 127){
+	if(!firstBackgroundLoadComplete || !fontsLoadComplete){
 		// ブラウザによってはimgFirstBackgroundAndFontsOnloadFunctionが実行されていないので、それ用の処理
-		alert(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag);
-		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
-		startTransitionAnimeAndSoOn();
-		setImagesWithoutFirstImage();
+		firstBackgroundLoadComplete = true;
+		fontsLoadComplete = true;
+		imgFirstBackgroundAndFontsOnloadFunction();
 	}
 	setTwitterScript();
 	initYoutubeApi();
