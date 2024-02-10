@@ -416,6 +416,7 @@ if ('fonts' in document) {
 // キービジュアルとフォントの読み込みが終わった時に実行する処理
 var imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = 0;
 function imgFirstBackgroundAndFontsOnloadFunction() {
+	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 0.1;
 	if(firstBackgroundLoadComplete && fontsLoadComplete) {
 		imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 1;
 		if(!first_video_flag){

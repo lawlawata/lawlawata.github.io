@@ -80,6 +80,7 @@
 	background-position: top left;
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-image: url('./img/kamishibaiImg1.jpg');
 }
 
 .kamishibaiDotNavigation{
