@@ -396,32 +396,30 @@ var fontsLoadComplete = false;
 // キービジュアルの読み込みが終わった時に実行する処理
 function imgFirstBackgroundOnloadFunction(){
 	firstBackgroundLoadComplete = true;
-	if (fontsLoadComplete) {
-		imgFirstBackgroundAndFontsOnloadFunction();
-	}
+	imgFirstBackgroundAndFontsOnloadFunction();
 }
 
 // フォントの読み込みが終わった時に実行する処理
 if ('fonts' in document) {
 	document.fonts.ready.then(function(fontFaceSet) {
 		fontsLoadComplete = true;
-		if (firstBackgroundLoadComplete) {
-			imgFirstBackgroundAndFontsOnloadFunction();
-		}
+		imgFirstBackgroundAndFontsOnloadFunction();
 	});
 }
 
 // キービジュアルとフォントの読み込みが終わった時に実行する処理
 function imgFirstBackgroundAndFontsOnloadFunction() {
-	if(!first_video_flag){
-		videoFirstBackgroundOnloadFunction();
-	}
-	if (sequentiallyLoadFlag) {
-		console.log('imgFirstBackgroundAndFontsOnload');
-		document.getElementById('loadingString').style.display = "none";
-		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
-		setImagesWithoutFirstImage();
-		setTimeout(showloadingString, background_text_anime_length);
+	if(firstBackgroundLoadComplete && fontsLoadComplete) {
+		if(!first_video_flag){
+			videoFirstBackgroundOnloadFunction();
+		}
+		if (sequentiallyLoadFlag) {
+			console.log('imgFirstBackgroundAndFontsOnload');
+			document.getElementById('loadingString').style.display = "none";
+			loadingTransitionAnimeIndexBackgroundTextLoadComplete();
+			setImagesWithoutFirstImage();
+			setTimeout(showloadingString, background_text_anime_length);
+		}
 	}
 }
 
