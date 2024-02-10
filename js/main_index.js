@@ -379,6 +379,10 @@ document.addEventListener('DOMContentLoaded', function(){
 		img_first_background.src = './img/first_background.jpg';
 	}
 	img_first_background.onload = imgFirstBackgroundOnloadFunction;
+	// 画像がすでに読み込み済みの場合でも、onloadイベントが発火するようにする
+	if (img_first_background.complete) {
+		imgFirstBackgroundOnloadFunction();
+	}
 });
 
 // キー動画が読み込み終わった時に実行する処理
