@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		setImagesWithoutFirstImage();
 	}
 
-	if (!'fonts' in document) {
+	if (!('fonts' in document)) {
 		fontsLoadComplete = true;
 	}
 
@@ -443,7 +443,7 @@ window.onload = function(){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
 	}
-	if(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag != 127){
+	if(!(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag in [127, 123])){
 		// ブラウザによってはimgFirstBackgroundAndFontsOnloadFunctionが実行されていないので、それ用の処理
 		alert(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag);
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
