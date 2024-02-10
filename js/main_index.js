@@ -333,6 +333,7 @@ function initYoutubeApi(){
 
 // ローディングアニメーションを実行するなど、最初に表示する処理
 function startTransitionAnimeAndSoOn(){
+	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 8;
 	setPotitionCommon();
 	backgroundImage();
 	kamishibaiAnime();
@@ -406,14 +407,16 @@ if ('fonts' in document) {
 }
 
 // キービジュアルとフォントの読み込みが終わった時に実行する処理
-var imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = false;
+var imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = 0;
 function imgFirstBackgroundAndFontsOnloadFunction() {
-	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = true;
 	if(firstBackgroundLoadComplete && fontsLoadComplete) {
+		imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 1;
 		if(!first_video_flag){
+			imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 2;
 			videoFirstBackgroundOnloadFunction();
 		}
 		if (sequentiallyLoadFlag) {
+			imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 4;
 			console.log('imgFirstBackgroundAndFontsOnload');
 			document.getElementById('loadingString').style.display = "none";
 			loadingTransitionAnimeIndexBackgroundTextLoadComplete();
@@ -433,8 +436,9 @@ window.onload = function(){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
 	}
-	if(!imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag){
+	if(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag != 15){
 		// ブラウザによってはimgFirstBackgroundAndFontsOnloadFunctionが実行されていないので、それ用の処理
+		alert(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag)
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
 		setImagesWithoutFirstImage();
