@@ -413,10 +413,10 @@ if ('fonts' in document) {
 
 // キービジュアルとフォントの読み込みが終わった時に実行する処理
 function imgFirstBackgroundAndFontsOnloadFunction() {
+	if(!first_video_flag){
+		videoFirstBackgroundOnloadFunction();
+	}
 	if (sequentiallyLoadFlag) {
-		if(!first_video_flag){
-			videoFirstBackgroundOnloadFunction();
-		}
 		console.log('imgFirstBackgroundAndFontsOnload');
 		document.getElementById('loadingString').style.display = "none";
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
@@ -427,15 +427,14 @@ function imgFirstBackgroundAndFontsOnloadFunction() {
 
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){
-	loadingTransitionAnimeCommon();
 	windowOnLoadFlag = true;
 	document.getElementById('loadingString').style.display = "none";
 	setLoadedScrollLoadComplete();
 	restoreScrollPositionCommonLoadComplete();
 	if (!sequentiallyLoadFlag){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
-		startTransitionAnimeAndSoOn();
 	}
+	startTransitionAnimeAndSoOn();
 	setTwitterScript();
 	initYoutubeApi();
 }
