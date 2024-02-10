@@ -410,10 +410,10 @@ var imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = false;
 function imgFirstBackgroundAndFontsOnloadFunction() {
 	if(firstBackgroundLoadComplete && fontsLoadComplete) {
 		if(!first_video_flag){
-			imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = true;
 			videoFirstBackgroundOnloadFunction();
 		}
 		if (sequentiallyLoadFlag) {
+			imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = true;
 			console.log('imgFirstBackgroundAndFontsOnload');
 			document.getElementById('loadingString').style.display = "none";
 			loadingTransitionAnimeIndexBackgroundTextLoadComplete();
