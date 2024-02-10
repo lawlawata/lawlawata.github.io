@@ -68,11 +68,6 @@ function setTwitterScript(){
 	document.head.appendChild(twitterScript);
 }
 
-// スクロール位置を保持する関数
-function saveScrollPosition() {
-	sessionStorage.setItem('scrollPosition', window.scrollY);
-}
-
 
 // ---- ローディングアニメーション関連 ----
 
@@ -125,13 +120,17 @@ function loadingTransitionAnimeIndexBackgroundText() {
 }
 var loadingTransitionAnimeIndexBackgroundTextWaitFlag = false;
 var loadingTransitionAnimeIndexBackgroundTextLoadFlag = false;
+function loadingTransitionAnimeIndexBackgroundTextExecute() {
+	if(loadingTransitionAnimeIndexBackgroundTextLoadFlag && loadingTransitionAnimeIndexBackgroundTextWaitFlag)
+		loadingTransitionAnimeIndexBackgroundText();
+}
 function loadingTransitionAnimeIndexBackgroundTextWaitComplete() {
 	loadingTransitionAnimeIndexBackgroundTextWaitFlag = true;
-	if(loadingTransitionAnimeIndexBackgroundTextLoadFlag) loadingTransitionAnimeIndexBackgroundText();
+	loadingTransitionAnimeIndexBackgroundTextExecute();
 }
 function loadingTransitionAnimeIndexBackgroundTextLoadComplete() {
 	loadingTransitionAnimeIndexBackgroundTextLoadFlag = true;
-	if(loadingTransitionAnimeIndexBackgroundTextWaitFlag) loadingTransitionAnimeIndexBackgroundText();
+	loadingTransitionAnimeIndexBackgroundTextExecute();
 }
 
 
@@ -495,4 +494,6 @@ $(window).scroll(function () {
 });
 
 // リロード前にスクロール位置を保存する処理
-window.addEventListener('beforeunload', saveScrollPosition);
+window.addEventListener('beforeunload', function () {
+	sessionStorage.setItem('scrollPosition', window.scrollY);
+});
