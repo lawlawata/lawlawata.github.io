@@ -190,7 +190,7 @@ img.loadingImg {
 	margin: 0em;
 	padding: 0em;
 	color: var(--text-color);
-	z-index: 1;
+	z-index: 9997;
 	display: none;
 }
 
