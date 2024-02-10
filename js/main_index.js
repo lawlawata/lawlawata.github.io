@@ -427,13 +427,14 @@ function imgFirstBackgroundAndFontsOnloadFunction() {
 
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){
+	loadingTransitionAnimeCommon();
 	windowOnLoadFlag = true;
 	document.getElementById('loadingString').style.display = "none";
 	setLoadedScrollLoadComplete();
 	restoreScrollPositionCommonLoadComplete();
 	if (!sequentiallyLoadFlag){
-		startTransitionAnimeAndSoOn();
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
+		startTransitionAnimeAndSoOn();
 	}
 	setTwitterScript();
 	initYoutubeApi();

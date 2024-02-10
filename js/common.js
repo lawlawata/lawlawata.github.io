@@ -51,6 +51,35 @@ function loadingTransitionAnimeCommon() {
 	loading.classList.add('loaded');
 }
 
+// ---- TOPに戻る関連 ----
+
+// TOPに戻る
+function setScrollTop() {
+	window.scrollTo({
+		top: 0,
+		behavior: 'instant'
+	});
+}
+
+// アニメーションしながらTOPに戻る
+function resetLoadingTransitionAnimeCommon() {
+	var circleA = document.getElementById('circleA');
+	var circleB = document.getElementById('circleB');
+	var loadingTransition = document.getElementById('loadingTransition');
+
+	circleA.classList.remove('circleAppear');
+	circleB.classList.remove('circleAppear');
+	loadingTransition.classList.remove('loadingAppear');
+
+	circleA.offsetWidth = circleA.offsetWidth;
+
+	circleA.classList.add('circleAppear');
+	circleB.classList.add('circleAppear');
+	loadingTransition.classList.add('loadingAppear');
+
+	setTimeout(setScrollTop, 1000);
+}
+
 // ---- アニメーション関連 ----
 
 // smoothTriggerにsmoothTextAppearというクラス名を付ける
@@ -83,33 +112,4 @@ function cardAnime() {
 	});
 
 	setTimeout(smoothTextAnime, 800);
-}
-
-// ---- TOPに戻る関連 ----
-
-// TOPに戻る
-function setScrollTop() {
-	window.scrollTo({
-		top: 0,
-		behavior: 'instant'
-	});
-}
-
-// アニメーションしながらTOPに戻る
-function resetLoadingTransitionAnimeCommon() {
-	var circleA = document.getElementById('circleA');
-	var circleB = document.getElementById('circleB');
-	var loadingTransition = document.getElementById('loadingTransition');
-
-	circleA.classList.remove('circleAppear');
-	circleB.classList.remove('circleAppear');
-	loadingTransition.classList.remove('loadingAppear');
-
-	circleA.offsetWidth = circleA.offsetWidth;
-
-	circleA.classList.add('circleAppear');
-	circleB.classList.add('circleAppear');
-	loadingTransition.classList.add('loadingAppear');
-
-	setTimeout(setScrollTop, 1000);
 }
