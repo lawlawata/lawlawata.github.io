@@ -425,7 +425,7 @@ function imgFirstBackgroundAndFontsOnloadFunction() {
 
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){
-	console.log('loaded');
+	alert('loaded');
 	windowOnLoadFlag = true;
 	document.getElementById('loadingString').style.display = "none";
 	setLoadedScrollLoadComplete();
