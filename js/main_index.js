@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// 動画を読み込み終わった時に処理を実行するトリガ
 	if(first_video_flag){
-		var firstMovieVideo = document.getElementById('firstMovieVideo')
+		var firstMovieVideo = document.getElementById('firstMovieVideo');
 		firstMovieVideo.load();
 		firstMovieVideo.addEventListener("loadeddata", videoFirstBackgroundOnloadFunction, false);
 	}
@@ -383,6 +383,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	} else {
 		img_first_background.onload = imgFirstBackgroundOnloadFunction;
 	}
+	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag += 64;
 });
 
 // キー動画が読み込み終わった時に実行する処理
@@ -442,7 +443,7 @@ window.onload = function(){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
 	}
-	if(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag != 63){
+	if(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag != 127){
 		// ブラウザによってはimgFirstBackgroundAndFontsOnloadFunctionが実行されていないので、それ用の処理
 		alert(imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag);
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
