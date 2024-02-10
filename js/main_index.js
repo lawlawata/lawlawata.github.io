@@ -408,12 +408,12 @@ if ('fonts' in document) {
 // キービジュアルとフォントの読み込みが終わった時に実行する処理
 var imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = false;
 function imgFirstBackgroundAndFontsOnloadFunction() {
+	imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = true;
 	if(firstBackgroundLoadComplete && fontsLoadComplete) {
 		if(!first_video_flag){
 			videoFirstBackgroundOnloadFunction();
 		}
 		if (sequentiallyLoadFlag) {
-			imgFirstBackgroundAndFontsOnloadFunctionExecutedFlag = true;
 			console.log('imgFirstBackgroundAndFontsOnload');
 			document.getElementById('loadingString').style.display = "none";
 			loadingTransitionAnimeIndexBackgroundTextLoadComplete();
