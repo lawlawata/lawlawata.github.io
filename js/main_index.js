@@ -332,7 +332,9 @@ function initYoutubeApi(){
 // ---- 呼び出し ----
 
 // ローディングアニメーションを実行するなど、最初に表示する処理
+var startTransitionAnimeAndSoOnExecutedFlag = false;
 function startTransitionAnimeAndSoOn(){
+	startTransitionAnimeAndSoOnExecutedFlag = true;
 	setPotitionCommon();
 	backgroundImage();
 	kamishibaiAnime();
@@ -425,12 +427,11 @@ function imgFirstBackgroundAndFontsOnloadFunction() {
 
 // ページ読み込みが全て終わった時に実行する処理
 window.onload = function(){
-	alert('loaded');
 	windowOnLoadFlag = true;
 	document.getElementById('loadingString').style.display = "none";
 	setLoadedScrollLoadComplete();
 	restoreScrollPositionCommonLoadComplete();
-	if (!sequentiallyLoadFlag){
+	if (!startTransitionAnimeAndSoOnExecutedFlag || !sequentiallyLoadFlag){
 		loadingTransitionAnimeIndexBackgroundTextLoadComplete();
 		startTransitionAnimeAndSoOn();
 	}
