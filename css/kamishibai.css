@@ -68,7 +68,7 @@
 #kamishibaiImgSpace div.kamishibaiImgAppear.contentAppear{
 	opacity: 1;
 }
-#kamishibaiImgSpace span.kamishibaiImgContent{
+#kamishibaiImgSpace .kamishibaiImgContent{
 	display: inline-block;
 	margin: 0em;
 	padding: 0em;
@@ -77,9 +77,8 @@
 	left: 0em;
 	width: 100%;
 	height: 100%;
-	background-position: top left;
-	background-repeat: no-repeat;
-	background-size: cover;
+	object-position: top left;
+	object-fit: cover;
 }
 
 .kamishibaiDotNavigation{

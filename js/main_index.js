@@ -53,7 +53,7 @@ function setImagesWithoutFirstImage(){
 	for (let i=1; i<=7; i++){
 		var istr = String(i)
 		var kamishibaiImgContent = document.getElementById('kamishibaiImgContent' + istr);
-		kamishibaiImgContent.style.backgroundImage = "url('./img/kamishibaiImg" + istr + "." + img_extension + "')";
+		kamishibaiImgContent.src = "./img/kamishibaiImg" + istr + "." + img_extension;
 	}
 
 }
@@ -269,7 +269,7 @@ function kamishibaiAnime() {
 				dotNavicationDot[i].classList.add('contentAppear');
 				imgAppear[i].classList.add('contentAppear');
 				mojiAppear[i].classList.add('contentAppear');
-				imgContent[i].style.backgroundPosition = (sheetScroll * 100.0) + "% " + ((1.0 - sheetScroll) * 100.0) + "%";
+				imgContent[i].style.objedtPosition = (sheetScroll * 100.0) + "% " + ((1.0 - sheetScroll) * 100.0) + "%";
 				mojiContent[i].style.top = (1.0 - sheetScroll) * (mojiSpaceHeight - mojiSpacePHeight / 2) + "px";
 			} else {
 				// 現在見ていないページは隠す
