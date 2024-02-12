@@ -15,7 +15,7 @@
 }
 #backgroundImage .backgroundImageContent{
 	width: 100vmin;
-
+	height: 150vmin;
 }
 /*「中身はわたです！」*/
 #backgroundText.appear{

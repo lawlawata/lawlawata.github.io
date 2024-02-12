@@ -40,37 +40,18 @@ function setVideoSource() {
 }
 
 function isAvifSupported() {
-	if (!window || !window.HTMLCanvasElement) return false; // キャンバスがない場合、サポートされていないと見なす
-	const canvas = document.createElement('canvas');
-	if (!canvas || !canvas.getContext) return false; // キャンバスが作成できない場合、サポートされていないと見なす
-	const ctx = canvas.getContext('2d');
-	if (!ctx || !ctx.getImageData) return false; // キャンバスが画像データを取得できない場合、サポートされていないと見なす
-
-	const avifImg = new Image();
-	avifImg.src = 'data:image/avif;base64,AAAAFGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAC8AAAAGwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAARWlwcnAAAAAoaXBjbwAAABRpc3BlAAAAAAAAAAQAAAAEAAAADGF2MUOBAAAAAAAAFWlwbWEAAAAAAAAAAQABAgECAAAAI21kYXQSAAoIP8R8hAQ0BUAyDWeeUy0JG+QAACANEkA=';
-
-	return new Promise((resolve, reject) => {
-		avifImg.onload = function() {
-			const width = avifImg.naturalWidth;
-			const height = avifImg.naturalHeight;
-			resolve(width > 0 && height > 0);
-		};
-		avifImg.onerror = function() {
-			reject(false);
-		};
-	});
+	// TODO
+	return false;
 }
 
 // キービジュアル以外は後で読み込む
 function setImagesWithoutFirstImage(){
-	var img_extension = "jpg";
-	isAvifSupported().then(supported => {
-		if (supported) {
-			img_extension = "avif";
-		} else {
-			img_extension = "jpg";
-		}
-	});
+	var img_extension = "";
+	if (isAvifSupported()) {
+		img_extension = "avif";
+	} else {
+		img_extension = "jpg";
+	}
 
 	for (let i=1; i<=7; i++){
 		var istr = String(i)
@@ -393,13 +374,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// キービジュアルの読み込みが終わった時に処理を実行するトリガ
 	var img_first_background = new Image();
-	isAvifSupported().then(supported => {
-    if (supported) {
-			img_first_background.src = './img/first_background.avif';
-		} else {
-			img_first_background.src = './img/first_background.jpg';
-		}
-	});
+	if (isAvifSupported()) {
+		img_first_background.src = './img/first_background.avif';
+	} else {
+		img_first_background.src = './img/first_background.jpg';
+	}
 	if (img_first_background.complete) {
 		imgFirstBackgroundOnloadFunction();
 	} else {
