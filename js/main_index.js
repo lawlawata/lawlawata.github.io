@@ -40,8 +40,18 @@ function setVideoSource() {
 }
 
 function isAvifSupported() {
-    const img = new Image();
-    return typeof img.decode === 'function';
+	const avifMime = 'image/avif';
+	if (!window || !window.HTMLCanvasElement) return false; // キャンバスがない場合、サポートされていないと見なす
+	const canvas = document.createElement('canvas');
+	if (!canvas || !canvas.getContext) return false; // キャンバスが作成できない場合、サポートされていないと見なす
+	const ctx = canvas.getContext('2d');
+	if (!ctx || !ctx.getImageData) return false; // キャンバスが画像データを取得できない場合、サポートされていないと見なす
+
+	const avifDataUri = 'data:image/avif;base64,AAAAFGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAC8AAAAGwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAARWlwcnAAAAAoaXBjbwAAABRpc3BlAAAAAAAAAAQAAAAEAAAADGF2MUOBAAAAAAAAFWlwbWEAAAAAAAAAAQABAgECAAAAI21kYXQSAAoIP8R8hAQ0BUAyDWeeUy0JG+QAACANEkA=';
+	const img = new Image();
+	img.src = avifDataUri;
+
+	return img.complete && img.naturalWidth > 0 && img.naturalHeight > 0;
 }
 
 // キービジュアル以外は後で読み込む
