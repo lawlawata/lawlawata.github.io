@@ -47,14 +47,9 @@ function isAvifSupported() {
 	const ctx = canvas.getContext('2d');
 	if (!ctx || !ctx.getImageData) return false;
 
-	console.log("xxxx");
-
 	const avifDataUri = './img/first_background.avif';
 	const img = new Image();
 	img.src = avifDataUri;
-	console.log(img.complete);
-	console.log(img.naturalWidth);
-
 	return img.complete && img.naturalWidth > 0 && img.naturalHeight > 0;
 }
 
