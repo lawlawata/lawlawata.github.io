@@ -65,12 +65,12 @@ function isAvifSupported() {
 function setImagesWithoutFirstImage(){
 	var img_extension = "";
 	isAvifSupported().then(supported => {
-    if (supported) {
+		if (supported) {
 			img_extension = "avif";
 		} else {
 			img_extension = "jpg";
 		}
-	}
+	});
 
 	for (let i=1; i<=7; i++){
 		var istr = String(i)
@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		} else {
 			img_first_background.src = './img/first_background.jpg';
 		}
-	}
+	});
 	if (img_first_background.complete) {
 		imgFirstBackgroundOnloadFunction();
 	} else {
