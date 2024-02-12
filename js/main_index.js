@@ -269,7 +269,7 @@ function kamishibaiAnime() {
 				dotNavicationDot[i].classList.add('contentAppear');
 				imgAppear[i].classList.add('contentAppear');
 				mojiAppear[i].classList.add('contentAppear');
-				imgContent[i].style.objedtPosition = (sheetScroll * 100.0) + "% " + ((1.0 - sheetScroll) * 100.0) + "%";
+				imgContent[i].style.objectPosition = (sheetScroll * 100.0) + "% " + ((1.0 - sheetScroll) * 100.0) + "%";
 				mojiContent[i].style.top = (1.0 - sheetScroll) * (mojiSpaceHeight - mojiSpacePHeight / 2) + "px";
 			} else {
 				// 現在見ていないページは隠す
