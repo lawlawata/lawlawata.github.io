@@ -39,12 +39,15 @@ function setVideoSource() {
 	}
 }
 
+function isAvifSupported() {
+    const img = new Image();
+    return typeof img.decode === 'function';
+}
 
 // キービジュアル以外は後で読み込む
 function setImagesWithoutFirstImage(){
 	var img_extension = "";
-	const sourceElement = document.getElementById('backgroundImage').querySelector('source');
-	if (sourceElement && sourceElement.srcset && sourceElement.type === 'image/avif') {
+	if (isAvifSupported()) {
 		img_extension = "avif";
 	} else {
 		img_extension = "jpg";
@@ -371,8 +374,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// キービジュアルの読み込みが終わった時に処理を実行するトリガ
 	var img_first_background = new Image();
-	const sourceElement = document.getElementById('backgroundImage').querySelector('source');
-	if (sourceElement && sourceElement.srcset && sourceElement.type === 'image/avif') {
+	if (isAvifSupported()) {
 		img_first_background.src = './img/first_background.avif';
 	} else {
 		img_first_background.src = './img/first_background.jpg';
