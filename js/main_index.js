@@ -40,18 +40,25 @@ function setVideoSource() {
 }
 
 function isAvifSupported() {
-	const avifMime = 'image/avif';
 	if (!window || !window.HTMLCanvasElement) return false; // キャンバスがない場合、サポートされていないと見なす
 	const canvas = document.createElement('canvas');
 	if (!canvas || !canvas.getContext) return false; // キャンバスが作成できない場合、サポートされていないと見なす
 	const ctx = canvas.getContext('2d');
 	if (!ctx || !ctx.getImageData) return false; // キャンバスが画像データを取得できない場合、サポートされていないと見なす
 
-	const avifDataUri = 'data:image/avif;base64,AAAAFGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAC8AAAAGwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAARWlwcnAAAAAoaXBjbwAAABRpc3BlAAAAAAAAAAQAAAAEAAAADGF2MUOBAAAAAAAAFWlwbWEAAAAAAAAAAQABAgECAAAAI21kYXQSAAoIP8R8hAQ0BUAyDWeeUy0JG+QAACANEkA=';
-	const img = new Image();
-	img.src = avifDataUri;
+	const avifImg = new Image();
+	avifImg.src = 'data:image/avif;base64,AAAAFGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAC8AAAAGwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAARWlwcnAAAAAoaXBjbwAAABRpc3BlAAAAAAAAAAQAAAAEAAAADGF2MUOBAAAAAAAAFWlwbWEAAAAAAAAAAQABAgECAAAAI21kYXQSAAoIP8R8hAQ0BUAyDWeeUy0JG+QAACANEkA=';
 
-	return img.complete && img.naturalWidth > 0 && img.naturalHeight > 0;
+	return new Promise((resolve, reject) => {
+		avifImg.onload = function() {
+			const width = avifImg.naturalWidth;
+			const height = avifImg.naturalHeight;
+			resolve(width > 0 && height > 0);
+		};
+		avifImg.onerror = function() {
+			reject(false);
+		};
+	});
 }
 
 // キービジュアル以外は後で読み込む
