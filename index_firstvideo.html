@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="ja">
+
+<!--
+どうしてこんなところを見に来ているんですか？
+ここは見てはいけないところですよ？
+コードを見に来るなんて、ろくなことを考えていない変態さんですか？
+恥ずかしいので帰ってください！
+今すぐです！
+呪いますよ？
+
+Youtubeでも見に行ってください！
+https://www.youtube.com/@lawlawata
+-->
+
+
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-BZMW1FVFSG"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-BZMW1FVFSG');
+	</script>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>ららわたオフィシャルサイト | 中身が綿の着ぐるみ</title>
+	<meta name="description" content="中身が綿の、ららわたです！ オリジナルのキャラクターです！ 綿に魔法をかけて動くようにしています！ 中の人なんていないです！" />
+	<meta name=”keywords” content="ららわた,着ぐるみ,きぐるみ,kigurumi">
+	<meta property="og:site_name" content="ららわた" />
+	<meta property="og:locale" content="ja_JP" />
+	<meta property="og:url" content="https://lawlawata.com" />
+	<meta property="og:title" content="ららわたオフィシャルサイト | 中身が綿の着ぐるみ" />
+	<meta property="og:type" content="website">
+	<meta property="og:description" content="中身が綿の、ららわたです！ オリジナルのキャラクターです！ 綿に魔法をかけて動くようにしています！ 中の人なんていないです！" />
+	<meta property="og:image" content="https://lawlawata.com/img/first_background.jpg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@lawlawata" />
+
+	<!-- preload -->
+	<link rel="preload" href="video/first_movie.webm" as="video" type="video/webm" media="(max-aspect-ratio: 0.76)"/>
+	<link rel="preload" href="video/first_movie_horizonal.mp4" as="video" type="video/mp4" media="(min-aspect-ratio: 0.76)"/>
+	<link rel="preload" href="img/logo.png" as="image" />
+	<link rel="preload" href="img/youtube_icon.svg" as="image" />
+
+	<!-- css -->
+	<link rel="stylesheet" href="css/init_firstvideo.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/loading.css">
+	<link rel="stylesheet" href="css/background.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/kamishibai.css">
+	<link rel="stylesheet" href="css/body.css">
+	<link rel="stylesheet" href="css/footer.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="favicon.ico" sizes="any"><!-- 32×32 -->
+	<link rel="icon" href="icon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png"><!-- 180×180 -->
+	<link rel="manifest" href="manifest.webmanifest">
+
+	<!-- フォント -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Kiwi+Maru&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+</head>
+<body class="noScroll">
+
+	<!-- ローディング画面 -->
+	<div id="loading">
+		<div class="loader">Loading...</div>
+	</div>
+
+	<div id="loadingTransition">
+		<div id="circleA"></div>
+		<div id="circleB"></div>
+	</div>
+
+	<div id="loadingString">
+		<span id="loadingStringChar1">L</span>
+		<span id="loadingStringChar2">O</span>
+		<span id="loadingStringChar3">A</span>
+		<span id="loadingStringChar4">D</span>
+		<span id="loadingStringChar5">I</span>
+		<span id="loadingStringChar6">N</span>
+		<span id="loadingStringChar7">G</span>
+	</div>
+
+	<!-- ヘッダー -->
+	<header id="header">
+		<div id="headerColorPink"></div>
+		<div id="headerColorBlack"></div>
+		<div id="headerColorGray"></div>
+		<div id="headerContent">
+			<img id="headerImg" src="./img/logo.png" alt="ロゴ"/>
+			<a id="headerXA" href="https://twitter.com/lawlawata">𝕏</a>
+			<a id="headerImgYoutubeA" href="https://www.youtube.com/@lawlawata"><img id="headerImgYoutube" src="./img/youtube_icon.svg" alt="Youtube"/></a>
+		</div>
+	</header>
+
+	<!-- 背景画像 -->
+	<div id="firstMovieDiv">
+		<video id="firstMovieVideo" preload="auto" muted>
+			<source id="firstMovieSource1" src="" type="" alt="キー動画">
+			<source id="firstMovieSource2" src="" type="" alt="キー動画">
+			<p>動画を再生できません</p>
+		</video>
+	</div>
+	<picture id="backgroundImage">
+		<source class="backgroundImageContent" srcset="./img/first_background.avif" type="image/avif" alt="キービジュアル"/>
+		<img class="backgroundImageContent" src="./img/first_background.jpg" alt="キービジュアル"/>
+	</picture>
+	<div id="backgroundText">
+		<p><b>
+			<span id="wataPrefix">中身は</span>
+			<span id="wataSquare"><span id="wataTrigger"><span id="wataPurupuru">わた</span></span></span>
+			<span id="wataSuffix">です！</span>
+		</b></p>
+	</div>
+	<div id="backgroundWhiteBlur"></div>
+	<div id="backgroundPinkBlur"></div>
+
+	<!-- 紙芝居 -->
+	<div id="kamishibaiImgSpace">
+		<div class="kamishibaiImgAppear"><span id="kamishibaiImgContent1" class="kamishibaiImgContent"></span></div>
+		<div class="kamishibaiImgAppear"><span id="kamishibaiImgContent2" class="kamishibaiImgContent"></span></div>
+		<div class="kamishibaiImgAppear"><span id="kamishibaiImgContent3" class="kamishibaiImgContent"></span></div>
+		<div class="kamishibaiImgAppear"><span id="kamishibaiImgContent4" class="kamishibaiImgContent"></span></div>
+		<div class="kamishibaiImgAppear"><span id="kamishibaiImgContent5" class="kamishibaiImgContent"></span></div>
+		<div class="kamishibaiImgAppear"><span id="kamishibaiImgContent6" class="kamishibaiImgContent"></span></div>
+		<div class="kamishibaiImgAppear"><span id="kamishibaiImgContent7" class="kamishibaiImgContent"></span></div>
+
+		<div class="kamishibaiDotNavigation">
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+		</div>
+	</div>
+	<div id="kamishibaiMojiSpace">
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			2次元の世界でアニメの主人公を目指していたのですが、オーディションがなかなか難しかったので、諦めて魔法のお勉強をはじめました
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			お勉強をしていくうちに次元超越魔法に出会い、3次元の世界に興味を持ちました
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			2次元世界の私にとって、3次元の世界を感受するのは、情報量が劇的に増えて大変なのです
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			特訓を重ねた末、パソコンのカメラから3次元のこの世界に出てきてしまいました！！
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			体積が足りなかったぶんは、そこにあった綿をつめて、魔法をかけて動くようにしたんです
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			今は4次元の世界を知るために、4次元立体の動画を見て訓練しています！
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			バカっぽく見えるかもしれませんが、私だってちゃんとやる時はやるんですよ！！
+		</span></span></p></div>
+	</div>
+
+	<!-- 本体 -->
+	<div id="body">
+
+		<!-- キービジュアルを見せるためのスペース -->
+		<div id="emptySpace">
+			<p id="favorabilityP"><span>好感度 </span><b id="favorabilityB"></b><span id="favorabilitySpan">%</span></p>
+			<div id="favorabilityDiv"><img id="favorabilityImg" class="" src="./img/favorabilityImg.svg"/></div>
+		</div>
+
+		<h1>トップ</h1>
+
+		<div id="introduction">
+			<p>
+				<span class="smoothText"><span class="smoothTextTrigger">オリジナルのキャラクターです！</span></span><br>
+
+				<span class="smoothText"><span class="smoothTextTrigger">中身は綿です☁</span></span>
+				<span class="smoothText"><span class="smoothTextTrigger">綿に魔法をかけて動くようにしています💫</span></span><br>
+
+				<span class="smoothText"><span class="smoothTextTrigger">中の人なんていないです！</span></span>
+			</p>
+		</div>
+
+
+		<h1>経緯</h1>
+		<div id="kamishibaiEmptySpace">
+			<div class="arrowGroup">
+				<div class="arrow"></div>
+				<div class="arrow"></div>
+				<div class="arrow"></div>
+			</div>
+			<div class="arrowGroup">
+				<div class="arrow"></div>
+				<div class="arrow"></div>
+				<div class="arrow"></div>
+			</div>
+		</div>
+
+		<div id="backgroundChangeEmptySpace"></div>
+
+		<h1>自己紹介</h1>
+		<div id="cardColumn">
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">愛称</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">「ららわたちゃん」や「ららちゃん」って呼んでください</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">年齢</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">19歳（JD2）</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">好き</span></span></h2>
+				<ul>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">牛乳🥛</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">甘い物🍰</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">カワイイ／イケメンな着ぐるみさん</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">グリーティング👋</span></span></span></li>
+				</ul>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">嫌い</span></span></h2>
+				<ul>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">ゴーヤ</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">虫🦗</span></span></span></li>
+				</ul>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">趣味</span></span></h2>
+				<ul>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">お絵描き</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">カメラ</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">魔法</span></span></span></li>
+				</ul>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">属性</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">清楚系地雷⚡</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">出身</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">アニメの世界から来ました！📺👋👩🏻‍🦰</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">お仕事</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">魔法学校の大学2年生です👩‍🎓🏫</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">魔法道具に人間の感情を吹き込むお勉強をしています🧙‍♀️</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">チャームポイント</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">前髪の紫のアホ毛がチャームポイントです📡</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">もともとは魔法の杖だったものです🪄</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">無くなると動けなくなります🪨</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">フォロー</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">大歓迎です σ(^∇^ヾ)ｵｲﾃﾞｰ</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">着ぐるみさんやカメラマンさんはもちろん、ROM専さんも楽しめるツイートをしていけるように頑張ります！！💬</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">言語</span></span></h2>
+				<ul>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">魔法構成術式🪄　＊魔術詠唱と言われるものです🧙‍♀️</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">日本語🌏</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">English🌎　＊I'm right in the middle of learning English.</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Other Languages🌍　＊With magic, I can translate any language!</span></span></span></li>
+				</ul>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">グリーティング</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">お写真、動画はどんどん撮ってください📷</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">カメラとか持っていなくても、グリーティングだけでも歓迎です！！🤗</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">まずは握手からです🤝</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">ハグは3秒くらいまでです🫂　＊息が続かないんです💨</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">デビュー</span></span></h2>
+				<p><span class="smoothText"><span class="smoothTextTrigger">2021年10月3日のフラパのイベントでデビューしました！🌼</span></span></p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">夢</span></span></h2>
+				<p><span class="smoothText"><span class="smoothTextTrigger">魔法の力でみんなの心を満たして幸せにすることです！💘</span></span></p>
+			</div></div>
+		</div>
+
+
+
+		<div class="twitterEmptySpace"></div>
+
+
+		<h1>X</h1>
+		<p id="twitter-timelineP">
+			<a class="twitter-timeline" href="https://twitter.com/lawlawata?ref_src=twsrc%5Etfw" data-chrome="noborders transparent noscrollbar" data-tweet-limit="5">𝕏 も見に来てください！</a>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</p>
+
+
+		<div class="twitterEmptySpace"></div>
+
+		<div class="card"><div class="cardTrigger">
+			<h2><span class="smoothText"><span class="smoothTextTrigger">モーメント</span></span></h2>
+			<ul>
+				<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">
+					<a href="https://twitter.com/search?q=from%3Alawlawata%20-filter%3Areplies&src=typed_query">話題のツイートです！</a><br>
+					𝕏で話題のツイートを検索した結果です！
+				</span></span></li>
+				<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">
+					<a href="https://twitter.com/i/events/1479159069806149636">「着ぐるみ好きのための、私の取扱説明書」</a><br>
+					着ぐるみの欠陥について、私が思っていることをつぶやきました💭
+				</span></span></li>
+				<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">
+					<a href="https://twitter.com/i/events/1495303084771524608">お気に入りのツイート集です！</a><br>
+					普段はこんな感じでツイートしています！！
+				</span></span></li>
+			</ul>
+		</div></div>
+
+		<h1>Youtube</h1>
+		<div class="card"><div class="cardTrigger youtubeCardTrigger">
+			<h2><span class="smoothText"><span class="smoothTextTrigger">Youtube</span></span></h2>
+			<div id="youtubeSquare">
+				<div id="youtubeInnerSquare">
+					<div id="youtubeContainer"></div>
+				</div>
+			</div>
+		</div></div>
+
+		<h1>最後に</h1>
+		<div class="card"><div class="cardTrigger">
+			<h2><span class="smoothText"><span class="smoothTextTrigger">おかわり</span></span></h2>
+			<p>
+				<span class="smoothText"><span class="smoothTextTrigger">ここまで読んでくれてありがとうございます📖</span></span>
+				<span class="smoothText"><span class="smoothTextTrigger">こんなところまで読んでくれる心優しい方なんているのでしょうか？</span></span>
+				<span class="smoothText"><span class="smoothTextTrigger">私のことをもっと知りたい人は <a href="https://twitter.com/lawlawatabokori">ららわたのわたぼこり</a> も見てください💬</span></span>
+			</p>
+		</div></div>
+		<div class="card"><div class="cardTrigger">
+			<h2><span class="smoothText"><span class="smoothTextTrigger">さいごに</span></span></h2>
+			<p>
+				<span class="smoothText"><span class="smoothTextTrigger"><a href="https://twitter.com/lawlawata">𝕏</a> と <a href="https://www.youtube.com/@lawlawata">Youtube</a> で活動しています！</span></span>
+				<span class="smoothText"><span class="smoothTextTrigger">見に来てください！！</span></span>
+			</p>
+		</div></div>
+	</div>
+</div>
+
+	<!-- フッター -->
+	<footer>
+		<div id="footerContent">
+			<div id="footerColumnA">
+				<span style="background-image: url('./img/logo.png')"></span>
+				<table>
+					<tr><td>
+						<a id="footerXA" href="https://twitter.com/lawlawata">𝕏</a>
+					</td><td>
+						<a id="footerImgYoutubeA" href="https://www.youtube.com/@lawlawata"><img id="footerImgYoutube" src="./img/youtube_icon_footer.svg" alt="Youtube"/></a>
+					</td></tr>
+				</table>
+			</div>
+			<div id="footerColumnB">
+				<table>
+					<tr><td>Photo by</td><td>:</td><td><a href="https://twitter.com/aoi_sailor">あおい @aoi_sailor</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/yuinakigkig">唯那 @yuinakigkig</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/GUNHED507">GUNHED#507 @GUNHED507</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/Kuon_Kig">くおん @Kuon_Kig</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/gerorine">gerorine @gerorine</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/kigupanko">ぱん @kigupanko</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/OmbaToh2019">温羽とお @OmbaToh2019</a></td></tr>
+					<tr><td>　</td><td></td><td></td></tr>
+					<tr><td>Thx</td><td>:</td><td><a href="https://twitter.com/torme_kig">とるめ @torme_kig</a></td></tr>
+				</table>
+			</div>
+			<div id="footerColumnC">
+				<button id="returnTopButton" style="background-image: url('./img/return_top.png')" aria-label="トップへ戻る"></button>
+			</div>
+		</div>
+		<div id="copyright">
+			<p>© 2024 ららわた. All Rights Reserved.</p>
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="js/common.js"></script>
+	<script src="js/main_index_firstvideo.js"></script>
+</body>
+</html>

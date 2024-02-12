@@ -1,0 +1,46 @@
+:root{
+
+
+	/* ---- 配置 ---- */
+
+	/* bodyの左右のpaddingサイズ */
+	--body-side-padding-size: min(4em,8vw);
+
+	/* ヘッダーの高さ */
+	--header-height-size: 6em;
+
+	/* kamishibaiMojiSpaceの上辺のy座標 */
+	--kamishibai-moji-space-top-size: calc(min(max(125vw, 50vh), 100vh - var(--header-height-size)));
+
+	/* emptySpace(背景画像を表示するスペース)の高さ */
+	--empty-space-height-size: calc(min(150vmin, 100vh - var(--header-height-size)));
+
+
+	/* ローディング後のトランジションの長さ */
+	--transition-anime-length: 2s;
+
+	/* 動画の長さ */
+	--first-movie-length: 11s;
+	/* 11.1s; */
+
+
+	/* ---- 色 ---- */
+
+	/* ピンク */
+	--main-color: #ff7c88;
+
+	/* 背景色 */
+	--base-color: #ffe6ea;
+
+	/* 文字色 */
+	--text-color: #8a8077;
+
+	/* フッターの文字色。フォントが小さく視認しにくいため濃い色にする。 */
+	--footer-text-color: #665E58;
+
+	/* 白 */
+	--white-color: #ffffff;
+
+	/* ヘッダーの灰色 */
+	--header-gray-color: #AA8C8E;
+}
