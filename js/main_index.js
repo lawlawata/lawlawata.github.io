@@ -63,7 +63,7 @@ function isAvifSupported() {
 
 // キービジュアル以外は後で読み込む
 function setImagesWithoutFirstImage(){
-	var img_extension = "";
+	var img_extension = "jpg";
 	isAvifSupported().then(supported => {
 		if (supported) {
 			img_extension = "avif";
