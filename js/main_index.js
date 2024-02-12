@@ -64,10 +64,12 @@ function isAvifSupported() {
 // キービジュアル以外は後で読み込む
 function setImagesWithoutFirstImage(){
 	var img_extension = "";
-	if (isAvifSupported()) {
-		img_extension = "avif";
-	} else {
-		img_extension = "jpg";
+	isAvifSupported().then(supported => {
+    if (supported) {
+			img_extension = "avif";
+		} else {
+			img_extension = "jpg";
+		}
 	}
 
 	for (let i=1; i<=7; i++){
@@ -391,10 +393,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	// キービジュアルの読み込みが終わった時に処理を実行するトリガ
 	var img_first_background = new Image();
-	if (isAvifSupported()) {
-		img_first_background.src = './img/first_background.avif';
-	} else {
-		img_first_background.src = './img/first_background.jpg';
+	isAvifSupported().then(supported => {
+    if (supported) {
+			img_first_background.src = './img/first_background.avif';
+		} else {
+			img_first_background.src = './img/first_background.jpg';
+		}
 	}
 	if (img_first_background.complete) {
 		imgFirstBackgroundOnloadFunction();
