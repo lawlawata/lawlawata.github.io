@@ -47,7 +47,7 @@ function isAvifSupported() {
 	const ctx = canvas.getContext('2d');
 	if (!ctx || !ctx.getImageData) return false;
 
-	const avifDataUri = './img/first_background.avif';
+	const avifDataUri = globalPrefix + 'img/first_background.avif';
 	const img = new Image();
 	img.src = avifDataUri;
 	return img.complete && img.naturalWidth > 0 && img.naturalHeight > 0;
@@ -65,7 +65,7 @@ function setImagesWithoutFirstImage(){
 	for (let i=1; i<=7; i++){
 		var istr = String(i)
 		var kamishibaiImgContent = document.getElementById('kamishibaiImgContent' + istr);
-		kamishibaiImgContent.src = "./img/kamishibaiImg" + istr + "." + img_extension;
+		kamishibaiImgContent.src = globalPrefix + 'img/kamishibaiImg' + istr + '.' + img_extension;
 	}
 
 }
@@ -384,9 +384,9 @@ document.addEventListener('DOMContentLoaded', function(){
 	// キービジュアルの読み込みが終わった時に処理を実行するトリガ
 	var img_first_background = new Image();
 	if (isAvifSupported()) {
-		img_first_background.src = './img/first_background.avif';
+		img_first_background.src = globalPrefix + 'img/first_background.avif';
 	} else {
-		img_first_background.src = './img/first_background.jpg';
+		img_first_background.src = globalPrefix + 'img/first_background.jpg';
 	}
 	if (img_first_background.complete) {
 		imgFirstBackgroundOnloadFunction();
