@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="ja">
+
+<!--
+どうしてこんなandころを見に来ているんですか？
+ここは見てはいけないandころですよ？
+コードを見に来るなんて、ろくなこandを考えていない変態さんですか？
+恥ずかしいので帰ってください！
+今すぐです！
+呪いますよ？
+
+Youtubeでも見に行ってください！
+https://www.youtube.com/@lawlawata
+-->
+
+
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-BZMW1FVFSG"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-BZMW1FVFSG');
+	</script>
+
+	<!-- 言語によって別ページに飛ばす -->
+	<script>
+		var globalPrefix = '../'
+	</script>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Lalawata Official Site | kigurumi with cotton inside!</title>
+	<meta name="description" content="It's cotton inside, Lalawata! This is an original character! I put magic on cotton to make it move!！ There is no one inside!" />
+	<meta name=”keywords” content="Lalawata,kigurumi,Kigurumi,kigurumi">
+	<meta property="og:site_name" content="Lalawata" />
+	<meta property="og:locale" content="ja_JP" />
+	<meta property="og:url" content="https://lawlawata.com" />
+	<meta property="og:title" content="Lalawata Official Site | kigurumi with cotton inside!" />
+	<meta property="og:type" content="website">
+	<meta property="og:description" content="It's cotton inside, Lalawata! This is an original character! I put magic on cotton to make it move!！ There is no one inside!" />
+	<meta property="og:image" content="https://lawlawata.com/img/first_background.jpg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@lawlawata" />
+
+	<!-- preload -->
+	<!-- <link rel="preload" href="video/first_movie.webm" as="video" type="video/webm" media="(max-aspect-ratio: 0.76)"/> -->
+	<!-- <link rel="preload" href="video/first_movie_horizonal.mp4" as="video" type="video/mp4" media="(min-aspect-ratio: 0.76)"/> -->
+	<link rel="preload" href="../img/first_background.avif" as="image" type="image/avif">
+	<link rel="preload" href="../img/logo.png" as="image" />
+	<link rel="preload" href="../img/youtube_icon.svg" as="image" />
+
+	<!-- css -->
+	<link rel="stylesheet" href="../css/init.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/loading.css">
+	<link rel="stylesheet" href="../css/background.css">
+	<link rel="stylesheet" href="../css/header.css">
+	<link rel="stylesheet" href="../css/kamishibai.css">
+	<link rel="stylesheet" href="../css/body.css">
+	<link rel="stylesheet" href="../css/footer.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../favicon.ico" sizes="any"><!-- 32×32 -->
+	<link rel="icon" href="../icon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="../apple-touch-icon.png"><!-- 180×180 -->
+	<link rel="manifest" href="../manifest.webmanifest">
+
+	<!-- フォント -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+</head>
+<body class="noScroll">
+
+	<!-- ローディング画面 -->
+	<div id="loading">
+		<div class="loader">Loading...</div>
+	</div>
+
+	<div id="loadingTransition">
+		<div id="circleA"></div>
+		<div id="circleB"></div>
+	</div>
+
+	<div id="loadingString">
+		<span id="loadingStringChar1">L</span>
+		<span id="loadingStringChar2">O</span>
+		<span id="loadingStringChar3">A</span>
+		<span id="loadingStringChar4">D</span>
+		<span id="loadingStringChar5">I</span>
+		<span id="loadingStringChar6">N</span>
+		<span id="loadingStringChar7">G</span>
+	</div>
+
+	<!-- ヘッダー -->
+	<header id="header">
+		<div id="headerColorPink"></div>
+		<div id="headerColorBlack"></div>
+		<div id="headerColorGray"></div>
+		<div id="headerContent">
+			<img id="headerImg" src="../img/logo.png" alt="ロゴ"/>
+			<a id="headerXA" href="https://twitter.com/lawlawata">𝕏</a>
+			<a id="headerImgYoutubeA" href="https://www.youtube.com/@lawlawata"><img id="headerImgYoutube" src="../img/youtube_icon.svg" alt="Youtube"/></a>
+		</div>
+	</header>
+
+	<!-- 背景画像 -->
+	<!-- <div id="firstMovieDiv"> -->
+	<!-- <video id="firstMovieVideo" preload="auto" muted> -->
+	<!-- <source id="firstMovieSource1" src="" type="" alt="キー動画"> -->
+	<!-- <source id="firstMovieSource2" src="" type="" alt="キー動画"> -->
+	<!-- <p>動画を再生できません</p> -->
+	<!-- </video> -->
+	<!-- </div> -->
+	<picture id="backgroundImage">
+		<source class="backgroundImageContent" srcset="../img/first_background.avif" type="image/avif" alt="Key Visual"/>
+		<img class="backgroundImageContent" src="../img/first_background.jpg" alt="Key Visual">
+	</picture>
+	<div id="backgroundText">
+		<p><b>
+			<span id="wataPrefix">I'm</span>
+			<span id="wataSquare"><span id="wataTrigger"><span id="wataPurupuru"> cotton</span></span></span>
+			<span id="wataSuffix">inside!</span>
+		</b></p>
+	</div>
+	<div id="backgroundWhiteBlur"></div>
+	<div id="backgroundPinkBlur"></div>
+
+	<!-- 紙芝居 -->
+	<div id="kamishibaiImgSpace">
+		<div class="kamishibaiImgAppear"><img id="kamishibaiImgContent1" class="kamishibaiImgContent" alt="Audition in pursuit of a dream!"></img></div>
+		<div class="kamishibaiImgAppear"><img id="kamishibaiImgContent2" class="kamishibaiImgContent" alt="Studying"></img></div>
+		<div class="kamishibaiImgAppear"><img id="kamishibaiImgContent3" class="kamishibaiImgContent" alt="It's so hard, I'm in trouble!"></img></div>
+		<div class="kamishibaiImgAppear"><img id="kamishibaiImgContent4" class="kamishibaiImgContent" alt="What is it? This world!"></img></div>
+		<div class="kamishibaiImgAppear"><img id="kamishibaiImgContent5" class="kamishibaiImgContent" alt="I can move!"></img></div>
+		<div class="kamishibaiImgAppear"><img id="kamishibaiImgContent6" class="kamishibaiImgContent" alt="I will seize my dream!"></img></div>
+		<div class="kamishibaiImgAppear"><img id="kamishibaiImgContent7" class="kamishibaiImgContent" alt="I will keep working hard!"></img></div>
+
+		<div class="kamishibaiDotNavigation">
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+			<div class=kamishibaiDotNavigationDot></div>
+		</div>
+	</div>
+	<div id="kamishibaiMojiSpace">
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			I wanted to be the main character of an anime in the 2-dimensional world, but auditions were quite difficult, so I gave up and started studying magic!
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			As I studied, I encountered trans-dimensional magic and became interested in the three-dimensional world.
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			As a person who lives in a two-dimensional world, it is very difficult for me to perceive the three-dimensional world because the amount of information increases dramatically.
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			After a lot of special training, I came out of my computer's camera into this three-dimensional world!
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			The part of the body that was lacking in volume was filled with cotton that was there, and I was able to make it move by magic!
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			Now I am training myself to know the 4D world by watching 4D videos!
+		</span></span></p></div>
+		<div class="kamishibaiMojiAppear"><p class="kamishibaiMojiContent"><span class="smoothText"><span class="smoothTextTrigger">
+			It may seem silly, but even I do it when I do it right!
+		</span></span></p></div>
+	</div>
+
+	<!-- 本体 -->
+	<div id="body">
+
+		<!-- Key Visualを見せるためのスペース -->
+		<div id="emptySpace">
+			<p id="favorabilityP"><span>Likeability </span><b id="favorabilityB"></b><span id="favorabilitySpan">%</span></p>
+			<div id="favorabilityDiv"><img id="favorabilityImg" class="" src="../img/favorabilityImg.svg"/></div>
+		</div>
+
+		<h1>Top</h1>
+
+		<div id="introduction">
+			<p>
+				<span class="smoothText"><span class="smoothTextTrigger">This is an original character!</span></span><br>
+
+				<span class="smoothText"><span class="smoothTextTrigger">It's cotton inside!☁</span></span>
+				<span class="smoothText"><span class="smoothTextTrigger">I put magic on cotton to make it move!💫</span></span><br>
+
+				<span class="smoothText"><span class="smoothTextTrigger">There is no one inside!</span></span>
+			</p>
+		</div>
+
+
+		<h1>Background</h1>
+		<div id="kamishibaiEmptySpace">
+			<div class="arrowGroup">
+				<div class="arrow"></div>
+				<div class="arrow"></div>
+				<div class="arrow"></div>
+			</div>
+			<div class="arrowGroup">
+				<div class="arrow"></div>
+				<div class="arrow"></div>
+				<div class="arrow"></div>
+			</div>
+		</div>
+
+		<div id="backgroundChangeEmptySpace"></div>
+
+		<h1>Self introduction</h1>
+		<div id="cardColumn">
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Nickname</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">Please call me "Lalawata-chan" or "Lala-chan</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Age</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">19 years old (Second year university student)</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Likes</span></span></h2>
+				<ul>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">milk🥛</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Sweet things🍰</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Cute kigurumi</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Greeting👋</span></span></span></li>
+				</ul>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Dislike</span></span></h2>
+				<ul>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">bitter gourd</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Insects🦗</span></span></span></li>
+				</ul>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Hobby</span></span></h2>
+				<ul>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Drawing</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Camera</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Magic</span></span></span></li>
+				</ul>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Attributes</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">Japanese jirai-kei fashion girl⚡</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Where I'm from</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">I come from the world of animation！📺👋👩🏻‍🦰</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Work</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">I am a second year student at a magic school.👩‍🎓🏫</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">I am studying to infuse human emotions into magical tools.🧙‍♀️</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Charm point</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">The purple hair in the front of my hair is my charm point.📡</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">It used to be a magic wand.🪄</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">I can't move without it.🪨</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Follow me</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">Followers are welcome!</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">I will do my best to tweet for kigurumi and photographers as well as ROMers to enjoy!💬</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Language</span></span></h2>
+				<ul>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Magic Composition Technique🪄　＊It's called magic spell!🧙‍♀️</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Japanese🌏</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">English🌎　＊I'm right in the middle of learning English.</span></span></span></li>
+					<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">Other Languages🌍　＊With magic, I can translate any language!</span></span></span></li>
+				</ul>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Greeting</span></span></h2>
+				<p>
+					<span class="smoothText"><span class="smoothTextTrigger">Please feel free to take pictures and videos!📷</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">Even if you don't have a camera or other equipment, you are welcome to join me for a meet and greet!🤗</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">I start with a handshake.🤝</span></span>
+					<span class="smoothText"><span class="smoothTextTrigger">Hugs are limited to about 3 seconds.🫂　＊I can't hold my breath.💨</span></span>
+				</p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">Debut</span></span></h2>
+				<p><span class="smoothText"><span class="smoothTextTrigger">I made my debut at the event on October 3, 2021!🌼</span></span></p>
+			</div></div>
+			<div class="card"><div class="cardTrigger">
+				<h2><span class="smoothText"><span class="smoothTextTrigger">My dream</span></span></h2>
+				<p><span class="smoothText"><span class="smoothTextTrigger">To fill everyone's heart with magic and make them happy!💘</span></span></p>
+			</div></div>
+		</div>
+
+
+
+		<div class="twitterEmptySpace"></div>
+
+
+		<h1>X</h1>
+		<p id="twitter-timelineP">
+			<a class="twitter-timeline" loading="lazy" href="https://twitter.com/lawlawata?ref_src=twsrc%5Etfw" data-chrome="noborders transparent noscrollbar" data-tweet-limit="5">Please come and see 𝕏 too!</a>
+		</p>
+
+
+		<div class="twitterEmptySpace"></div>
+
+		<div class="card"><div class="cardTrigger">
+			<h2><span class="smoothText"><span class="smoothTextTrigger">Moments</span></span></h2>
+			<ul>
+				<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">
+					<a href="https://twitter.com/search?q=from%3Alawlawata%20-filter%3Areplies&src=typed_query">Tweet on topic!</a><br>
+					Here are the results of a search for the hottest tweets on 𝕏!
+				</span></span></li>
+				<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">
+					<a href="https://twitter.com/i/events/1479159069806149636">My instruction manual for kigurumi lovers!</a><br>
+					I tweeted what I think about kigurumi's defects!💭
+				</span></span></li>
+				<li><span class="li"><span class="smoothText"><span class="smoothTextTrigger">
+					<a href="https://twitter.com/i/events/1495303084771524608">This is a collection of my favorite tweets!</a><br>
+					This is how I usually tweet!
+				</span></span></li>
+			</ul>
+		</div></div>
+
+		<h1>Youtube</h1>
+		<div class="card"><div class="cardTrigger youtubeCardTrigger">
+			<h2><span class="smoothText"><span class="smoothTextTrigger">Youtube</span></span></h2>
+			<div id="youtubeSquare">
+				<div id="youtubeInnerSquare">
+					<div id="youtubeContainer"></div>
+				</div>
+			</div>
+		</div></div>
+
+		<h1>At the end</h1>
+		<div class="card"><div class="cardTrigger">
+			<h2><span class="smoothText"><span class="smoothTextTrigger">Second helping!</span></span></h2>
+			<p>
+				<span class="smoothText"><span class="smoothTextTrigger">Thank you for reading this far!📖</span></span>
+				<span class="smoothText"><span class="smoothTextTrigger">I'm glad there are kind-hearted people out there who are willing to read this far!</span></span>
+				<span class="smoothText"><span class="smoothTextTrigger">If you want to know more about me <a href="https://twitter.com/lawlawatabokori">Lalawata's cotton dust</a> too!💬</span></span>
+			</p>
+		</div></div>
+		<div class="card"><div class="cardTrigger">
+			<h2><span class="smoothText"><span class="smoothTextTrigger">At the end</span></span></h2>
+			<p>
+				<span class="smoothText"><span class="smoothTextTrigger">I'm active on <a href="https://twitter.com/lawlawata">𝕏</a> and <a href="https://www.youtube.com/@lawlawata">Youtube</a></span></span>
+				<span class="smoothText"><span class="smoothTextTrigger">Come and have a look!</span></span>
+			</p>
+		</div></div>
+	</div>
+
+	<!-- フッター -->
+	<footer>
+		<div id="footerContent">
+			<div id="footerColumnA">
+				<span style="background-image: url('../img/logo.png')"></span>
+				<table>
+					<tr><td>
+						<a id="footerXA" href="https://twitter.com/lawlawata">𝕏</a>
+					</td><td>
+						<a id="footerImgYoutubeA" href="https://www.youtube.com/@lawlawata"><img id="footerImgYoutube" src="../img/youtube_icon_footer.svg" alt="Youtube"/></a>
+					</td></tr>
+				</table>
+			</div>
+			<div id="footerColumnB">
+				<table>
+					<tr><td>Photo by</td><td>:</td><td><a href="https://twitter.com/aoi_sailor">あおい @aoi_sailor</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/yuinakigkig">唯那 @yuinakigkig</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/GUNHED507">GUNHED#507 @GUNHED507</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/Kuon_Kig">くおん @Kuon_Kig</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/gerorine">gerorine @gerorine</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/kigupanko">ぱん @kigupanko</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://twitter.com/OmbaToh2019">温羽とお @OmbaToh2019</a></td></tr>
+					<tr><td>　</td><td></td><td></td></tr>
+					<tr><td>Thx</td><td>:</td><td><a href="https://twitter.com/torme_kig">とるめ @torme_kig</a></td></tr>
+				</table>
+			</div>
+			<div id="footerColumnC">
+				<button id="returnTopButton" style="background-image: url('../img/return_top.png')" aria-label="Topへ戻る"></button>
+			</div>
+		</div>
+		<div id="copyright">
+			<p>© 2024 Lalawata. All Rights Reserved.</p>
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="../js/common.js"></script>
+	<script src="../js/main_index.js"></script>
+</body>
+</html>
