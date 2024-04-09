@@ -29,10 +29,11 @@ https://www.youtube.com/@lawlawata
 	<script>
 		(function () {
 			var lang = window.navigator.languages || window.navigator.language || window.navigator.userLanguage || window.navigator.browserLanguage;
-			if('ja' in lang){ return; }
-			if('en' in lang){ location.href = './en/index.html'; }
-			if('zh' in lang){ location.href = './zh/index.html'; }
-			if('ko' in lang){ location.href = './ko/index.html'; }
+			if(lang.includes('ja')){ location.href = './ja/index.html'; return; }
+			if(lang.includes('en')){ location.href = './en/index.html'; return; }
+			if(lang.includes('zh')){ location.href = './zh/index.html'; return; }
+			if(lang.includes('ko')){ location.href = './ko/index.html'; return; }
+			location.href = './ja/index.html'; return;
 		}());
 
 		var globalPrefix = './'
