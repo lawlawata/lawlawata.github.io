@@ -504,7 +504,6 @@ $(window).resize(function () {
 
 // 画面をスクロールをしたら実行する処理
 $(window).scroll(function () {
-	console.log("scroll")
 	smoothTextAnime();
 	cardAnime();
 	backgroundImage();
