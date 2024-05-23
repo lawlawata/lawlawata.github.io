@@ -83,7 +83,7 @@ header {
 }
 #headerContent {
 	margin: 0em;
-	padding: 1.5em 2em 1.5em 2em;
+	padding: 1em 2em 1em 2em;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
@@ -145,8 +145,8 @@ header {
 #headerImg {
 	padding: 0em;
 	margin-right: auto;
-	width: 8.21875em;
-	height: 3em;
+	width: 8em;
+	height: 4em;
 }
 #headerXA{
 	margin: 0em;
