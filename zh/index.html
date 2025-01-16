@@ -109,8 +109,11 @@ https://www.youtube.com/@lawlawata
 
 	<!-- 背景画像 -->
 	<picture id="backgroundImage">
-		<source class="backgroundImageContent" srcset="../img/first_background.avif" type="image/avif" alt="主视觉"/>
-		<img class="backgroundImageContent" src="../img/first_background.jpg" alt="主视觉">
+		<source class="backgroundImageContent" srcset="../img/first_background_w.avif" type="image/avif" media="(orientation: landscape)" alt="主视觉">
+		<source class="backgroundImageContent" srcset="../img/first_background_w.jpg" media="(orientation: landscape)" alt="主视觉">
+		<source class="backgroundImageContent" srcset="../img/first_background_h.avif" type="image/avif" media="(orientation: portrait)" alt="主视觉">
+		<source class="backgroundImageContent" srcset="../img/first_background_h.jpg" media="(orientation: portrait)" alt="主视觉">
+		<img class="backgroundImageContent" src="../img/first_background_h.jpg" alt="主视觉">
 	</picture>
 	<div id="backgroundText">
 		<p><b>
