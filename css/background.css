@@ -8,15 +8,18 @@
 	-webkit-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	top: var(--header-height-size);
-	width: 100vmin;
+	width: 100vw;
 	margin: 0em;
 	padding: 0em;
 	z-index: -10;
 }
 #backgroundImage .backgroundImageContent{
-	width: 100vmin;
-	height: 150vmin;
+	width: 100vw;
+	height: 100vh;
+	object-fit: cover;
+	object-position: center;
 }
+
 /*「中身はわたです！」*/
 #backgroundText.appear{
 	position: fixed;
@@ -47,6 +50,11 @@
 	transform: translate3d(0,-100%,0);
 	transform-origin: left;
 	display: inline-block;
+	text-shadow:
+	2px 2px 0 var(--white-color),
+	-2px 2px 0 var(--white-color),
+	-2px -2px 0 var(--white-color),
+	2px -2px 0 var(--white-color);
 }
 #backgroundText.appear #wataPrefix{
 	animation-name: animation-wataPrefix;
@@ -73,6 +81,11 @@
 	transform: translate3d(0,-100%,0);
 	transform-origin: left;
 	display: inline-block;
+	text-shadow:
+	2px 2px 0 var(--white-color),
+	-2px 2px 0 var(--white-color),
+	-2px -2px 0 var(--white-color),
+	2px -2px 0 var(--white-color);
 }
 #backgroundText.appear #wataSuffix{
 	animation-name: animation-wataSuffix;

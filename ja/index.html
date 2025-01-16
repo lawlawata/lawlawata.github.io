@@ -42,12 +42,13 @@ https://www.youtube.com/@lawlawata
 	<meta property="og:title" content="ららわたオフィシャルサイト | 中身が綿の着ぐるみ" />
 	<meta property="og:type" content="website">
 	<meta property="og:description" content="中身が綿の、ららわたです！ オリジナルのキャラクターです！ 綿に魔法をかけて動くようにしています！ 中の人なんていないです！" />
-	<meta property="og:image" content="https://lawlawata.com/img/first_background.jpg" />
+	<meta property="og:image" content="https://lawlawata.com/img/first_background_w.jpg" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@lawlawata" />
 
 	<!-- preload -->
-	<link rel="preload" href="../img/first_background.avif" as="image" type="image/avif">
+	<link rel="preload" href="../img/first_background_w.avif" as="image" type="image/avif">
+	<link rel="preload" href="../img/first_background_h.avif" as="image" type="image/avif">
 	<link rel="preload" href="../img/logo.png" as="image" />
 	<link rel="preload" href="../img/youtube_icon.svg" as="image" />
 
@@ -109,8 +110,13 @@ https://www.youtube.com/@lawlawata
 
 	<!-- 背景画像 -->
 	<picture id="backgroundImage">
-		<source class="backgroundImageContent" srcset="../img/first_background.avif" type="image/avif" alt="キービジュアル"/>
-		<img class="backgroundImageContent" src="../img/first_background.jpg" alt="キービジュアル">
+		<!-- 横長の画像 -->
+		<source class="backgroundImageContent" srcset="../img/first_background_w.avif" type="image/avif" media="(orientation: landscape)">
+		<source class="backgroundImageContent" srcset="../img/first_background_w.jpg" media="(orientation: landscape)">
+		<!-- 縦長の画像 -->
+		<source class="backgroundImageContent" srcset="../img/first_background_h.avif" type="image/avif" media="(orientation: portrait)">
+		<source class="backgroundImageContent" srcset="../img/first_background_h.jpg" media="(orientation: portrait)">
+		<img class="backgroundImageContent" src="../img/first_background_h.jpg" alt="キービジュアル">
 	</picture>
 	<div id="backgroundText">
 		<p><b>
@@ -387,7 +393,7 @@ https://www.youtube.com/@lawlawata
 					<tr><td></td><td>:</td><td><a href="https://x.com/KigSetsume">せつめ @KigSetsume</a></td></tr>
 					<tr><td>　</td><td></td><td></td></tr>
 					<tr><td>Thx</td><td>:</td><td><a href="https://x.com/torme_kig">とるめ @torme_kig</a></td></tr>
-					<tr><td>Thx</td><td>:</td><td><a href="https://x.com/AisuTokimekiES">あいすだいふく @AisuTokimekiES</a></td></tr>
+					<tr><td></td><td>:</td><td><a href="https://x.com/AisuTokimekiES">あいすだいふく @AisuTokimekiES</a></td></tr>
 				</table>
 			</div>
 			<div id="footerColumnC">
