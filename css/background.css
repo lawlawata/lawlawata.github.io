@@ -50,10 +50,6 @@
 	transform: translate3d(0,-100%,0);
 	transform-origin: left;
 	display: inline-block;
-
-	/*color: var(--white-color)q;
-	-webkit-text-fill-color: var(--main-color);
-	-webkit-text-stroke: 1px var(--white-color);*/
 	text-shadow:
 	2px 2px 0 var(--white-color),
 	1px 2px 0 var(--white-color),

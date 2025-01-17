@@ -233,7 +233,7 @@ function backgroundImage(){
 	var backgroundPinkBlur = document.getElementById('backgroundPinkBlur');
 	backgroundPinkBlur.style.opacity = backgroundPinkBlurOpacity;
 
-	var twitterTimelineP = document.getElementById('twitter-timelineP');
+	var twitterTimelineP = document.getElementById('twitter-timelineDiv');
 	var twitterTimelinePTop = twitterTimelineP.offsetTop;
 	var twitterTimelinePHeight = twitterTimelineP.clientHeight;
 	headerColorGrayOpacityTo0 = Math.max(0, Math.min(1, 1.0 * (twitterTimelinePTop - scroll + windowHeight/2) / windowHeight));
