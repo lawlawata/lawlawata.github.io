@@ -50,11 +50,27 @@
 	transform: translate3d(0,-100%,0);
 	transform-origin: left;
 	display: inline-block;
+
+	/*color: var(--white-color)q;
+	-webkit-text-fill-color: var(--main-color);
+	-webkit-text-stroke: 1px var(--white-color);*/
 	text-shadow:
 	2px 2px 0 var(--white-color),
+	1px 2px 0 var(--white-color),
+	0px 2px 0 var(--white-color),
+	-1px 2px 0 var(--white-color),
 	-2px 2px 0 var(--white-color),
+	-2px 1px 0 var(--white-color),
+	-2px 0px 0 var(--white-color),
+	-2px -1px 0 var(--white-color),
 	-2px -2px 0 var(--white-color),
-	2px -2px 0 var(--white-color);
+	-1px -2px 0 var(--white-color),
+	0px -2px 0 var(--white-color),
+	1px -2px 0 var(--white-color),
+	2px -2px 0 var(--white-color),
+	2px -1px 0 var(--white-color),
+	2px 0px 0 var(--white-color),
+	2px 1px 0 var(--white-color);
 }
 #backgroundText.appear #wataPrefix{
 	animation-name: animation-wataPrefix;
@@ -83,9 +99,21 @@
 	display: inline-block;
 	text-shadow:
 	2px 2px 0 var(--white-color),
+	1px 2px 0 var(--white-color),
+	0px 2px 0 var(--white-color),
+	-1px 2px 0 var(--white-color),
 	-2px 2px 0 var(--white-color),
+	-2px 1px 0 var(--white-color),
+	-2px 0px 0 var(--white-color),
+	-2px -1px 0 var(--white-color),
 	-2px -2px 0 var(--white-color),
-	2px -2px 0 var(--white-color);
+	-1px -2px 0 var(--white-color),
+	0px -2px 0 var(--white-color),
+	1px -2px 0 var(--white-color),
+	2px -2px 0 var(--white-color),
+	2px -1px 0 var(--white-color),
+	2px 0px 0 var(--white-color),
+	2px 1px 0 var(--white-color);
 }
 #backgroundText.appear #wataSuffix{
 	animation-name: animation-wataSuffix;
