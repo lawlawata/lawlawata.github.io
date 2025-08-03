@@ -373,8 +373,17 @@ div.twitterEmptySpace{
 
 /* スマホ向けの高さ調整 */
 @media (pointer: coarse) and (hover: none) {
+
+	div.twitterEmptySpace{
+		margin: 0em;
+		padding: 0em;
+		height: 0em;
+	}
+
 	#twitter-timelineDiv {
-		height: 0em; /* 3行程度の高さ */
+		margin: 0em;
+		padding: 0em;
+		height: 0em;
 	}
 }
 
