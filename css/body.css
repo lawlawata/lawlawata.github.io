@@ -370,6 +370,14 @@ div.twitterEmptySpace{
 	overflow: hidden;
 }
 
+
+/* スマホ向けの高さ調整 */
+@media screen and (max-width: 768px) {
+	#twitter-timelineDiv {
+		height: 6em; /* 3行分程度の高さ（1行=約2emを想定） */
+	}
+}
+
 #twitter-timelineP{
 	margin: 0em calc((100vw - min(100vw, 80vh)) / 2);
 	width: calc(min(100vw, 80vh));
