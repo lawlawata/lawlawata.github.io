@@ -372,10 +372,9 @@ div.twitterEmptySpace{
 
 
 /* スマホ向けの高さ調整 */
-@media screen and (max-width: 768px),
-       (pointer: coarse) and (hover: none) {
+@media (pointer: coarse) and (hover: none) {
 	#twitter-timelineDiv {
-		height: 6em; /* 3行程度の高さ */
+		height: 0em; /* 3行程度の高さ */
 	}
 }
 
