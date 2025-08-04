@@ -352,7 +352,7 @@ div.card span.wDash{
 }
 
 /*twitter*/
-div.twitterEmptySpace{
+/*div.twitterEmptySpace{
 	margin: 0em;
 	padding: 0em;
 	height: 20em;
@@ -360,7 +360,6 @@ div.twitterEmptySpace{
 
 #twitter-timelineDiv{
 	position: relative;
-/* 	margin: 0em calc(-1 * var(--body-side-padding-size) + (100vw - 100vmin) / 2); */
 	margin: 0em calc(-1 * var(--body-side-padding-size));
 	height: calc(10 * min(100vw, 80vh));
 	color: var(--white-color);
@@ -368,23 +367,18 @@ div.twitterEmptySpace{
 	text-align: center;
 	background-color: var(--base-color);
 	overflow: hidden;
+}*/
+
+div.twitterEmptySpace{
+	margin: 0em;
+	padding: 0em;
+	height: 0em;
 }
 
-
-/* スマホ向けの高さ調整 */
-@media (pointer: coarse) and (hover: none) {
-
-	div.twitterEmptySpace{
-		margin: 0em;
-		padding: 0em;
-		height: 0em;
-	}
-
-	#twitter-timelineDiv {
-		margin: 0em;
-		padding: 0em;
-		height: 0em;
-	}
+#twitter-timelineDiv {
+	margin: 0em;
+	padding: 0em;
+	height: 0em;
 }
 
 #twitter-timelineP{
