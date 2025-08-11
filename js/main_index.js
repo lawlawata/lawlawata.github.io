@@ -47,7 +47,7 @@ function isAvifSupported() {
 	const ctx = canvas.getContext('2d');
 	if (!ctx || !ctx.getImageData) return false;
 
-	const avifDataUri = globalPrefix + 'img/first_background.avif';
+	const avifDataUri = globalPrefix + 'img/first_background_h.avif';
 	const img = new Image();
 	img.src = avifDataUri;
 	return img.complete && img.naturalWidth > 0 && img.naturalHeight > 0;
@@ -384,9 +384,9 @@ document.addEventListener('DOMContentLoaded', function(){
 	// キービジュアルの読み込みが終わった時に処理を実行するトリガ
 	var img_first_background = new Image();
 	if (isAvifSupported()) {
-		img_first_background.src = globalPrefix + 'img/first_background.avif';
+		img_first_background.src = globalPrefix + 'img/first_background_h.avif';
 	} else {
-		img_first_background.src = globalPrefix + 'img/first_background.jpg';
+		img_first_background.src = globalPrefix + 'img/first_background_h.jpg';
 	}
 	if (img_first_background.complete) {
 		imgFirstBackgroundOnloadFunction();

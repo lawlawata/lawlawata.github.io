@@ -98,14 +98,17 @@ footer{
 	font-family: 'Noto Sans JP', sans-serif;
 	color: var(--footer-text-color);
 }
-#footerXA{
+#footerImgXA {
 	margin: 0em;
 	padding: 0em 1em 0em 1em;
-	font-size: 1.5em;
-	text-decoration: none;
-	color: var(--footer-color);
-	line-height: 0em;
-	font-family: 'Noto Sans JP', sans-serif;
+	display: flex;
+	align-items: center;
+}
+#footerImgX {
+	height: 1.5em;
+}
+#footerImgX .st0{
+	fill: var(--footer-color);
 }
 #footerImgYoutubeA {
 	margin: 0em;
@@ -114,7 +117,6 @@ footer{
 	align-items: center;
 }
 #footerImgYoutube {
-	width: 2em;
 	height: 2em;
 }
 #footerImgYoutube .st0{
