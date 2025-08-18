@@ -171,7 +171,6 @@ header {
 	padding: 0em 1.5em 0em 1.5em;
 	display: flex;
 	align-items: center;
-	display: none;
 }
 #headerImgBooth {
 	height: 2em;
