@@ -402,6 +402,13 @@ div.twitterEmptySpace{
 	z-index: 1;
 }
 
+#dreamyCottonGirlImg{
+	display: block;
+	margin: 0 auto;
+	padding: 4em;
+	width: calc(min(90%, 70vh));
+}
+
 /* YouTube */
 div.cardTrigger.youtubeCardTrigger{
 	background-color: #ffffff00;
