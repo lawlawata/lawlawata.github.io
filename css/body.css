@@ -405,8 +405,8 @@ div.twitterEmptySpace{
 #dreamyCottonGirlImg{
 	display: block;
 	margin: 0 auto;
-	padding: 4em;
-	width: calc(min(90%, 70vh));
+	padding: 0em 3em 3em 3em;
+	width: calc(min(100% - 6em, 60vh));
 }
 
 /* YouTube */
