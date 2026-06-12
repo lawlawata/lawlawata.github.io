@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ポーズシンクロチャレンジ</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --sub: #6b7280;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --danger: #dc2626;
+      --border: #dbe1ea;
+      --shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+    }
+
+    body {
+      background: linear-gradient(135deg, #eef2ff, var(--bg));
+    }
+
+    /* 前後の文章表示画面 */
+    .message-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      background: #ffffff;
+      color: #111827;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .message-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .message-content {
+      width: min(1000px, 100%);
+      text-align: center;
+    }
+
+    .message-text {
+      margin: 0;
+      font-size: clamp(32px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      text-wrap: balance;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .message-guide {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: calc(100% - 40px);
+      margin: 0;
+      color: #6b7280;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 600;
+    }
+
+    .message-counter {
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      margin: 0;
+      color: #6b7280;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .tap-hint {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      font-size: clamp(22px, 4vw, 42px);
+      font-weight: 800;
+      pointer-events: none;
+      opacity: 0.75;
+    }
+
+    .tap-hint.left {
+      left: 20px;
+    }
+
+    .tap-hint.right {
+      right: 20px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ルーレット画面 */
+    .roulette-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .app {
+      width: min(760px, 100%);
+      background: var(--card);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: clamp(28px, 5vw, 42px);
+    }
+
+    .description {
+      margin: 0 0 24px;
+      text-align: center;
+      color: var(--sub);
+    }
+
+    .display {
+      height: 220px;
+      min-height: 220px;
+      max-height: 220px;
+      overflow: hidden;
+      border: 3px solid var(--primary);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      font-size: clamp(34px, 8vw, 72px);
+      font-weight: 800;
+      line-height: 1.2;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      background: #f8fbff;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .display.running {
+      transform: scale(1.015);
+      background: #eff6ff;
+    }
+
+    .display.winner {
+      animation: pop 0.5s ease;
+      background: #ecfdf5;
+      border-color: #16a34a;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.92); }
+      60% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    button {
+      border: 0;
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.12s ease, opacity 0.2s ease, background 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+      transform: none;
+    }
+
+    .start {
+      flex: 1;
+      background: var(--primary);
+      color: white;
+    }
+
+    .start:hover {
+      background: var(--primary-dark);
+    }
+
+    .stop {
+      flex: 1;
+      background: var(--danger);
+      color: white;
+    }
+
+    .secondary {
+      background: #eef2f7;
+      color: var(--text);
+    }
+
+    .editor {
+      margin-top: 18px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    .editor h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 190px;
+      resize: vertical;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      font: inherit;
+      line-height: 1.6;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .editor-actions {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .option {
+      margin-left: auto;
+      color: var(--sub);
+      font-size: 14px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .status {
+      margin-top: 12px;
+      min-height: 24px;
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    .next-area {
+      display: none;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .next-area.visible {
+      display: block;
+    }
+
+    .next-button {
+      width: min(320px, 100%);
+      background: #16a34a;
+      color: #ffffff;
+      font-size: 20px;
+      padding: 16px 24px;
+    }
+
+    .next-button:hover {
+      background: #15803d;
+    }
+
+    @media (max-width: 560px) {
+      .message-screen {
+        padding: 24px;
+      }
+
+      .message-text {
+        font-size: clamp(30px, 10vw, 52px);
+      }
+
+      .roulette-page {
+        padding: 14px;
+      }
+
+      .app {
+        padding: 20px;
+        border-radius: 18px;
+      }
+
+      .controls {
+        flex-direction: column;
+      }
+
+      .option {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section id="messageScreen" class="message-screen" role="button" tabindex="0" aria-label="タップして次の文章へ">
+    <div class="message-content">
+      <p id="messageText" class="message-text"></p>
+    </div>
+    <p id="messageCounter" class="message-counter"></p>
+    <span class="tap-hint left">‹</span>
+    <span class="tap-hint right">›</span>
+    <p id="messageGuide" class="message-guide">左側で戻る・右側で次へ</p>
+  </section>
+
+  <main class="roulette-page">
+    <div class="app">
+      <h1>ランダムルーレット</h1>
+      <p class="description">スタートで候補を切り替え、ストップで1つに決定します。</p>
+
+      <section id="display" class="display">スタートを押してください</section>
+
+      <div class="controls">
+        <button id="startButton" class="start">スタート</button>
+        <button id="stopButton" class="stop" disabled>ストップ</button>
+      </div>
+
+      <div id="nextArea" class="next-area">
+        <button id="nextButton" class="next-button">次へ</button>
+      </div>
+
+      <section class="editor">
+        <h2>候補リスト</h2>
+        <textarea id="itemsInput" aria-label="候補リスト">ラーメン
+カレー
+寿司
+焼肉
+パスタ</textarea>
+
+        <div class="editor-actions">
+          <button id="saveButton" class="secondary">候補を保存</button>
+          <button id="resetButton" class="secondary">初期状態に戻す</button>
+
+          <label class="option">
+            <input id="removeWinner" type="checkbox" />
+            当選した候補を次回から除外する
+          </label>
+        </div>
+
+        <div id="status" class="status"></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const openingSentences = [
+      "3分くらい動画撮っていいですか？",
+      "ポーズシンクロチャレンジ！",
+      "まずはキャラクター紹介です！",
+      "足元から顔にカメラが上がっていくので、意気込みをどうぞ！",
+      "今からポーズシンクロチャレンジを練習と本番2回やります！",
+      "私たち2人が、みんなのポーズにどれだけ合わせられるか対決をしています！",
+      "あなたは自由にポーズをとってください！",
+      "私が5・4・3・2・1ってやるので、タイミングを合わせてポーズしてください！",
+      "まずは練習です！",
+      "お題は「猫」です！",
+      "それでは本番です！",
+      "では、1回目！",
+      "ルーレットでお題を決めます！"
+    ];
+
+    const endingSentences = [
+      "2回目！",
+      "あなたらしいポーズをとってください！",
+      "YoutubeやSNSにアップしてOKですか？",
+      "名札を撮らせてください",
+      "ありがとうございました！",
+      "これでおわり！",
+      "EOP！"
+    ];
+
+    const messageScreen = document.getElementById("messageScreen");
+    const messageText = document.getElementById("messageText");
+    const messageCounter = document.getElementById("messageCounter");
+    const messageGuide = document.getElementById("messageGuide");
+
+    let activeSentences = openingSentences;
+    let messageIndex = 0;
+    let messageLocked = false;
+    let messageMode = "opening";
+
+    function showMessageSentence() {
+      messageText.style.animation = "none";
+      void messageText.offsetWidth;
+      messageText.textContent = activeSentences[messageIndex];
+      messageText.style.animation = "fadeIn 0.3s ease";
+      messageCounter.textContent = `${messageIndex + 1} / ${activeSentences.length}`;
+      if (messageIndex === activeSentences.length - 1 && messageMode === "ending") {
+        messageGuide.textContent = "左側で戻る・右側で終了";
+      } else if (messageIndex === 0) {
+        messageGuide.textContent = "右側をタップして次へ";
+      } else {
+        messageGuide.textContent = "左側で戻る・右側で次へ";
+      }
+    }
+
+    function openMessageSequence(sentences, mode) {
+      activeSentences = sentences;
+      messageIndex = 0;
+      messageMode = mode;
+      messageScreen.classList.remove("hidden");
+      showMessageSentence();
+      messageScreen.focus();
+    }
+
+    function previousMessageSentence() {
+      if (messageLocked || messageIndex <= 0) return;
+      messageLocked = true;
+      messageIndex--;
+      showMessageSentence();
+      setTimeout(() => {
+        messageLocked = false;
+      }, 220);
+    }
+
+    function nextMessageSentence() {
+      if (messageLocked) return;
+      messageLocked = true;
+
+      if (messageIndex < activeSentences.length - 1) {
+        messageIndex++;
+        showMessageSentence();
+        setTimeout(() => {
+          messageLocked = false;
+        }, 220);
+      } else {
+        messageScreen.classList.add("hidden");
+        setTimeout(() => {
+          messageLocked = false;
+        }, 350);
+      }
+    }
+
+    messageScreen.addEventListener("click", event => {
+      const tappedLeftSide = event.clientX < window.innerWidth / 2;
+      if (tappedLeftSide) {
+        previousMessageSentence();
+      } else {
+        nextMessageSentence();
+      }
+    });
+
+    messageScreen.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        previousMessageSentence();
+      } else if (
+        event.key === "Enter" ||
+        event.key === " " ||
+        event.key === "ArrowRight"
+      ) {
+        event.preventDefault();
+        nextMessageSentence();
+      }
+    });
+
+    showMessageSentence();
+
+    const display = document.getElementById("display");
+    const startButton = document.getElementById("startButton");
+    const stopButton = document.getElementById("stopButton");
+    const saveButton = document.getElementById("saveButton");
+    const resetButton = document.getElementById("resetButton");
+    const nextArea = document.getElementById("nextArea");
+    const nextButton = document.getElementById("nextButton");
+    const itemsInput = document.getElementById("itemsInput");
+    const removeWinner = document.getElementById("removeWinner");
+    const status = document.getElementById("status");
+
+    const STORAGE_KEY = "randomRouletteItems";
+    const REMOVE_KEY = "randomRouletteRemoveWinner";
+    const DEFAULT_ITEMS = ["ラーメン", "カレー", "寿司", "焼肉", "パスタ"];
+
+    let timer = null;
+    let currentItems = [];
+    let currentIndex = -1;
+    let endingShown = false;
+
+    function parseItems() {
+      return itemsInput.value
+        .split(/\r?\n/)
+        .map(item => item.trim())
+        .filter(Boolean);
+    }
+
+    function saveItems(showMessage = true) {
+      const items = parseItems();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      localStorage.setItem(REMOVE_KEY, removeWinner.checked ? "1" : "0");
+      if (showMessage) {
+        status.textContent = `${items.length}件の候補を保存しました。`;
+      }
+    }
+
+    function loadItems() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (Array.isArray(saved) && saved.length > 0) {
+          itemsInput.value = saved.join("\n");
+        }
+      } catch (_) {}
+
+      removeWinner.checked = localStorage.getItem(REMOVE_KEY) === "1";
+    }
+
+    function randomIndex(max) {
+      if (max <= 1) return 0;
+
+      let next;
+      do {
+        next = Math.floor(Math.random() * max);
+      } while (next === currentIndex);
+
+      return next;
+    }
+
+    function showRandomItem() {
+      currentIndex = randomIndex(currentItems.length);
+      display.textContent = currentItems[currentIndex];
+    }
+
+    function startRoulette() {
+      currentItems = parseItems();
+
+      if (currentItems.length < 2) {
+        status.textContent = "候補を2件以上入力してください。";
+        return;
+      }
+
+      saveItems(false);
+      nextArea.classList.remove("visible");
+      status.textContent = "抽選中…";
+      display.classList.remove("winner");
+      display.classList.add("running");
+      startButton.disabled = true;
+      stopButton.disabled = false;
+      itemsInput.disabled = true;
+      saveButton.disabled = true;
+      resetButton.disabled = true;
+
+      showRandomItem();
+      timer = setInterval(showRandomItem, 70);
+    }
+
+    function stopRoulette() {
+      if (!timer) return;
+
+      clearInterval(timer);
+      timer = null;
+
+      display.classList.remove("running");
+      display.classList.add("winner");
+      startButton.disabled = false;
+      stopButton.disabled = true;
+      itemsInput.disabled = false;
+      saveButton.disabled = false;
+      resetButton.disabled = false;
+
+      const winner = currentItems[currentIndex];
+      status.textContent = `結果：${winner}`;
+
+      if (removeWinner.checked) {
+        const remainingItems = parseItems().filter(item => item !== winner);
+        itemsInput.value = remainingItems.join("\n");
+        saveItems(false);
+        status.textContent += "（候補から除外しました）";
+      }
+
+      if (!endingShown) {
+        nextArea.classList.add("visible");
+      }
+    }
+
+    function resetItems() {
+      if (timer) return;
+
+      itemsInput.value = DEFAULT_ITEMS.join("\n");
+      removeWinner.checked = false;
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(REMOVE_KEY);
+      display.textContent = "スタートを押してください";
+      display.classList.remove("winner");
+      status.textContent = "初期状態に戻しました。";
+      nextArea.classList.remove("visible");
+      endingShown = false;
+    }
+
+    startButton.addEventListener("click", startRoulette);
+    stopButton.addEventListener("click", stopRoulette);
+    saveButton.addEventListener("click", () => saveItems(true));
+    resetButton.addEventListener("click", resetItems);
+    nextButton.addEventListener("click", () => {
+      if (endingShown) return;
+      endingShown = true;
+      nextArea.classList.remove("visible");
+      openMessageSequence(endingSentences, "ending");
+    });
+
+    loadItems();
+  </script>
+</body>
+</html>
