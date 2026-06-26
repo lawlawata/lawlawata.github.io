@@ -83,7 +83,7 @@ header {
 }
 #headerContent {
 	margin: 0em;
-	padding: 1em 2em 1em 2em;
+	padding: 0.666em 1.333em 0.666em 1.333em;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
@@ -140,38 +140,38 @@ header {
 #headerImgA {
 	padding: 0em;
 	margin-right: auto;
-	height: 3em;
+	height: 2em;
 }
 #headerImg {
 	padding: 0em;
 	margin-right: auto;
-	width: 6.564em;
-	height: 4em;
+	width: 4.376em;
+	height: 2.666em;
 }
 #headerImgXA {
 	margin: 0em;
-	padding: 0em 1em 0em 1em;
+	padding: 0em 0.667em 0em 0.667em;
 	display: flex;
 	align-items: center;
 }
 #headerImgX {
-	height: 1.8em;
+	height: 1.2em;
 }
 #headerImgYoutubeA {
 	margin: 0em;
-	padding: 0em 1em 0em 1em;
+	padding: 0em 0.667em 0em 0.667em;
 	display: flex;
 	align-items: center;
 }
 #headerImgYoutube {
-	height: 2em;
+	height: 1.333em;
 }
 #headerImgBoothA {
 	margin: 0em;
-	padding: 0em 1em 0em 1em;
+	padding: 0em 0.667em 0em 0.667em;
 	display: flex;
 	align-items: center;
 }
 #headerImgBooth {
-	height: 2em;
+	height: 1.333em;
 }

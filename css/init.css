@@ -7,7 +7,7 @@
 	--body-side-padding-size: min(4em,8vw);
 
 	/* ヘッダーの高さ */
-	--header-height-size: 6em;
+	--header-height-size: 4em;
 
 	/* kamishibaiMojiSpaceの上辺のy座標 */
 	--kamishibai-moji-space-top-size: calc(min(max(125vw, 50vh), 100vh - var(--header-height-size)));
