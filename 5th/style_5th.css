@@ -143,11 +143,24 @@ a {
   --scroll-scale: 1;
   --scroll-rotate: 0deg;
   --scroll-opacity: 1;
-  transform: translate(-50%, -50%) rotate(var(--scroll-rotate)) scale(var(--scroll-scale));
+  --entry-scale: 0.72;
+  --entry-rotate: -140deg;
+  --entry-opacity: 0;
+  transform:
+    translate(-50%, -50%)
+    rotate(calc(var(--scroll-rotate) + var(--entry-rotate)))
+    scale(calc(var(--scroll-scale) * var(--entry-scale)));
   transform-origin: center center;
-  opacity: var(--scroll-opacity);
+  opacity: calc(var(--scroll-opacity) * var(--entry-opacity));
   pointer-events: none;
+  transition: transform 0.9s ease, opacity 0.9s ease;
   will-change: transform, opacity;
+}
+
+.moco-layer.is-visible {
+  --entry-scale: 1;
+  --entry-rotate: 0deg;
+  --entry-opacity: 1;
 }
 
 .moco-place-hitbox {
@@ -737,6 +750,31 @@ a {
     width: calc(100vw - 20px);
     min-height: 56px;
     font-size: 0.98rem;
+  }
+
+  .rules-items-table {
+    border-spacing: 0 12px;
+  }
+
+  .rules-items-table tr {
+    display: block;
+  }
+
+  .rules-items-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .rules-items-table td:first-child {
+    width: 100%;
+    min-width: 0;
+    border-radius: 14px 14px 0 0;
+    padding-bottom: 8px;
+  }
+
+  .rules-items-table td:last-child {
+    border-radius: 0 0 14px 14px;
+    padding-top: 0;
   }
 
   .faq-item summary {

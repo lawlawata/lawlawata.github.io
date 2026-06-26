@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mocoLayers.length > 0) {
       const viewportHeight = Math.max(window.innerHeight, 1);
       const scrollStart = viewportHeight * 0.5;
-      const scrollEnd = viewportHeight * 1.2;
+      const scrollEnd = viewportHeight * 1.0;
       const staggerRatios = [0.24, 0, 0.36, 0.12];
 
       mocoLayers.forEach((layer, index) => {
@@ -144,6 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   updateParallax();
+  const mocoIntroDelays = [1080, 820, 560, 1340];
+  mocoLayers.forEach((layer, index) => {
+    window.setTimeout(() => {
+      layer.classList.add('is-visible');
+    }, mocoIntroDelays[index] || mocoIntroDelays[mocoIntroDelays.length - 1]);
+  });
   window.addEventListener('scroll', requestUpdate, { passive: true });
   window.addEventListener('resize', requestUpdate);
   window.addEventListener('load', requestUpdate, { once: true });
