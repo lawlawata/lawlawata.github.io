@@ -276,6 +276,7 @@ a {
 
 .hero-logo.fade-in {
   transform: translateX(-50%) translateY(26px);
+  transition-delay: 1.6s;
 }
 
 .hero-logo.fade-in.is-active {
