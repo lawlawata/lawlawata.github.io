@@ -256,13 +256,13 @@ a {
 .content-layer {
   position: relative;
   z-index: 2;
-  margin-top: calc(-100vh + var(--header-height-size));
+  margin-top: calc(-1 * var(--hero-screen-height, calc(100vh - var(--header-height-size))));
 }
 
 .hero-screen {
   position: relative;
-  height: calc(100vh - var(--header-height-size));
-  min-height: calc(100vh - var(--header-height-size));
+  height: var(--hero-screen-height, calc(100vh - var(--header-height-size)));
+  min-height: var(--hero-screen-height, calc(100vh - var(--header-height-size)));
 }
 
 .hero-logo {
@@ -295,7 +295,7 @@ a {
 .intro-block,
 .section-block,
 .rules-group,
-.camera-rule-card,
+.course-rule-card,
 .overview-card,
 .feature-card,
 .course-card,
@@ -380,7 +380,7 @@ a {
 .feature-card,
 .overview-card,
 .course-card,
-.camera-rule-card,
+.course-rule-card,
 .rules-group,
 .faq-item {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 250, 0.96));
@@ -421,7 +421,7 @@ a {
 .feature-card p,
 .overview-card p,
 .course-card p,
-.camera-rule-card p,
+.course-rule-card p,
 .rules-group li,
 .faq-answer {
   margin: 0;
@@ -439,7 +439,8 @@ a {
 }
 
 .overview-card .price,
-.overview-card .date {
+.overview-card .date,
+.overview-card .place {
   color: var(--main-color);
   font-size: 1.4rem;
   font-weight: 800;
@@ -447,7 +448,7 @@ a {
 
 .time-list,
 .rules-group ul,
-.camera-rule-card ul {
+.course-rule-card ul {
   margin: 0;
   padding-left: 1.2em;
   display: grid;
@@ -457,7 +458,7 @@ a {
 .time-list li,
 .rules-group li,
 .course-card li,
-.camera-rule-card li {
+.course-rule-card li {
   line-height: 1.9;
 }
 
@@ -547,7 +548,7 @@ a {
   padding: 22px;
 }
 
-.camera-rule-card {
+.course-rule-card {
   margin-top: 18px;
   padding: 22px;
   font-size: 0.7rem;
@@ -556,13 +557,13 @@ a {
   box-shadow: none;
 }
 
-.camera-rule-card p {
+.course-rule-card p {
   color: #5c514c;
   font-weight: 700;
   margin-bottom: 12px;
 }
 
-.camera-rule-card ul {
+.course-rule-card ul {
   color: var(--text-color);
 }
 

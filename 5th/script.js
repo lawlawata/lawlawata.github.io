@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const parallaxTarget = document.querySelector('.character-parallax');
   const characterBase = document.querySelector('.character-base');
+  const heroScreen = document.querySelector('.hero-screen');
   const mocoLayers = Array.from(document.querySelectorAll('.moco-layer'));
   const mocoPlaceOverlay = document.querySelector('.moco-place-overlay');
   const mocoPlaceHitbox = document.querySelector('.moco-place-hitbox');
@@ -42,11 +43,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const availableHeight = Math.max(window.innerHeight - headerHeight, 1);
     const characterWidth = Math.min(window.innerWidth, availableHeight);
     const buttonRect = stickyButton.getBoundingClientRect();
+    const photoHeight = characterBase ? characterBase.getBoundingClientRect().height : 0;
     const gap = Math.max(window.innerHeight - buttonRect.top, 0);
     const heightScale = Math.min(availableHeight / 2000, 1);
+    const landscapeBottom = gap * heightScale;
+    const portraitBottom = photoHeight > 0 ? Math.min(landscapeBottom, photoHeight) : landscapeBottom;
+    const heroLogoBottom = window.innerHeight > window.innerWidth ? portraitBottom : landscapeBottom;
+
     parallaxTarget.style.setProperty('--character-width', `${characterWidth}px`);
     heroLogo.style.setProperty('--character-width', `${characterWidth}px`);
-    heroLogo.style.setProperty('--hero-logo-bottom', `${Math.max(gap * heightScale, 8)}px`);
+    heroLogo.style.setProperty('--hero-logo-bottom', `${Math.max(heroLogoBottom, 8)}px`);
+  };
+
+  const syncHeroScreenHeight = () => {
+    if (!heroScreen || !characterBase) {
+      return;
+    }
+
+    const header = document.querySelector('#header');
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+    const viewportHeight = Math.max(window.innerHeight - headerHeight, 1);
+    const viewportWidth = Math.max(window.innerWidth, 1);
+    const naturalWidth = characterBase.naturalWidth || characterBase.getBoundingClientRect().width || 1;
+    const naturalHeight = characterBase.naturalHeight || characterBase.getBoundingClientRect().height || 1;
+    const imageAspectRatio = naturalHeight / naturalWidth;
+    const widthBasedHeight = viewportWidth * imageAspectRatio;
+    const nextHeight = viewportWidth < viewportHeight / imageAspectRatio ? widthBasedHeight : viewportHeight;
+
+    heroScreen.style.setProperty('--hero-screen-height', `${nextHeight}px`);
   };
 
   const syncIntroSpacing = () => {
@@ -99,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const updateParallax = () => {
-    syncHeroLogo();
+    syncHeroScreenHeight();
     syncIntroSpacing();
     measureParallax();
     syncMocoPlaceHitbox();
@@ -143,6 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  syncHeroLogo();
+  syncHeroScreenHeight();
   updateParallax();
   const mocoIntroDelays = [1080, 820, 560, 1340];
   mocoLayers.forEach((layer, index) => {
@@ -151,6 +177,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }, mocoIntroDelays[index] || mocoIntroDelays[mocoIntroDelays.length - 1]);
   });
   window.addEventListener('scroll', requestUpdate, { passive: true });
-  window.addEventListener('resize', requestUpdate);
-  window.addEventListener('load', requestUpdate, { once: true });
+  window.addEventListener('resize', () => {
+    syncHeroScreenHeight();
+    syncHeroLogo();
+    requestUpdate();
+  });
+  window.addEventListener('load', () => {
+    syncHeroScreenHeight();
+    syncHeroLogo();
+    requestUpdate();
+  }, { once: true });
 });
