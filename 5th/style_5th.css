@@ -344,6 +344,13 @@ a {
   line-height: 1.9;
 }
 
+.section-lead a{
+  margin: 16px 0 0;
+  font-size: clamp(0.98rem, 1.8vw, 1.08rem);
+  line-height: 1.9;
+  color: var(--main-color);
+}
+
 .section-block {
   margin-top: 28px;
   padding: clamp(16px, 3vw, 28px);
